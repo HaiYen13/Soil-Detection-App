@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "792858521973",
+    "project_id": "soil-detection-588dd",
+    "storage_bucket": "soil-detection-588dd.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:792858521973:android:13e96851ffedd1bc90233c",
+        "android_client_info": {
+          "package_name": "com.yenvth.soilDetectionApp"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "792858521973-ppkfc902819dg6rces9fkt2707b7vmvi.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyA9si2W4mMf0tK2dJDuHYfBUp1MPDjX6EU"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "792858521973-ppkfc902819dg6rces9fkt2707b7vmvi.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

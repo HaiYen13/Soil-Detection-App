@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.appcompat.widget.AppCompatTextView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="@dimen/_40sdp"
+    android:fontFamily="@font/prompt_light"
+    android:padding="@dimen/_10sdp"
+    android:background="@drawable/bg_dropdown"
+    android:textSize="@dimen/_11sdp" />
