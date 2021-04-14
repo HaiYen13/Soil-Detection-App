@@ -77,86 +77,6 @@
             android:layout_height="wrap_content"
             android:layout_width="match_parent"
             android:orientation="vertical">
-            <!--Advance search-->
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="vertical"
-                android:paddingLeft="@dimen/_15sdp"
-                android:paddingTop="@dimen/_15sdp"
-                android:paddingRight="@dimen/_15sdp">
-
-                <androidx.appcompat.widget.AppCompatTextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:fontFamily="@font/prompt_bold"
-                    android:textColor="#000"
-                    android:textSize="@dimen/_12sdp"
-                    android:text="Tìm kiếm nâng cao" />
-                <!--Chọn tỉnh huyện xã-->
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="@dimen/_5sdp"
-                    android:orientation="vertical">
-
-                    <androidx.appcompat.widget.AppCompatTextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="@dimen/_5sdp"
-                        android:fontFamily="@font/prompt_light"
-                        android:text="Tỉnh/TP" />
-
-                    <androidx.appcompat.widget.AppCompatSpinner
-                        android:id="@+id/spProvince"
-                        android:layout_width="match_parent"
-                        android:layout_height="@dimen/_30sdp"
-                        android:background="@drawable/bg_administration"
-                        android:fontFamily="@font/prompt_light"
-                        android:layout_marginTop="@dimen/_5sdp"
-                        android:paddingTop="@dimen/_10sdp"
-                        android:paddingLeft="@dimen/_10sdp"
-                        android:paddingBottom="@dimen/_10sdp"
-                        android:paddingRight="@dimen/_10sdp" />
-
-                    <androidx.appcompat.widget.AppCompatTextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="@dimen/_5sdp"
-                        android:fontFamily="@font/prompt_light"
-                        android:text="Quận/Huyện" />
-
-                    <androidx.appcompat.widget.AppCompatSpinner
-                        android:id="@+id/spDistrict"
-                        android:layout_height="@dimen/_30sdp"
-                        android:layout_width="match_parent"
-                        android:background="@drawable/bg_administration"
-                        android:fontFamily="@font/prompt_light"
-                        android:paddingLeft="@dimen/_10sdp"
-                        android:paddingTop="@dimen/_10sdp"
-                        android:paddingRight="@dimen/_10sdp"
-                        android:paddingBottom="@dimen/_10sdp" />
-
-                    <androidx.appcompat.widget.AppCompatTextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="@dimen/_5sdp"
-                        android:fontFamily="@font/prompt_light"
-                        android:text="Xã/Phường" />
-
-                    <androidx.appcompat.widget.AppCompatSpinner
-                        android:id="@+id/spWard"
-                        android:layout_height="@dimen/_30sdp"
-                        android:layout_width="match_parent"
-                        android:background="@drawable/bg_administration"
-                        android:fontFamily="@font/prompt_light"
-                        android:paddingLeft="@dimen/_10sdp"
-                        android:paddingTop="@dimen/_10sdp"
-                        android:paddingRight="@dimen/_10sdp"
-                        android:paddingBottom="@dimen/_10sdp" />
-
-                </LinearLayout>
-            </LinearLayout>
 
             <RelativeLayout
                 android:layout_width="match_parent"
@@ -178,6 +98,7 @@
                         android:text="Danh sách mẫu đất" />
 
                     <androidx.recyclerview.widget.RecyclerView
+                        android:nestedScrollingEnabled="false"
                         android:id="@+id/recycler_view_soil"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"

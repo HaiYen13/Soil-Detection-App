@@ -1,16 +1,21 @@
 package com.yenvth.soilDetectionApp.history;
 
 import android.content.Context;
+import android.graphics.Color;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.google.android.material.card.MaterialCardView;
 import com.yenvth.soilDetectionApp.R;
 import com.yenvth.soilDetectionApp.models.HistoryModel;
+import com.yenvth.soilDetectionApp.utils.DateUtils;
 
 import java.util.ArrayList;
 
@@ -26,7 +31,14 @@ public class HistoryAdapter extends RecyclerView.Adapter<HistoryAdapter.MyHolder
     }
 
     public interface OnHistoryItemClickListener {
-        void onHistoryClickListener(HistoryModel historyModel);
+        void onHistoryClick(HistoryModel historyModel);
+
+        void onItemDelete(int historiesId);
+    }
+
+    @Override
+    public int getItemViewType(int position) {
+        return position%2;
     }
 
     @NonNull
@@ -38,13 +50,26 @@ public class HistoryAdapter extends RecyclerView.Adapter<HistoryAdapter.MyHolder
 
     @Override
     public void onBindViewHolder(@NonNull MyHolder holder, int pos) {
+        if (getItemViewType(pos) == 1) {
+            holder.cardView.setCardBackgroundColor(Color.parseColor("#80cccccc"));
+        } else {
+            holder.cardView.setCardBackgroundColor(Color.parseColor("#ffffff"));
+
+        }
         HistoryModel historyModel = dataList.get(pos);
         holder.itemView.setOnClickListener(view -> {
             if (listener != null) {
-                listener.onHistoryClickListener(historyModel);
+                listener.onHistoryClick(historyModel);
             }
         });
-        holder.tvName.setText(historyModel.getSoil_name());
+
+        holder.btnDelete.setOnClickListener(view -> {
+            if (listener != null) {
+                listener.onItemDelete(historyModel.getHistoriesId());
+            }
+        });
+        holder.tvName.setText(historyModel.getSoilName());
+        holder.tvDate.setText(DateUtils.convertTimes(historyModel.getTimestamp(), "dd/MM/yyyy HH:mm"));
     }
 
     @Override
@@ -54,10 +79,15 @@ public class HistoryAdapter extends RecyclerView.Adapter<HistoryAdapter.MyHolder
 
     public class MyHolder extends RecyclerView.ViewHolder {
         private TextView tvName;
-
+        private ImageView btnDelete;
+        private TextView tvDate;
+        private MaterialCardView cardView;
         public MyHolder(@NonNull View itemView) {
             super(itemView);
+            cardView = itemView.findViewById(R.id.cardView);
             tvName = itemView.findViewById(R.id.tvName);
+            btnDelete = itemView.findViewById(R.id.btnDelete);
+            tvDate = itemView.findViewById(R.id.tvDate);
         }
     }
 }

@@ -1,9 +1,15 @@
 package com.yenvth.soilDetectionApp.labeling;
 
-public interface LabelingView {
-    void onGetListLabelSuccess();
+import com.yenvth.soilDetectionApp.models.LabelingModel;
 
-    void onUpdateLabelSuccess();
+import java.util.ArrayList;
+
+public interface LabelingView {
+    void onGetListLabelSuccess(ArrayList<LabelingModel> list);
+
+    void addImageFirebaseSuccess(String url);
+
+    void onAddLabelSuccess();
 
     void onDeleteLabelSuccess();
 }

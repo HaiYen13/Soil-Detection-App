@@ -13,8 +13,8 @@
 
         <ImageView
             android:id="@+id/btnBack"
-            android:layout_width="20dp"
-            android:layout_height="20dp"
+            android:layout_width="@dimen/_15sdp"
+            android:layout_height="@dimen/_15sdp"
             android:layout_centerVertical="true"
             android:src="@drawable/back"
             app:tint="#000" />
@@ -27,6 +27,7 @@
             android:layout_centerVertical="true"
             android:fontFamily="@font/prompt_bold"
             android:gravity="center"
+            android:maxWidth="@dimen/_120sdp"
             android:maxLines="1"
             android:textColor="#000"
             android:textSize="16dp" />

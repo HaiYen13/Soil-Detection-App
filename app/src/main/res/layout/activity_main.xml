@@ -37,14 +37,62 @@
 
         </LinearLayout>
 
-        <!--Menu icon-->
-        <ImageView
-            android:id="@+id/btnMenu"
-            android:layout_width="20dp"
-            android:layout_height="20dp"
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
             android:layout_margin="20dp"
-            android:src="@drawable/menu"
-            app:tint="#fff" />
+            android:orientation="horizontal">
+            <!--Menu icon-->
+            <ImageView
+                android:id="@+id/btnMenu"
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+                android:src="@drawable/menu"
+                app:tint="#fff" />
+
+            <!--Menu icon-->
+            <RelativeLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true">
+
+                <TextView
+                    android:id="@+id/btnLogin"
+                    android:visibility="gone"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/bg_white"
+                    android:fontFamily="@font/prompt_bold"
+                    android:padding="@dimen/_8sdp"
+                    android:text="Đăng nhập"
+                    android:textColor="@color/start_color"
+                    android:textSize="@dimen/_8sdp" />
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:orientation="vertical">
+
+                    <de.hdodenhof.circleimageview.CircleImageView
+                        android:id="@+id/imgUser"
+                        android:layout_width="@dimen/_25sdp"
+                        android:layout_height="@dimen/_25sdp"
+                        android:layout_centerInParent="true"
+                        android:src="@drawable/user" />
+
+                    <TextView
+                        android:id="@+id/tvName"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/prompt_bold"
+                        android:textSize="@dimen/_10sdp"
+                        android:textColor="#fff" />
+                </LinearLayout>
+
+            </RelativeLayout>
+        </RelativeLayout>
+
 
         <ScrollView
             android:layout_width="match_parent"
@@ -86,8 +134,8 @@
                             android:orientation="vertical">
 
                             <ImageView
-                                android:layout_width="@dimen/_40sdp"
-                                android:layout_height="@dimen/_40sdp"
+                                android:layout_width="@dimen/_30sdp"
+                                android:layout_height="@dimen/_30sdp"
                                 android:src="@drawable/logo" />
 
                             <TextView
@@ -95,7 +143,7 @@
                                 android:layout_height="wrap_content"
                                 android:layout_marginTop="@dimen/_5sdp"
                                 android:fontFamily="@font/prompt_bold"
-                                android:text="Từ điển" />
+                                android:text="Từ điển đất" />
                         </LinearLayout>
                     </com.google.android.material.card.MaterialCardView>
 
@@ -122,9 +170,10 @@
                             android:orientation="vertical">
 
                             <ImageView
-                                android:layout_width="@dimen/_40sdp"
-                                android:layout_height="@dimen/_40sdp"
-                                android:src="@drawable/logo" />
+                                android:layout_width="@dimen/_30sdp"
+                                android:layout_height="@dimen/_30sdp"
+                                app:tint="@color/start_color"
+                                android:src="@drawable/ocr" />
 
                             <TextView
                                 android:layout_width="wrap_content"
@@ -161,16 +210,17 @@
                             android:orientation="vertical">
 
                             <ImageView
-                                android:layout_width="@dimen/_40sdp"
-                                android:layout_height="@dimen/_40sdp"
-                                android:src="@drawable/logo" />
+                                android:layout_width="match_parent"
+                                android:layout_height="@dimen/_30sdp"
+                                android:src="@drawable/map"
+                                app:tint="@color/start_color"/>
 
                             <TextView
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:layout_marginTop="@dimen/_5sdp"
                                 android:fontFamily="@font/prompt_bold"
-                                android:text="Bản đồ" />
+                                android:text="Bản đồ đất" />
                         </LinearLayout>
                     </com.google.android.material.card.MaterialCardView>
 
@@ -197,9 +247,10 @@
                             android:orientation="vertical">
 
                             <ImageView
-                                android:layout_width="@dimen/_40sdp"
-                                android:layout_height="@dimen/_40sdp"
-                                android:src="@drawable/logo" />
+                                android:layout_width="@dimen/_30sdp"
+                                android:layout_height="@dimen/_30sdp"
+                                android:src="@drawable/history"
+                                app:tint="@color/start_color"/>
 
                             <TextView
                                 android:layout_width="wrap_content"
@@ -236,9 +287,10 @@
                             android:orientation="vertical">
 
                             <ImageView
-                                android:layout_width="@dimen/_40sdp"
-                                android:layout_height="@dimen/_40sdp"
-                                android:src="@drawable/logo" />
+                                android:layout_width="@dimen/_30sdp"
+                                android:layout_height="@dimen/_30sdp"
+                                android:src="@drawable/bookmark"
+                                app:tint="@color/start_color"/>
 
                             <TextView
                                 android:layout_width="wrap_content"

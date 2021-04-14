@@ -1,22 +1,49 @@
 package com.yenvth.soilDetectionApp.models;
 
 public class SoilModel {
-    private int soil_id;
-    private String soil_name;
+    private int soilId;
+    private String soilCode;
+    private String nameVi;
+    private String nameEn;
     private String url;
     private String description;
-    private double pH;
-    private double n2o; //Nito
-    private double humidity; //Độ ẩm
     private double lat;
     private double lon;
+    private long timestamp;
 
-    public String getSoil_name() {
-        return soil_name;
+    public SoilModel() {
     }
 
-    public void setSoil_name(String soil_name) {
-        this.soil_name = soil_name;
+    public int getSoilId() {
+        return soilId;
+    }
+
+    public void setSoilId(int soilId) {
+        this.soilId = soilId;
+    }
+
+    public String getSoilCode() {
+        return soilCode;
+    }
+
+    public void setSoilCode(String soilCode) {
+        this.soilCode = soilCode;
+    }
+
+    public String getNameVi() {
+        return nameVi;
+    }
+
+    public void setNameVi(String nameVi) {
+        this.nameVi = nameVi;
+    }
+
+    public String getNameEn() {
+        return nameEn;
+    }
+
+    public void setNameEn(String nameEn) {
+        this.nameEn = nameEn;
     }
 
     public String getUrl() {
@@ -35,30 +62,6 @@ public class SoilModel {
         this.description = description;
     }
 
-    public double getpH() {
-        return pH;
-    }
-
-    public void setpH(double pH) {
-        this.pH = pH;
-    }
-
-    public double getN2o() {
-        return n2o;
-    }
-
-    public void setN2o(double n2o) {
-        this.n2o = n2o;
-    }
-
-    public double getHumidity() {
-        return humidity;
-    }
-
-    public void setHumidity(double humidity) {
-        this.humidity = humidity;
-    }
-
     public double getLat() {
         return lat;
     }
@@ -75,11 +78,11 @@ public class SoilModel {
         this.lon = lon;
     }
 
-    public int getSoil_id() {
-        return soil_id;
+    public long getTimestamp() {
+        return timestamp;
     }
 
-    public void setSoil_id(int soil_id) {
-        this.soil_id = soil_id;
+    public void setTimestamp(long timestamp) {
+        this.timestamp = timestamp;
     }
 }

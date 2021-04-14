@@ -1,35 +1,26 @@
 package com.yenvth.soilDetectionApp.models;
 
 public class LabelingModel {
-    private int label_id;
-    private String label_name;
-    private int image_id;
+    private int labelId;
+    private String labelName;
     private String url;
-    private String description;
+    private String uid;
     private long timestamp;
 
-    public int getLabel_id() {
-        return label_id;
+    public int getLabelId() {
+        return labelId;
     }
 
-    public void setLabel_id(int label_id) {
-        this.label_id = label_id;
+    public void setLabelId(int labelId) {
+        this.labelId = labelId;
     }
 
-    public String getLabel_name() {
-        return label_name;
+    public String getLabelName() {
+        return labelName;
     }
 
-    public void setLabel_name(String label_name) {
-        this.label_name = label_name;
-    }
-
-    public int getImage_id() {
-        return image_id;
-    }
-
-    public void setImage_id(int image_id) {
-        this.image_id = image_id;
+    public void setLabelName(String labelName) {
+        this.labelName = labelName;
     }
 
     public String getUrl() {
@@ -40,19 +31,19 @@ public class LabelingModel {
         this.url = url;
     }
 
-    public String getDescription() {
-        return description;
-    }
-
-    public void setDescription(String description) {
-        this.description = description;
-    }
-
     public long getTimestamp() {
         return timestamp;
     }
 
     public void setTimestamp(long timestamp) {
         this.timestamp = timestamp;
+    }
+
+    public String getUid() {
+        return uid;
+    }
+
+    public void setUid(String uid) {
+        this.uid = uid;
     }
 }

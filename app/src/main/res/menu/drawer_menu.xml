@@ -7,15 +7,15 @@
                 <item
                     android:id="@+id/diction"
                     android:icon="@drawable/logo"
-                    android:title="Dictionary" />
+                    android:title="Từ điển" />
                 <item
                     android:id="@+id/map"
                     android:icon="@drawable/document"
-                    android:title="Soil map" />
+                    android:title="Bản đồ" />
                 <item
                     android:id="@+id/detect"
                     android:icon="@drawable/ocr"
-                    android:title="Detection" />
+                    android:title="Nhận dạng đất" />
 
             </menu>
         </item>
@@ -25,11 +25,15 @@
             <item
                 android:id="@+id/history"
                 android:icon="@drawable/history"
-                android:title="History" />
+                android:title="Lịch sử" />
             <item
                 android:id="@+id/labeling"
                 android:icon="@drawable/bookmark"
-                android:title="Labeling" />
+                android:title="Dán nhãn" />
+            <item
+                android:id="@+id/signout"
+                android:icon="@drawable/logout"
+                android:title="Đăng xuất" />
         </menu>
     </item>
 

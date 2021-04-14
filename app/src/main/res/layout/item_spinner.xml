@@ -4,5 +4,5 @@
     android:layout_height="@dimen/_40sdp"
     android:fontFamily="@font/prompt_light"
     android:padding="@dimen/_10sdp"
-    android:background="@drawable/bg_dropdown"
+    android:background="@drawable/bg_not_dropdown"
     android:textSize="@dimen/_11sdp" />

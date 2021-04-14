@@ -3,6 +3,7 @@ package com.yenvth.soilDetectionApp.soilDetail;
 import android.app.Activity;
 import android.content.Context;
 import android.content.SharedPreferences;
+import android.util.Log;
 
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
@@ -11,7 +12,6 @@ import com.yenvth.soilDetectionApp.base.BasePresenter;
 import com.yenvth.soilDetectionApp.models.SoilModel;
 import com.yenvth.soilDetectionApp.utils.CommonUtils;
 import com.yenvth.soilDetectionApp.utils.Constant;
-
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -35,7 +35,7 @@ public class SoilDetailPresenterImpl<V extends SoilDetailView> extends BasePrese
         sp = mContext.getSharedPreferences("auth", Context.MODE_PRIVATE);
         uid = sp.getString("uid", "");
         retrofit = new Retrofit.Builder()
-                .baseUrl(Constant.BASE_SWAGGER_URL)
+                .baseUrl(Constant.BASE_URL)
                 .addConverterFactory(GsonConverterFactory.create())
                 .build();
     }
@@ -45,6 +45,7 @@ public class SoilDetailPresenterImpl<V extends SoilDetailView> extends BasePrese
         showLoading(mContext);
         SoilAPI soilAPI = retrofit.create(SoilAPI.class);
         Call<SoilModel> call = soilAPI.getSoilDetail(soil_id);
+        Log.d("Request url", call.request().url() + "");
         call.enqueue(new Callback<SoilModel>() {
             @Override
             public void onResponse(Call<SoilModel> call, Response<SoilModel> response) {

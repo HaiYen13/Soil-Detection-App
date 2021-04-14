@@ -9,6 +9,7 @@ import retrofit2.Call;
 import retrofit2.http.Body;
 import retrofit2.http.DELETE;
 import retrofit2.http.GET;
+import retrofit2.http.POST;
 import retrofit2.http.PUT;
 import retrofit2.http.Path;
 import retrofit2.http.Query;
@@ -17,10 +18,15 @@ public interface HistoryAPI {
     @GET("histories")
     Call<List<HistoryModel>> getListHistories(@Query("uid") String uid);
 
-    @PUT("histories/{history_id}")
-    Call<BaseResponse> updateHistory(@Path("history_id") int history_id,
-                                     @Body HistoryModel historyModel);
+    @POST("histories")
+    Call<BaseResponse> saveHistory(@Body HistoryModel historyModel);
 
-    @DELETE("histories/{label_id}")
-    Call<BaseResponse> deleteHistory(@Path("history_id") int history_id);
+    @POST("histories/{historiesId}")
+    Call<BaseResponse> deleteHistory(@Path("historiesId") int history_id);
+
+    @POST("histories/delete-all")
+    Call<BaseResponse> deleteAllHistories(@Query("uid") String uid);
+
+//    @DELETE("histories/{historiesId}")
+//    Call<BaseResponse> deleteHistory(@Path("historiesId") int history_id);
 }

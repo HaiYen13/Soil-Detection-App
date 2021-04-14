@@ -3,14 +3,15 @@ package com.yenvth.soilDetectionApp.main;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
-import android.os.Handler;
+import android.text.TextUtils;
 import android.view.Gravity;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.TextView;
 
 import androidx.annotation.Nullable;
-import androidx.appcompat.app.AppCompatActivity;
 import androidx.drawerlayout.widget.DrawerLayout;
 
 import com.google.android.material.card.MaterialCardView;
@@ -23,14 +24,15 @@ import com.yenvth.soilDetectionApp.history.HistoryActivity;
 import com.yenvth.soilDetectionApp.labeling.LabelingActivity;
 import com.yenvth.soilDetectionApp.login.LoginActivity;
 import com.yenvth.soilDetectionApp.map.MapActivity;
+import com.yenvth.soilDetectionApp.models.UserModel;
 import com.yenvth.soilDetectionApp.utils.Constant;
-
-import java.util.Random;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
+import cn.pedant.SweetAlert.SweetAlertDialog;
+import de.hdodenhof.circleimageview.CircleImageView;
 
-public class MainActivity extends BaseActivity implements View.OnClickListener {
+public class MainActivity extends BaseActivity implements View.OnClickListener, MainView {
 
     @BindView(R.id.btnMenu)
     protected ImageView btnMenu;
@@ -50,9 +52,16 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
     protected NavigationView navigationView;
     @BindView(R.id.drawer)
     protected DrawerLayout drawer;
+    @BindView(R.id.btnLogin)
+    protected TextView btnLogin;
+    @BindView(R.id.imgUser)
+    protected CircleImageView imgUser;
+    @BindView(R.id.tvName)
+    protected TextView tvName;
 
     private SharedPreferences sp;
     private SharedPreferences.Editor editor;
+    private MainPresenterImpl presenter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -60,12 +69,16 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
         setContentView(R.layout.activity_main);
         getSupportActionBar().hide();
         ButterKnife.bind(MainActivity.this);
+        presenter = new MainPresenterImpl(this, this);
         init();
         action();
     }
 
+
+
     private void init() {
         sp = getSharedPreferences(Constant.PREFERENCE_NAME, MODE_PRIVATE);
+        editor = sp.edit();
     }
 
     private void action() {
@@ -76,6 +89,7 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
         btnMap.setOnClickListener(this);
         btnHis.setOnClickListener(this);
         btnLabeling.setOnClickListener(this);
+        btnLogin.setOnClickListener(this);
 
         navigationView.setNavigationItemSelectedListener(menuItem -> {
             int id = menuItem.getItemId();
@@ -111,9 +125,47 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
                     intent = new Intent(MainActivity.this, LabelingActivity.class);
                     startActivity(intent);
                     break;
+                case R.id.signout:
+                    drawer.closeDrawers();
+                    final SweetAlertDialog dialog = new SweetAlertDialog(MainActivity.this, SweetAlertDialog.WARNING_TYPE);
+                    dialog.setContentText("Bạn chắc chắn đăng xuất chứ?")
+                            .setConfirmText("Đồng ý")
+                            .setCancelText("Hủy")
+                            .showCancelButton(true)
+                            .setConfirmClickListener(sweetAlertDialog -> {
+                                editor.putString("uid", "");
+                                editor.putString("name", "");
+                                editor.apply();
+                                dialog.cancel();
+                                Intent intent1 = new Intent(MainActivity.this, LoginActivity.class);
+                                intent1.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+                                startActivity(intent1);
+                            })
+                            .setCancelClickListener(sweetAlertDialog -> dialog.cancel())
+                            .show();
+                    break;
+
             }
             return false;
         });
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        if (TextUtils.isEmpty(sp.getString("uid", ""))) {
+            btnLogin.setVisibility(View.VISIBLE);
+            imgUser.setVisibility(View.GONE);
+            MenuItem menuItem = navigationView.getMenu().findItem(R.id.signout);
+            menuItem.setVisible(false);
+
+        } else {
+            btnLogin.setVisibility(View.GONE);
+            imgUser.setVisibility(View.VISIBLE);
+            presenter.getInformationAfterLogin();
+            MenuItem menuItem = navigationView.getMenu().findItem(R.id.signout);
+            menuItem.setVisible(true);
+        }
     }
 
     @Override
@@ -154,6 +206,10 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
                 intent = new Intent(MainActivity.this, LabelingActivity.class);
                 startActivity(intent);
                 break;
+            case R.id.btnLogin:
+                intent = new Intent(MainActivity.this, LoginActivity.class);
+                startActivity(intent);
+                break;
         }
     }
 
@@ -173,5 +229,10 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
                 overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out);
             }
         }
+    }
+
+    @Override
+    public void onGetInformationSuccess(UserModel userModel) {
+        tvName.setText(userModel.getName());
     }
 }

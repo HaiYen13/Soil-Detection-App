@@ -1,8 +1,10 @@
 package com.yenvth.soilDetectionApp.history;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import androidx.annotation.Nullable;
@@ -13,11 +15,14 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.yenvth.soilDetectionApp.R;
 import com.yenvth.soilDetectionApp.models.HistoryModel;
+import com.yenvth.soilDetectionApp.soilDetail.SoilDetailActivity;
+import com.yenvth.soilDetectionApp.utils.CommonUtils;
 
 import java.util.ArrayList;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
+import cn.pedant.SweetAlert.SweetAlertDialog;
 
 public class HistoryActivity extends AppCompatActivity implements View.OnClickListener, HistoryView, HistoryAdapter.OnHistoryItemClickListener {
 
@@ -27,6 +32,9 @@ public class HistoryActivity extends AppCompatActivity implements View.OnClickLi
     protected ImageView btnBack;
     @BindView(R.id.tvToolbar)
     protected TextView tvToolbar;
+    @BindView(R.id.btnDeleteAll)
+    protected LinearLayout btnDeleteAll;
+
     private HistoryPresenterImpl<HistoryView> presenter;
     private HistoryAdapter mAdapter;
 
@@ -48,6 +56,7 @@ public class HistoryActivity extends AppCompatActivity implements View.OnClickLi
 
     private void action() {
         btnBack.setOnClickListener(this);
+        btnDeleteAll.setOnClickListener(this);
     }
 
     @Override
@@ -55,6 +64,19 @@ public class HistoryActivity extends AppCompatActivity implements View.OnClickLi
         switch (view.getId()) {
             case R.id.btnBack:
                 onBackPressed();
+                break;
+            case R.id.btnDeleteAll:
+                final SweetAlertDialog dialog = new SweetAlertDialog(HistoryActivity.this, SweetAlertDialog.WARNING_TYPE);
+                dialog.setContentText("Bạn chắc chắn xóa toàn bộ lịch sử chứ?")
+                        .setConfirmText("Đồng ý")
+                        .setCancelText("Hủy")
+                        .showCancelButton(true)
+                        .setConfirmClickListener(sweetAlertDialog -> {
+                            dialog.cancel();
+                            presenter.deleteAllHistories();
+                        })
+                        .setCancelClickListener(sweetAlertDialog -> dialog.cancel())
+                        .show();
                 break;
         }
     }
@@ -66,20 +88,33 @@ public class HistoryActivity extends AppCompatActivity implements View.OnClickLi
         recycler_view_history.setLayoutManager(layoutManager);
         recycler_view_history.setItemAnimator(new DefaultItemAnimator());
         recycler_view_history.setAdapter(mAdapter);
-    }
-
-    @Override
-    public void onUpdateHistorySuccess() {
-
+        if (mAdapter.getItemCount() - 1 >= 0) {
+            recycler_view_history.smoothScrollToPosition(mAdapter.getItemCount() - 1);
+        }
+        mAdapter.notifyDataSetChanged();
     }
 
     @Override
     public void onDeleteHistorySuccess() {
-
+        CommonUtils.showMessage(HistoryActivity.this, "Xóa thành công");
+        presenter.getListHistories();
     }
 
     @Override
-    public void onHistoryClickListener(HistoryModel historyModel) {
+    public void onDeleteAllHistoriesSuccess() {
+        CommonUtils.showMessage(HistoryActivity.this, "Xóa toàn bộ thành công");
+        presenter.getListHistories();
+    }
 
+    @Override
+    public void onHistoryClick(HistoryModel historyModel) {
+        Intent intent = new Intent(HistoryActivity.this, SoilDetailActivity.class);
+        intent.putExtra("soil_id", historyModel.getSoilId());
+        startActivity(intent);
+    }
+
+    @Override
+    public void onItemDelete(int historiesId) {
+        presenter.deleteHistory(historiesId);
     }
 }

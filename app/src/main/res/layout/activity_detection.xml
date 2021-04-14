@@ -46,7 +46,7 @@
         </LinearLayout>
 
         <LinearLayout
-            android:id="@+id/btnGal"
+            android:id="@+id/btnGallery"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginLeft="30dp"
@@ -99,7 +99,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:background="@drawable/bg_add_new"
-                android:scaleType="fitXY" />
+                android:scaleType="fitCenter" />
         </LinearLayout>
 
         <!--Detect-->

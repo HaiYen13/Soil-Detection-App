@@ -21,13 +21,12 @@ public class SplashActivity extends AppCompatActivity {
         setContentView(R.layout.activity_splash);
         getSupportActionBar().hide();
 
-
         final Handler handler = new Handler();
         handler.postDelayed(() -> {
             Intent intent = new Intent(SplashActivity.this, MainActivity.class);
             intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
             startActivity(intent);
             overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out);
-        }, new Random().nextInt(3000) + 1500);
+        }, new Random().nextInt(2000) + 1500);
     }
 }

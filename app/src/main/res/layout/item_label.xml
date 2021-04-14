@@ -8,12 +8,12 @@
     android:paddingBottom="@dimen/_10sdp">
 
     <com.google.android.material.card.MaterialCardView
+        android:id="@+id/cardView"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:padding="@dimen/_10sdp"
         app:cardBackgroundColor="#fff"
-        app:cardCornerRadius="@dimen/_8sdp"
-        app:cardElevation="@dimen/_3sdp">
+        app:cardCornerRadius="@dimen/_8sdp">
 
         <RelativeLayout
             android:layout_width="match_parent"
@@ -41,8 +41,8 @@
 
                         <com.makeramen.roundedimageview.RoundedImageView
                             android:id="@id/image"
-                            android:layout_width="@dimen/_35sdp"
-                            android:layout_height="@dimen/_35sdp"
+                            android:layout_width="@dimen/_50sdp"
+                            android:layout_height="@dimen/_50sdp"
                             android:layout_centerInParent="true"
                             android:padding="1dp"
                             android:scaleType="centerCrop"
@@ -63,22 +63,39 @@
                         android:layout_height="match_parent"
                         android:layout_marginLeft="@dimen/_10sdp"
                         android:layout_weight="3"
-                        android:gravity="center_vertical"
-                        android:orientation="vertical"
-                        android:paddingTop="5dp">
+                        android:orientation="vertical">
 
-                        <TextView
-                            android:id="@+id/tvName"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
+                        <LinearLayout
                             android:layout_centerVertical="true"
-                            android:ellipsize="end"
-                            android:fontFamily="@font/prompt_bold"
-                            android:maxLines="1"
-                            android:text="Đất mùn núi cao"
-                            android:textSize="16dp" />
+                            android:layout_height="wrap_content"
+                            android:layout_width="wrap_content"
+                            android:orientation="vertical">
+
+                            <TextView
+                                android:id="@+id/tvName"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_centerVertical="true"
+                                android:ellipsize="end"
+                                android:fontFamily="@font/prompt_bold"
+                                android:maxLines="1"
+                                android:text="Đất mùn núi cao"
+                                android:textSize="@dimen/_13sdp" />
+                            <TextView
+                                android:layout_marginTop="@dimen/_3sdp"
+                                android:id="@+id/tvDate"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_centerVertical="true"
+                                android:ellipsize="end"
+                                android:fontFamily="@font/prompt_light"
+                                android:maxLines="1"
+                                android:text="10/03/2021"
+                                android:textSize="@dimen/_10sdp" />
+                        </LinearLayout>
 
                         <ImageView
+                            android:id="@+id/btnDelete"
                             android:layout_width="@dimen/_15sdp"
                             android:layout_height="@dimen/_15sdp"
                             android:layout_alignParentRight="true"

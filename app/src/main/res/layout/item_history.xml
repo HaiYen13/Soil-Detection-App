@@ -8,77 +8,56 @@
     android:paddingBottom="@dimen/_10sdp">
 
     <com.google.android.material.card.MaterialCardView
+        android:id="@+id/cardView"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:padding="@dimen/_10sdp"
         app:cardBackgroundColor="#fff"
         app:cardCornerRadius="@dimen/_8sdp"
-        app:cardElevation="@dimen/_3sdp">
+        app:strokeColor="#ccc"
+        app:strokeWidth="0.5dp">
 
         <RelativeLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical">
+            android:layout_height="wrap_content">
 
             <LinearLayout
-                android:id="@+id/btnPro"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content">
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/_10sdp"
+                android:gravity="center_vertical"
+                android:orientation="vertical"
+                android:padding="@dimen/_10sdp">
 
-                <LinearLayout
-                    android:layout_width="match_parent"
+                <TextView
+                    android:id="@+id/tvName"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:background="@drawable/corner_categories"
-                    android:gravity="center_vertical"
-                    android:orientation="horizontal">
+                    android:ellipsize="end"
+                    android:fontFamily="@font/prompt_bold"
+                    android:maxLines="1"
+                    android:text="Đất mùn núi cao"
+                    android:textSize="16dp" />
 
-                    <RelativeLayout
-                        android:layout_weight="1"
-                        android:id="@+id/address_container"
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:padding="@dimen/_10sdp">
-
-                        <com.makeramen.roundedimageview.RoundedImageView
-                            android:id="@id/image"
-                            android:layout_width="@dimen/_35sdp"
-                            android:layout_height="@dimen/_35sdp"
-                            android:layout_centerInParent="true"
-                            android:padding="1dp"
-                            android:scaleType="centerCrop"
-                            android:src="@drawable/logo"
-                            app:riv_corner_radius_bottom_left="5dp"
-                            app:riv_corner_radius_top_left="5dp" />
-
-                        <ProgressBar
-                            android:id="@+id/progressBar"
-                            android:layout_width="@dimen/_20sdp"
-                            android:layout_height="@dimen/_20sdp"
-                            android:layout_centerInParent="true"
-                            android:layout_centerVertical="true" />
-                    </RelativeLayout>
-
-                    <LinearLayout
-                        android:layout_weight="3"
-                        android:layout_width="0dp"
-                        android:layout_height="match_parent"
-                        android:layout_marginLeft="@dimen/_10sdp"
-                        android:gravity="center_vertical"
-                        android:orientation="vertical"
-                        android:paddingTop="5dp">
-
-                        <TextView
-                            android:id="@+id/tvName"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:ellipsize="end"
-                            android:fontFamily="@font/prompt_bold"
-                            android:maxLines="1"
-                            android:text="Đất mùn núi cao"
-                            android:textSize="16dp" />
-                    </LinearLayout>
-                </LinearLayout>
+                <TextView
+                    android:id="@+id/tvDate"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:ellipsize="end"
+                    android:fontFamily="@font/prompt_light"
+                    android:maxLines="1"
+                    android:text="30/12/2021"
+                    android:textSize="@dimen/_10sdp" />
             </LinearLayout>
+
+            <ImageView
+                android:id="@+id/btnDelete"
+                android:layout_width="@dimen/_15sdp"
+                android:layout_height="@dimen/_15sdp"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
+                android:layout_marginRight="@dimen/_10sdp"
+                android:src="@drawable/delete" />
         </RelativeLayout>
     </com.google.android.material.card.MaterialCardView>
 </LinearLayout>

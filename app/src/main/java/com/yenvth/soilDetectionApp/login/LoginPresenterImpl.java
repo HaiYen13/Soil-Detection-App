@@ -11,8 +11,13 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
+import com.google.firebase.storage.FirebaseStorage;
 import com.yenvth.soilDetectionApp.base.BasePresenter;
 import com.yenvth.soilDetectionApp.utils.CommonUtils;
+import com.yenvth.soilDetectionApp.utils.Constant;
+
+import retrofit2.Retrofit;
+import retrofit2.converter.gson.GsonConverterFactory;
 
 public class LoginPresenterImpl<V extends LoginView> extends BasePresenter implements LoginPresenter {
     private Context mContext;
@@ -21,14 +26,18 @@ public class LoginPresenterImpl<V extends LoginView> extends BasePresenter imple
     private SharedPreferences.Editor editor;
     private String uid;
     private LoginView loginView;
+    private Retrofit retrofit;
 
     public LoginPresenterImpl(Context mContext, LoginView loginView) {
         this.mContext = mContext;
         this.loginView = loginView;
         mDatabase = FirebaseDatabase.getInstance().getReference();
-        sp = mContext.getSharedPreferences("auth", Context.MODE_PRIVATE);
-        editor = sp.edit();
+        sp = mContext.getSharedPreferences(Constant.PREFERENCE_NAME, Context.MODE_PRIVATE);
         uid = sp.getString("uid", "");
+        retrofit = new Retrofit.Builder()
+                .baseUrl(Constant.BASE_URL)
+                .addConverterFactory(GsonConverterFactory.create())
+                .build();
     }
 
     @Override

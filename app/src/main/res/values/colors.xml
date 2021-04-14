@@ -15,5 +15,25 @@
     <color name="start_color">#56ccf2</color>
     <color name="end_color">#2f80ed</color>
 
+
+
     <color name="text_color">#000</color>
+
+    <!--Color soil mapp-->
+    <color name="ferric_acrisols">#ff9900</color>
+    <color name="gleyic_acrisols">#ffc866</color>
+    <color name="orthic_acrisols">#ffb27f</color>
+    <color name="acric_ferrasols">#ff6600</color>
+    <color name="orthic_ferrasols">#d65c33</color>
+    <color name="rhodic_ferrasols">#ff694c</color>
+    <color name="dystric_gleysols">#ccffff</color>
+    <color name="eutric_gleysoils">#7f9fff</color>
+    <color name="litholsols">#bfba9f</color>
+    <color name="eutric_fluvisols">#bfba9f</color>
+    <color name="thionic_fluvisols">#d6fff5</color>
+    <color name="chromic_luvisols">#f4a460</color>
+    <color name="dystric_histosols">#2ca5e5</color>
+    <color name="eutric_regosols">#b6ff7f</color>
+    <color name="pellic_vertisols">#e4c5f2</color>
+    <color name="other">#ccc</color>
 </resources>
