@@ -17,6 +17,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:background="#00000000">
 
     <RelativeLayout
@@ -35,6 +36,21 @@
 
     </RelativeLayout>
 
+    <RelativeLayout
+        android:id="@+id/header"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="@dimen/_10sdp">
+
+        <ImageView
+            android:id="@+id/btnBack"
+            android:layout_width="@dimen/_15sdp"
+            android:layout_height="@dimen/_15sdp"
+            android:layout_centerVertical="true"
+            android:src="@drawable/back"
+            app:tint="#fff" />
+
+    </RelativeLayout>
     <include
         android:id="@+id/bottom_sheet_layout"
         layout="@layout/tfe_ic_layout_bottom_sheet" />

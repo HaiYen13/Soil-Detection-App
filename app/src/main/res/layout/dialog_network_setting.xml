@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@drawable/bg_add_label"
+    android:orientation="vertical"
+    android:paddingVertical="30dp">
+
+    <ImageView
+        android:id="@+id/logo"
+        android:layout_width="@dimen/_35sdp"
+        android:layout_height="@dimen/_35sdp"
+        android:layout_centerHorizontal="true"
+        android:layout_gravity="center"
+        android:src="@drawable/logo" />
+
+    <EditText
+        android:id="@+id/edIP"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/_20sdp"
+        android:background="@drawable/corner_edittext"
+        android:fontFamily="@font/prompt_light"
+        android:hint="Nhập địa chỉ IP"
+        android:maxLines="1"
+        android:imeOptions="actionDone"
+        android:padding="@dimen/_10sdp"
+        android:textColorHint="#000"
+        android:textSize="@dimen/_12sdp" />
+
+    <TextView
+        android:id="@+id/btnContinue"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/_20sdp"
+        android:layout_marginTop="@dimen/_10sdp"
+        android:layout_marginRight="@dimen/_20sdp"
+        android:background="@drawable/login_button"
+        android:fontFamily="@font/prompt_bold"
+        android:gravity="center"
+        android:paddingTop="@dimen/_8sdp"
+        android:paddingBottom="@dimen/_8sdp"
+        android:text="HOÀN THÀNH"
+        android:textColor="#fff"
+        android:textSize="@dimen/_12sdp" />
+</LinearLayout>

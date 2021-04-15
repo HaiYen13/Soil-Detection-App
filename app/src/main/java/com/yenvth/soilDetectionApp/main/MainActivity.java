@@ -7,17 +7,21 @@ import android.text.TextUtils;
 import android.view.Gravity;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import androidx.annotation.Nullable;
 import androidx.drawerlayout.widget.DrawerLayout;
 
+import com.google.android.material.bottomsheet.BottomSheetDialog;
 import com.google.android.material.card.MaterialCardView;
 import com.google.android.material.navigation.NavigationView;
 import com.yenvth.soilDetectionApp.R;
 import com.yenvth.soilDetectionApp.base.BaseActivity;
+import com.yenvth.soilDetectionApp.cnnModel.classification.ClassifierActivity;
 import com.yenvth.soilDetectionApp.detection.DetectionActivity;
 import com.yenvth.soilDetectionApp.diction.DictionActivity;
 import com.yenvth.soilDetectionApp.history.HistoryActivity;
@@ -25,6 +29,7 @@ import com.yenvth.soilDetectionApp.labeling.LabelingActivity;
 import com.yenvth.soilDetectionApp.login.LoginActivity;
 import com.yenvth.soilDetectionApp.map.MapActivity;
 import com.yenvth.soilDetectionApp.models.UserModel;
+import com.yenvth.soilDetectionApp.utils.CommonUtils;
 import com.yenvth.soilDetectionApp.utils.Constant;
 
 import butterknife.BindView;
@@ -58,6 +63,12 @@ public class MainActivity extends BaseActivity implements View.OnClickListener, 
     protected CircleImageView imgUser;
     @BindView(R.id.tvName)
     protected TextView tvName;
+    @BindView(R.id.rlDetect)
+    protected RelativeLayout rlDetect;
+    @BindView(R.id.lnHis)
+    protected LinearLayout lnHis;
+    @BindView(R.id.lnLabel)
+    protected LinearLayout lnLabel;
 
     private SharedPreferences sp;
     private SharedPreferences.Editor editor;
@@ -90,10 +101,14 @@ public class MainActivity extends BaseActivity implements View.OnClickListener, 
         btnHis.setOnClickListener(this);
         btnLabeling.setOnClickListener(this);
         btnLogin.setOnClickListener(this);
+        rlDetect.setOnClickListener(this);
+        lnHis.setOnClickListener(this);
+        lnLabel.setOnClickListener(this);
 
         navigationView.setNavigationItemSelectedListener(menuItem -> {
             int id = menuItem.getItemId();
             Intent intent;
+            drawer.closeDrawers();
             switch (id) {
                 case R.id.diction:
                     intent = new Intent(MainActivity.this, DictionActivity.class);
@@ -113,7 +128,7 @@ public class MainActivity extends BaseActivity implements View.OnClickListener, 
                     startActivity(intent);
                     break;
                 case R.id.detect:
-                    intent = new Intent(MainActivity.this, DetectionActivity.class);
+                    intent = new Intent(MainActivity.this, ClassifierActivity.class);
                     startActivity(intent);
                     break;
                 case R.id.labeling:
@@ -125,8 +140,27 @@ public class MainActivity extends BaseActivity implements View.OnClickListener, 
                     intent = new Intent(MainActivity.this, LabelingActivity.class);
                     startActivity(intent);
                     break;
+                case R.id.setting:
+                    final BottomSheetDialog bottomSheetDialog = new BottomSheetDialog(this);
+                    bottomSheetDialog.setContentView(R.layout.dialog_network_setting);
+                    EditText edIP = bottomSheetDialog.findViewById(R.id.edIP);
+                    TextView btnContinue = bottomSheetDialog.findViewById(R.id.btnContinue);
+                    String localIP = Constant.BASE_URL;
+                    localIP = localIP.substring(localIP.indexOf("http://") + 7, localIP.indexOf(":9191/"));
+                    edIP.setText(localIP);
+                    edIP.setSelection(localIP.length());
+                    btnContinue.setOnClickListener(v -> {
+                        String ip = edIP.getText().toString().trim();
+                        if (TextUtils.isEmpty(ip)) {
+                            CommonUtils.showError(MainActivity.this, "Vui lòng nhập tên nhãn");
+                            return;
+                        }
+                        Constant.BASE_URL = "http://" + ip + ":9191/";
+                        bottomSheetDialog.cancel();
+                    });
+                    bottomSheetDialog.show();
+                    break;
                 case R.id.signout:
-                    drawer.closeDrawers();
                     final SweetAlertDialog dialog = new SweetAlertDialog(MainActivity.this, SweetAlertDialog.WARNING_TYPE);
                     dialog.setContentText("Bạn chắc chắn đăng xuất chứ?")
                             .setConfirmText("Đồng ý")
@@ -181,13 +215,15 @@ public class MainActivity extends BaseActivity implements View.OnClickListener, 
                 startActivity(intent);
                 break;
             case R.id.btnDetect:
-                intent = new Intent(MainActivity.this, DetectionActivity.class);
+            case R.id.rlDetect:
+                intent = new Intent(MainActivity.this, ClassifierActivity.class);
                 startActivity(intent);
                 break;
             case R.id.btnMap:
                 intent = new Intent(MainActivity.this, MapActivity.class);
                 startActivity(intent);
                 break;
+            case R.id.lnHis:
             case R.id.btnHis:
                 if (sp.getString("uid", "").equals("")) {
                     intent = new Intent(MainActivity.this, LoginActivity.class);
@@ -197,6 +233,7 @@ public class MainActivity extends BaseActivity implements View.OnClickListener, 
                 intent = new Intent(MainActivity.this, HistoryActivity.class);
                 startActivity(intent);
                 break;
+            case R.id.lnLabel:
             case R.id.btnLabeling:
                 if (sp.getString("uid", "").equals("")) {
                     intent = new Intent(MainActivity.this, LoginActivity.class);
@@ -210,6 +247,7 @@ public class MainActivity extends BaseActivity implements View.OnClickListener, 
                 intent = new Intent(MainActivity.this, LoginActivity.class);
                 startActivity(intent);
                 break;
+
         }
     }
 

@@ -54,7 +54,9 @@ import com.google.android.material.bottomsheet.BottomSheetBehavior;
 import com.yenvth.soilDetectionApp.R;
 import com.yenvth.soilDetectionApp.cnnModel.classification.env.ImageUtils;
 import com.yenvth.soilDetectionApp.cnnModel.classification.env.Logger;
-import com.yenvth.soilDetectionApp.cnnModel.tflite.Classifier.*;
+import com.yenvth.soilDetectionApp.cnnModel.tflite.Classifier.Device;
+import com.yenvth.soilDetectionApp.cnnModel.tflite.Classifier.Model;
+import com.yenvth.soilDetectionApp.cnnModel.tflite.Classifier.Recognition;
 
 import java.nio.ByteBuffer;
 import java.util.List;
@@ -99,7 +101,7 @@ public abstract class CameraActivity extends AppCompatActivity
   private Spinner modelSpinner;
   private Spinner deviceSpinner;
   private TextView threadsTextView;
-
+  private ImageView btnBack;
   private Model model = Model.QUANTIZED_EFFICIENTNET;
   private Device device = Device.CPU;
   private int numThreads = -1;
@@ -128,7 +130,7 @@ public abstract class CameraActivity extends AppCompatActivity
     gestureLayout = findViewById(R.id.gesture_layout);
     sheetBehavior = BottomSheetBehavior.from(bottomSheetLayout);
     bottomSheetArrowImageView = findViewById(R.id.bottom_sheet_arrow);
-
+    btnBack = findViewById(R.id.btnBack);
     ViewTreeObserver vto = gestureLayout.getViewTreeObserver();
     vto.addOnGlobalLayoutListener(
         new ViewTreeObserver.OnGlobalLayoutListener() {
@@ -194,7 +196,7 @@ public abstract class CameraActivity extends AppCompatActivity
 
     plusImageView.setOnClickListener(this);
     minusImageView.setOnClickListener(this);
-
+    btnBack.setOnClickListener(this);
     model = Model.valueOf(modelSpinner.getSelectedItem().toString().toUpperCase());
     device = Device.valueOf(deviceSpinner.getSelectedItem().toString());
     numThreads = Integer.parseInt(threadsTextView.getText().toString().trim());
@@ -638,6 +640,8 @@ public abstract class CameraActivity extends AppCompatActivity
       }
       setNumThreads(--numThreads);
       threadsTextView.setText(String.valueOf(numThreads));
+    } else if (v.getId() == R.id.btnBack) {
+      onBackPressed();
     }
   }
 

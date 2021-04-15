@@ -30,6 +30,11 @@
                 android:id="@+id/labeling"
                 android:icon="@drawable/bookmark"
                 android:title="Dán nhãn" />
+
+            <item
+                android:id="@+id/setting"
+                android:icon="@drawable/setting"
+                android:title="Cài đặt" />
             <item
                 android:id="@+id/signout"
                 android:icon="@drawable/logout"

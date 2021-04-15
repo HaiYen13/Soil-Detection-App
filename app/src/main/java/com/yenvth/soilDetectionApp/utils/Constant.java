@@ -9,7 +9,7 @@ public class Constant {
     public static final int LOGIN_LABEL_REQUEST = 2;
 
     public static final String BASE_SWAGGER_URL = "https://virtserver.swaggerhub.com/yenvth99/SoilDictionary/1.0.0/";
-    public static final String BASE_URL = "http://192.168.0.101:9191/"; // Chỉnh ip để lấy CSDL trong máy tính
+    public static  String BASE_URL = "http://192.168.0.101:9191/"; // Chỉnh ip để lấy CSDL trong máy tính
     public static final String BASE_HEROKU_URL = "";
 
     public class MapEnum {

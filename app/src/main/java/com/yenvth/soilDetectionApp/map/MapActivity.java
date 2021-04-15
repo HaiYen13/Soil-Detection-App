@@ -13,6 +13,8 @@ import android.location.Address;
 import android.location.Geocoder;
 import android.location.Location;
 import android.os.Bundle;
+import android.os.Handler;
+import android.os.Looper;
 import android.text.TextUtils;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -164,10 +166,8 @@ public class MapActivity extends AppCompatActivity implements
     @Override
     public void onMapReady(GoogleMap googleMap) {
         this.googleMap = googleMap;
-//        getLocation();
         moveCameraMap(Constant.MapEnum.HANOT_LAT, Constant.MapEnum.HANOT_LON);
         googleMap.setOnMapClickListener(this);
-        googleMap.setOnMarkerClickListener(this);
 
         if (mUiSettings != null) {
             mUiSettings = googleMap.getUiSettings();
@@ -182,7 +182,6 @@ public class MapActivity extends AppCompatActivity implements
         try {
             addGeoJsonLayerToMap(new GeoJsonLayer(googleMap, new JSONObject(FileUtils.readFile(MapActivity.this, "vietnamsoilmap.geojson"))));
             addVietnamGeoJsonLayerToMap(new GeoJsonLayer(googleMap, new JSONObject(FileUtils.readFile(MapActivity.this, "vietnam.geojson"))));
-
         } catch (JSONException e) {
             e.printStackTrace();
         }
@@ -202,63 +201,11 @@ public class MapActivity extends AppCompatActivity implements
         }
     }
 
-    private void getLocation() {
-        try {
-            fusedLocationProviderClient = LocationServices.getFusedLocationProviderClient(getApplicationContext());
-        } catch (Exception e) {
-            //Catch exception
-            moveCameraMap(Constant.MapEnum.HANOT_LAT, Constant.MapEnum.HANOT_LON);
-            return;
-        }
-
-        if (ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) == PackageManager.PERMISSION_GRANTED) {
-            fusedLocationProviderClient.getLastLocation().addOnCompleteListener(task -> {
-                Location location = task.getResult();
-                if (location != null) {
-                    try {
-                        Geocoder geocoder = new Geocoder(getApplicationContext(), Locale.getDefault());
-
-                        List<Address> addresses = geocoder.getFromLocation(location.getLatitude(), location.getLongitude(), 1);
-                        double lat = addresses.get(0).getLatitude();
-                        double lon = addresses.get(0).getLongitude();
-                        moveCameraMap(lat, lon);
-                    } catch (IOException e) {
-
-                    }
-                } else {
-                    moveCameraMap(Constant.MapEnum.HANOT_LAT, Constant.MapEnum.HANOT_LON);
-                }
-            });
-        } else {
-            ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.ACCESS_FINE_LOCATION}, 44);
-        }
-    }
-
     private void moveCameraMap(double lat, double lon) {
         LatLng latLng = new LatLng(lat, lon);
         if (googleMap != null) {
             googleMap.animateCamera(CameraUpdateFactory.newLatLngZoom(latLng, Constant.MapEnum.HANOI_ZOOM));
         }
-    }
-
-    private Bitmap setCustomMarkerFromView(SoilModel soilModel) {
-
-        View customMarkerView = ((LayoutInflater) getSystemService(Context.LAYOUT_INFLATER_SERVICE)).inflate(R.layout.layout_custom_marker, null);
-
-        //Todo:
-
-        customMarkerView.measure(View.MeasureSpec.UNSPECIFIED, View.MeasureSpec.UNSPECIFIED);
-        customMarkerView.layout(0, 0, customMarkerView.getMeasuredWidth(), customMarkerView.getMeasuredHeight());
-        customMarkerView.buildDrawingCache();
-        Bitmap returnedBitmap = Bitmap.createBitmap(customMarkerView.getMeasuredWidth(), customMarkerView.getMeasuredHeight(),
-                Bitmap.Config.ARGB_8888);
-        Canvas canvas = new Canvas(returnedBitmap);
-        canvas.drawColor(Color.WHITE, PorterDuff.Mode.SRC_IN);
-        Drawable drawable = customMarkerView.getBackground();
-        if (drawable != null)
-            drawable.draw(canvas);
-        customMarkerView.draw(canvas);
-        return returnedBitmap;
     }
 
     @Override
@@ -334,7 +281,6 @@ public class MapActivity extends AppCompatActivity implements
     private void addStrokeArea(GeoJsonLayer layer) {
         // Iterate over all the features stored in the layer
         for (GeoJsonFeature feature : layer.getFeatures()) {
-
             GeoJsonPolygonStyle geoJsonPolygonStyle = new GeoJsonPolygonStyle();
             geoJsonPolygonStyle.setStrokeColor(Color.parseColor("#ff0000"));
             geoJsonPolygonStyle.setStrokeWidth(2f);
