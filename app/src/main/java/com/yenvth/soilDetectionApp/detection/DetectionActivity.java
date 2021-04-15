@@ -21,6 +21,7 @@ import androidx.core.app.ActivityCompat;
 import com.theartofdev.edmodo.cropper.CropImage;
 import com.theartofdev.edmodo.cropper.CropImageView;
 import com.yenvth.soilDetectionApp.R;
+import com.yenvth.soilDetectionApp.cnnModel.classification.ClassifierActivity;
 import com.yenvth.soilDetectionApp.models.SoilDetectModel;
 import com.yenvth.soilDetectionApp.soilDetail.SoilDetailActivity;
 import com.yenvth.soilDetectionApp.utils.CommonUtils;
@@ -143,13 +144,15 @@ public class DetectionActivity extends AppCompatActivity implements View.OnClick
     private void checkCameraPermission() {
         if (ActivityCompat.checkSelfPermission(this, Manifest.permission.CAMERA) == PackageManager.PERMISSION_GRANTED &&
                 ActivityCompat.checkSelfPermission(this, Manifest.permission.WRITE_EXTERNAL_STORAGE) == PackageManager.PERMISSION_GRANTED) {
-            ContentValues values = new ContentValues();
-            values.put(MediaStore.Images.Media.TITLE, "NewPic");
-            values.put(MediaStore.Images.Media.DESCRIPTION, "Image To Detect");
-            uri = getContentResolver().insert(MediaStore.Images.Media.EXTERNAL_CONTENT_URI, values);
-            Intent cameraIntent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
-            cameraIntent.putExtra(MediaStore.EXTRA_OUTPUT, uri);
-            startActivityForResult(cameraIntent, 2);
+//            ContentValues values = new ContentValues();
+//            values.put(MediaStore.Images.Media.TITLE, "NewPic");
+//            values.put(MediaStore.Images.Media.DESCRIPTION, "Image To Detect");
+//            uri = getContentResolver().insert(MediaStore.Images.Media.EXTERNAL_CONTENT_URI, values);
+//            Intent cameraIntent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
+//            cameraIntent.putExtra(MediaStore.EXTRA_OUTPUT, uri);
+//            startActivityForResult(cameraIntent, 2);
+            Intent intent = new Intent(DetectionActivity.this, ClassifierActivity.class);
+            startActivity(intent);
         } else {
             ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.CAMERA, Manifest.permission.WRITE_EXTERNAL_STORAGE}, 44);
         }
