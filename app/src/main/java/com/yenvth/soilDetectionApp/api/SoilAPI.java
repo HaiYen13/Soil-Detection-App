@@ -21,6 +21,9 @@ public interface SoilAPI {
     @GET("soils/{soil_id}")
     Call<SoilModel> getSoilDetail(@Path("soil_id") int soil_id);
 
+    @GET("province-soils/{provinceId}")
+    Call<List<SoilModel>> getSoilByProvince(@Path("provinceId") int provinceId);
+
     @PUT("soils/{soil_id}")
     Call<BaseResponse> updateSoil(@Path("soil_id") int soil_id,
                                   @Body SoilModel soilModel);

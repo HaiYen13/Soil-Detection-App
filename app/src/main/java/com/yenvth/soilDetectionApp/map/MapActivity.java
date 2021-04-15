@@ -1,22 +1,10 @@
 package com.yenvth.soilDetectionApp.map;
 
-import android.Manifest;
-import android.content.Context;
 import android.content.Intent;
-import android.content.pm.PackageManager;
-import android.graphics.Bitmap;
-import android.graphics.Canvas;
 import android.graphics.Color;
-import android.graphics.PorterDuff;
 import android.graphics.drawable.Drawable;
-import android.location.Address;
-import android.location.Geocoder;
-import android.location.Location;
 import android.os.Bundle;
-import android.os.Handler;
-import android.os.Looper;
 import android.text.TextUtils;
-import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
@@ -27,7 +15,6 @@ import android.widget.TextView;
 
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.app.ActivityCompat;
 import androidx.recyclerview.widget.DefaultItemAnimator;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -38,7 +25,6 @@ import com.bumptech.glide.load.engine.GlideException;
 import com.bumptech.glide.request.RequestListener;
 import com.bumptech.glide.request.target.Target;
 import com.google.android.gms.location.FusedLocationProviderClient;
-import com.google.android.gms.location.LocationServices;
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.OnMapReadyCallback;
@@ -46,11 +32,9 @@ import com.google.android.gms.maps.SupportMapFragment;
 import com.google.android.gms.maps.UiSettings;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.Marker;
-import com.google.android.gms.maps.model.MarkerOptions;
 import com.google.maps.android.data.geojson.GeoJsonFeature;
 import com.google.maps.android.data.geojson.GeoJsonLayer;
 import com.google.maps.android.data.geojson.GeoJsonPolygonStyle;
-
 import com.makeramen.roundedimageview.RoundedImageView;
 import com.yenvth.soilDetectionApp.R;
 import com.yenvth.soilDetectionApp.models.ProvinceModel;
@@ -66,10 +50,7 @@ import net.cachapa.expandablelayout.ExpandableLayout;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import java.io.IOException;
 import java.util.ArrayList;
-import java.util.List;
-import java.util.Locale;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -116,7 +97,7 @@ public class MapActivity extends AppCompatActivity implements
 
     private DBHelper dbHelper;
     private ArrayList<ProvinceModel> provinceModels;
-    private String provinceSelected;
+    private ProvinceModel provinceSelected;
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -135,7 +116,6 @@ public class MapActivity extends AppCompatActivity implements
         SupportMapFragment mapFragment =
                 (SupportMapFragment) getSupportFragmentManager().findFragmentById(R.id.map);
         mapFragment.getMapAsync(this);
-        presenter.getListSoil("");
     }
 
     private void action() {
@@ -149,9 +129,9 @@ public class MapActivity extends AppCompatActivity implements
         spProvince.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
-                provinceSelected = provinceModels.get(i).getProvince_name();
-                CommonUtils.showError(MapActivity.this, provinceSelected);
-                presenter.getListSoil("");
+                provinceSelected = provinceModels.get(i);
+                CommonUtils.showError(MapActivity.this, provinceSelected.getProvince_name());
+                presenter.getListSoilByProvince(provinceSelected.getProvince_id());
             }
 
             @Override
@@ -222,6 +202,7 @@ public class MapActivity extends AppCompatActivity implements
     public void onGetListSoilSuccess(ArrayList<SoilModel> soilModels) {
         this.soilModels = soilModels;
         expandLayout.expand();
+        expandDetail.collapse();
         mAdapter = new MapAdapter(this, soilModels, this);
         RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(this, RecyclerView.VERTICAL, false);
         recycler_view_soil_map.setLayoutManager(layoutManager);
@@ -234,7 +215,7 @@ public class MapActivity extends AppCompatActivity implements
     public void onSoilMapClickListener(SoilModel soilModel) {
         soilSelected = soilModel;
         tvName.setText(soilModel.getNameVi());
-        tvProvince.setText(provinceSelected);
+        tvProvince.setText(provinceSelected.getProvince_name());
         tvDes.setText(soilModel.getDescription());
         if (!TextUtils.isEmpty(soilModel.getUrl())) {
             Glide.with(MapActivity.this).load(soilModel.getUrl()).listener(new RequestListener<Drawable>() {
@@ -257,9 +238,7 @@ public class MapActivity extends AppCompatActivity implements
     }
 
     private void addColorsToMarkers(GeoJsonLayer layer) {
-        // Iterate over all the features stored in the layer
         for (GeoJsonFeature feature : layer.getFeatures()) {
-
             GeoJsonPolygonStyle geoJsonPolygonStyle = new GeoJsonPolygonStyle();
             geoJsonPolygonStyle.setStrokeColor(Color.parseColor("#ff0000"));
             geoJsonPolygonStyle.setFillColor(getResources().getColor(Constant.getColorArea(feature.getProperty("domsoil").toLowerCase())));
@@ -271,7 +250,6 @@ public class MapActivity extends AppCompatActivity implements
     private void addGeoJsonLayerToMap(GeoJsonLayer layer) {
         addColorsToMarkers(layer);
         layer.addLayerToMap();
-        // Demonstrate receiving features via GeoJsonLayer clicks.
         layer.setOnFeatureClickListener((GeoJsonLayer.GeoJsonOnFeatureClickListener) feature -> {
 
         });
@@ -279,7 +257,6 @@ public class MapActivity extends AppCompatActivity implements
 
     //Layer tỉnh Vietnam
     private void addStrokeArea(GeoJsonLayer layer) {
-        // Iterate over all the features stored in the layer
         for (GeoJsonFeature feature : layer.getFeatures()) {
             GeoJsonPolygonStyle geoJsonPolygonStyle = new GeoJsonPolygonStyle();
             geoJsonPolygonStyle.setStrokeColor(Color.parseColor("#ff0000"));
@@ -287,15 +264,15 @@ public class MapActivity extends AppCompatActivity implements
             geoJsonPolygonStyle.setClickable(true);
             feature.setPolygonStyle(geoJsonPolygonStyle);
         }
+
     }
 
     private void addVietnamGeoJsonLayerToMap(GeoJsonLayer layer) {
         addStrokeArea(layer);
         layer.addLayerToMap();
-        // Demonstrate receiving features via GeoJsonLayer clicks.
         layer.setOnFeatureClickListener((GeoJsonLayer.GeoJsonOnFeatureClickListener) feature -> {
             CommonUtils.showError(MapActivity.this, "Tỉnh " + feature.getProperty("name"));
-            presenter.getListSoil("");
+            presenter.getListSoilByProvince(Integer.parseInt(feature.getProperty("id_1")));
         });
     }
 }

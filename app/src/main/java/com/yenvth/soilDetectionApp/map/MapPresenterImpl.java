@@ -43,10 +43,10 @@ public class MapPresenterImpl<V extends MapView> extends BasePresenter implement
     }
 
     @Override
-    public void getListSoil(String queryString) {
+    public void getListSoilByProvince(int provinceId) {
         showLoading(mContext);
         SoilAPI soilAPI = retrofit.create(SoilAPI.class);
-        Call<List<SoilModel>> call = soilAPI.getListSoils(queryString);
+        Call<List<SoilModel>> call = soilAPI.getSoilByProvince(provinceId);
         Log.d("Request url", call.request().url() + "");
 
         call.enqueue(new Callback<List<SoilModel>>() {
