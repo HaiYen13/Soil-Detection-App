@@ -124,7 +124,7 @@ public class DetectionActivity extends AppCompatActivity implements View.OnClick
     @Override
     public void onSaveImageSuccess(String url) {
         if (!TextUtils.isEmpty(url)) {
-            presenter.detectSoil(url);
+            presenter.detectSoil("https://images.theconversation.com/files/275002/original/file-20190516-69195-1yg53ff.jpg?ixlib=rb-1.1.0&q=45&auto=format&w=1200&h=1200.0&fit=crop");
         }
     }
 

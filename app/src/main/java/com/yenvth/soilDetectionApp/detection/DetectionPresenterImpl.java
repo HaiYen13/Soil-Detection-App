@@ -3,6 +3,7 @@ package com.yenvth.soilDetectionApp.detection;
 import android.app.Activity;
 import android.content.Context;
 import android.content.SharedPreferences;
+import android.content.res.AssetFileDescriptor;
 import android.net.Uri;
 import android.util.Log;
 
@@ -15,6 +16,13 @@ import com.yenvth.soilDetectionApp.base.BasePresenter;
 import com.yenvth.soilDetectionApp.models.SoilDetectModel;
 import com.yenvth.soilDetectionApp.utils.CommonUtils;
 import com.yenvth.soilDetectionApp.utils.Constant;
+
+import org.tensorflow.lite.Interpreter;
+
+import java.io.FileInputStream;
+import java.io.IOException;
+import java.nio.MappedByteBuffer;
+import java.nio.channels.FileChannel;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -42,6 +50,12 @@ public class DetectionPresenterImpl<V extends DetectionView> extends BasePresent
                 .baseUrl(Constant.BASE_SWAGGER_URL)
                 .addConverterFactory(GsonConverterFactory.create())
                 .build();
+//        try {
+////            interpreter = new Interpreter(loadModelFile(), null);
+//        } catch (IOException e) {
+////            e.printStackTrace();
+//            CommonUtils.showError((Activity) mContext, "Lỗi không xác định");
+//        }
     }
 
     @Override
@@ -61,27 +75,53 @@ public class DetectionPresenterImpl<V extends DetectionView> extends BasePresent
 //                .addOnFailureListener(e -> detectionView.onSaveImageFailed());
     }
 
+//    @Override
+//    public void detectSoil(String url) {
+//        showLoading(mContext);
+//        SoilAPI soilAPI = retrofit.create(SoilAPI.class);
+//        Call<SoilDetectModel> call = soilAPI.detectSoils(url);
+//        Log.d("Request url", call.request().url() + "");
+//
+//        call.enqueue(new Callback<SoilDetectModel>() {
+//            @Override
+//            public void onResponse(Call<SoilDetectModel> call, Response<SoilDetectModel> response) {
+//                hideLoading();
+//                if (response.body() != null) {
+//                    detectionView.onDetectSuccess((SoilDetectModel) response.body());
+//                }
+//            }
+//
+//            @Override
+//            public void onFailure(Call<SoilDetectModel> call, Throwable t) {
+//                hideLoading();
+//                CommonUtils.showError((Activity) mContext, "Lấy thông tin thất bại");
+//            }
+//        });
+//    }
+
     @Override
     public void detectSoil(String url) {
         showLoading(mContext);
-        SoilAPI soilAPI = retrofit.create(SoilAPI.class);
-        Call<SoilDetectModel> call = soilAPI.detectSoils(url);
-        Log.d("Request url", call.request().url() + "");
+        int output = doInference(url);
+        Log.d("ngu vl", output + "");
+    }
 
-        call.enqueue(new Callback<SoilDetectModel>() {
-            @Override
-            public void onResponse(Call<SoilDetectModel> call, Response<SoilDetectModel> response) {
-                hideLoading();
-                if (response.body() != null) {
-                    detectionView.onDetectSuccess((SoilDetectModel) response.body());
-                }
-            }
+    private MappedByteBuffer loadModelFile() throws IOException {
 
-            @Override
-            public void onFailure(Call<SoilDetectModel> call, Throwable t) {
-                hideLoading();
-                CommonUtils.showError((Activity) mContext, "Lấy thông tin thất bại");
-            }
-        });
+        AssetFileDescriptor assetFileDescriptor = mContext.getAssets().openFd("soil_cnn.tflite");
+        FileInputStream fileInputStream = new FileInputStream(assetFileDescriptor.getFileDescriptor());
+        FileChannel fileChannel = fileInputStream.getChannel();
+        long startOffset = assetFileDescriptor.getStartOffset();
+        long length = assetFileDescriptor.getLength();
+
+        return fileChannel.map(FileChannel.MapMode.READ_ONLY, startOffset, length);
+    }
+
+    private int doInference(String url) {
+        String[] input = new String[1];
+        input[0]= url;
+        int output = -1;
+//        interpreter.run(input, output);
+        return output;
     }
 }

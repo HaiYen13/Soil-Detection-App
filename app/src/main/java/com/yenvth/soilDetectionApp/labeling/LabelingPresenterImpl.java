@@ -76,7 +76,7 @@ public class LabelingPresenterImpl<V extends LabelingView> extends BasePresenter
     public void addImageLabelFirebase(Uri uri) {
         showLoading(mContext);
         final StorageReference ref;
-        ref = mStorage.child("detection").child(mDatabase.push().getKey());
+        ref = mStorage.child("labeling").child(mDatabase.push().getKey());
 
         ref.putFile(uri)
                 .addOnSuccessListener(taskSnapshot -> ref.getDownloadUrl().addOnSuccessListener(uri1 -> {
