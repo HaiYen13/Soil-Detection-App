@@ -122,6 +122,19 @@ public class DBHelper extends SQLiteOpenHelper {
         return list;
 
     }
+    public ProvinceModel getProvinceById(int province_id) {
+        mDataBase = getReadableDatabase();
+        cursor = mDataBase.rawQuery("SELECT * FROM province " + " WHERE id = " + province_id, null);
+        ProvinceModel model = new ProvinceModel();
+        while (cursor.moveToNext()) {
+            int id = cursor.getInt(cursor.getColumnIndex("id"));
+            String name = cursor.getString(cursor.getColumnIndex("name"));
+            String type = cursor.getString(cursor.getColumnIndex("type"));
+            model = new ProvinceModel(id, name, type);
+        }
+        closeDB();
+        return model;
+    }
     //-------------FUNCTION FOR DISTRICT TABLE------------------//
 
 //    public ArrayList<DistrictModel> getDistricts(int _province_id) {

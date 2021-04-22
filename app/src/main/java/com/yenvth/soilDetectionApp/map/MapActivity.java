@@ -98,6 +98,8 @@ public class MapActivity extends AppCompatActivity implements
     private DBHelper dbHelper;
     private ArrayList<ProvinceModel> provinceModels;
     private ProvinceModel provinceSelected;
+    private ArrayAdapter provinceAdapter;
+
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -122,7 +124,7 @@ public class MapActivity extends AppCompatActivity implements
         btnBack.setOnClickListener(this);
         tvDetail.setOnClickListener(this);
         //Todo: Setup spinner
-        ArrayAdapter provinceAdapter = new ArrayAdapter<>(this, R.layout.layout_custom_spinner_not_icon, provinceModels);
+        provinceAdapter = new ArrayAdapter<>(this, R.layout.layout_custom_spinner_not_icon, provinceModels);
         provinceAdapter.setDropDownViewResource(R.layout.item_spinner);
         spProvince.setAdapter(provinceAdapter);
 
@@ -260,7 +262,7 @@ public class MapActivity extends AppCompatActivity implements
         for (GeoJsonFeature feature : layer.getFeatures()) {
             GeoJsonPolygonStyle geoJsonPolygonStyle = new GeoJsonPolygonStyle();
             geoJsonPolygonStyle.setStrokeColor(Color.parseColor("#ff0000"));
-            geoJsonPolygonStyle.setStrokeWidth(2f);
+            geoJsonPolygonStyle.setStrokeWidth(3f);
             geoJsonPolygonStyle.setClickable(true);
             feature.setPolygonStyle(geoJsonPolygonStyle);
         }
@@ -272,7 +274,20 @@ public class MapActivity extends AppCompatActivity implements
         layer.addLayerToMap();
         layer.setOnFeatureClickListener((GeoJsonLayer.GeoJsonOnFeatureClickListener) feature -> {
             CommonUtils.showError(MapActivity.this, "Tỉnh " + feature.getProperty("name"));
-            presenter.getListSoilByProvince(Integer.parseInt(feature.getProperty("id_1")));
+            int province_id = Integer.parseInt(feature.getProperty("id_1"));
+            provinceSelected = dbHelper.getProvinceById(province_id);
+            spProvince.setSelection(getIndex(spProvince, provinceSelected.getProvince_name()));
+            presenter.getListSoilByProvince(province_id);
         });
+    }
+
+    //private method of your class
+    private int getIndex(Spinner spinner, String myString) {
+        for (int i = 0; i < spinner.getCount(); i++) {
+            if (spinner.getItemAtPosition(i).toString().equalsIgnoreCase(myString)) {
+                return i;
+            }
+        }
+        return -1;
     }
 }
