@@ -89,7 +89,7 @@ public class HistoryActivity extends AppCompatActivity implements View.OnClickLi
         recycler_view_history.setItemAnimator(new DefaultItemAnimator());
         recycler_view_history.setAdapter(mAdapter);
         if (mAdapter.getItemCount() - 1 >= 0) {
-            recycler_view_history.smoothScrollToPosition(mAdapter.getItemCount() - 1);
+            recycler_view_history.smoothScrollToPosition(0);
         }
         mAdapter.notifyDataSetChanged();
     }

@@ -128,7 +128,7 @@ public class MainActivity extends BaseActivity implements View.OnClickListener, 
                     startActivity(intent);
                     break;
                 case R.id.detect:
-                    intent = new Intent(MainActivity.this, ClassifierActivity.class);
+                    intent = new Intent(MainActivity.this, DetectionActivity.class);
                     startActivity(intent);
                     break;
                 case R.id.labeling:
@@ -215,8 +215,7 @@ public class MainActivity extends BaseActivity implements View.OnClickListener, 
                 startActivity(intent);
                 break;
             case R.id.btnDetect:
-            case R.id.rlDetect:
-                intent = new Intent(MainActivity.this, ClassifierActivity.class);
+                intent = new Intent(MainActivity.this, DetectionActivity.class);
                 startActivity(intent);
                 break;
             case R.id.btnMap:
@@ -245,6 +244,10 @@ public class MainActivity extends BaseActivity implements View.OnClickListener, 
                 break;
             case R.id.btnLogin:
                 intent = new Intent(MainActivity.this, LoginActivity.class);
+                startActivity(intent);
+                break;
+            case R.id.rlDetect:
+                intent = new Intent(MainActivity.this, ClassifierActivity.class);
                 startActivity(intent);
                 break;
 
