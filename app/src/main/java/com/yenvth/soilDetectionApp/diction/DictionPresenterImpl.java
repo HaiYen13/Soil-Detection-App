@@ -47,7 +47,6 @@ public class DictionPresenterImpl<V extends DictionView> extends BasePresenter i
 
     @Override
     public void saveSearchHistory(HistoryModel historyModel) {
-
         HistoryAPI historyAPI = retrofit.create(HistoryAPI.class);
         historyModel.setUid(uid);
         Call<BaseResponse> call = historyAPI.saveHistory(historyModel);

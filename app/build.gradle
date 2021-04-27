@@ -17,9 +17,19 @@ android {
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
 
+    signingConfigs {
+        release {
+            storeFile file('C:\\LearningAndroid\\Soil-Detection-App\\keystore\\keystoreApp.jks')
+            storePassword 'dinhhiep99'
+            keyAlias 'dinhhiep99'
+            keyPassword 'dinhhiep99'
+        }
+    }
+
     buildTypes {
         release {
             minifyEnabled false
+            signingConfig signingConfigs.release
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
     }
