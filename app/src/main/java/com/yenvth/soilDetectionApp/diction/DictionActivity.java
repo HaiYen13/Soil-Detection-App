@@ -133,7 +133,7 @@ public class DictionActivity extends AppCompatActivity implements DictionView,
             if (isDeletable) {
                 edSearch.setText("");
             } else {
-                speechToText();
+//                speechToText();
             }
         });
     }
