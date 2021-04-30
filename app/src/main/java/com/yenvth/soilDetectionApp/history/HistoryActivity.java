@@ -114,7 +114,7 @@ public class HistoryActivity extends AppCompatActivity implements View.OnClickLi
     }
 
     @Override
-    public void onItemDelete(int historiesId) {
+    public void onItemDelete(String historiesId) {
         presenter.deleteHistory(historiesId);
     }
 }

@@ -157,7 +157,7 @@ public class LabelingActivity extends AppCompatActivity implements View.OnClickL
     }
 
     @Override
-    public void onDeleteLabel(int labelId) {
+    public void onDeleteLabel(String labelId) {
         final SweetAlertDialog dialog = new SweetAlertDialog(LabelingActivity.this, SweetAlertDialog.WARNING_TYPE);
         dialog.setContentText("Bạn chắc chắn xóa nhãn dán này chứ?")
                 .setConfirmText("Đồng ý")

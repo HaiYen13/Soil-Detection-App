@@ -42,7 +42,7 @@ public class LabelingAdapter extends RecyclerView.Adapter<LabelingAdapter.MyHold
     public interface OnLabelItemClickListener {
         void onLabelClickListener(LabelingModel labelingModel);
 
-        void onDeleteLabel(int labelId);
+        void onDeleteLabel(String labelId);
     }
 
     @NonNull

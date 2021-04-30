@@ -33,7 +33,7 @@ public class HistoryAdapter extends RecyclerView.Adapter<HistoryAdapter.MyHolder
     public interface OnHistoryItemClickListener {
         void onHistoryClick(HistoryModel historyModel);
 
-        void onItemDelete(int historiesId);
+        void onItemDelete(String historiesId);
     }
 
     @Override

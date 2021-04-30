@@ -1,7 +1,7 @@
 package com.yenvth.soilDetectionApp.models;
 
 public class HistoryModel {
-    private int historiesId;
+    private String historiesId;
     private int soilId;
     private String soilName;
     private String uid;
@@ -16,11 +16,11 @@ public class HistoryModel {
         this.timestamp = timestamp;
     }
 
-    public int getHistoriesId() {
+    public String getHistoriesId() {
         return historiesId;
     }
 
-    public void setHistoriesId(int historiesId) {
+    public void setHistoriesId(String historiesId) {
         this.historiesId = historiesId;
     }
 

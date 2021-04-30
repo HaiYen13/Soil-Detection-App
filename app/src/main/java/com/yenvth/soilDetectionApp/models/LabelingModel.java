@@ -1,17 +1,17 @@
 package com.yenvth.soilDetectionApp.models;
 
 public class LabelingModel {
-    private int labelId;
+    private String labelId;
     private String labelName;
     private String url;
     private String uid;
     private long timestamp;
 
-    public int getLabelId() {
+    public String getLabelId() {
         return labelId;
     }
 
-    public void setLabelId(int labelId) {
+    public void setLabelId(String labelId) {
         this.labelId = labelId;
     }
 

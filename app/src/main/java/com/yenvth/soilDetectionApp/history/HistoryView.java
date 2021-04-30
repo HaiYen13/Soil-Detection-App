@@ -7,7 +7,6 @@ import java.util.ArrayList;
 public interface HistoryView {
     void onGetListHistorySuccess(ArrayList<HistoryModel> historyModels);
 
-
     void onDeleteHistorySuccess();
 
     void onDeleteAllHistoriesSuccess();

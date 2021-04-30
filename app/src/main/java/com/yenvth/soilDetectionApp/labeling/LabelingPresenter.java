@@ -9,5 +9,5 @@ public interface LabelingPresenter<V extends LabelingView> {
 
     void addLabel(String labelName, String url);
 
-    void deleteLabel(int label_id);
+    void deleteLabel(String label_id);
 }

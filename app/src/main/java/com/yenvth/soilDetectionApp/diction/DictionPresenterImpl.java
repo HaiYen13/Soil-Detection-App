@@ -46,7 +46,7 @@ public class DictionPresenterImpl<V extends DictionView> extends BasePresenter i
 
     @Override
     public void saveSearchHistory(HistoryModel historyModel) {
-        mDatabase.child("histories").push().setValue(historyModel)
+        mDatabase.child("histories").child(uid).push().setValue(historyModel)
                 .addOnSuccessListener(new OnSuccessListener<Void>() {
                     @Override
                     public void onSuccess(Void aVoid) {
@@ -63,25 +63,6 @@ public class DictionPresenterImpl<V extends DictionView> extends BasePresenter i
 
     @Override
     public void getListSoil(String queryString) {
-
-//        SoilAPI soilAPI = retrofit.create(SoilAPI.class);
-//        Call<List<SoilModel>> call = soilAPI.getListSoils(queryString);
-//        Log.d("Request url", call.request().url() + "");
-//        call.enqueue(new Callback<List<SoilModel>>() {
-//            @Override
-//            public void onResponse(Call<List<SoilModel>> call, Response<List<SoilModel>> response) {
-//                if (response.body() != null) {
-////                    hideLoading();
-//                    dictionView.onGetListSoilSuccess((ArrayList<SoilModel>) response.body());
-//                }
-//            }
-//
-//            @Override
-//            public void onFailure(Call<List<SoilModel>> call, Throwable t) {
-////                hideLoading();
-//                CommonUtils.showError((Activity) mContext, "Lấy thông tin thất bại");
-//            }
-//        });
         mDatabase.child("soils").addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {

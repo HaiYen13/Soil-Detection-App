@@ -262,11 +262,22 @@ public class MapActivity extends AppCompatActivity implements
         for (GeoJsonFeature feature : layer.getFeatures()) {
             GeoJsonPolygonStyle geoJsonPolygonStyle = new GeoJsonPolygonStyle();
             geoJsonPolygonStyle.setStrokeColor(Color.parseColor("#ff0000"));
-            geoJsonPolygonStyle.setStrokeWidth(3f);
+//            geoJsonPolygonStyle.setStrokeWidth(3f);
             geoJsonPolygonStyle.setClickable(true);
+            if (provinceSelected != null) {
+                String province_name = feature.getProperty("name");
+                if (provinceSelected.getProvince_name().contains(province_name)) {
+                    geoJsonPolygonStyle.setStrokeColor(getResources().getColor(R.color.start_color));
+                    geoJsonPolygonStyle.setStrokeWidth(10f);
+                } else {
+                    geoJsonPolygonStyle.setStrokeWidth(3f);
+                }
+            } else {
+                geoJsonPolygonStyle.setStrokeWidth(3f);
+            }
             feature.setPolygonStyle(geoJsonPolygonStyle);
-        }
 
+        }
     }
 
     private void addVietnamGeoJsonLayerToMap(GeoJsonLayer layer) {
@@ -278,6 +289,7 @@ public class MapActivity extends AppCompatActivity implements
             provinceSelected = dbHelper.getProvinceById(province_id);
             spProvince.setSelection(getIndex(spProvince, provinceSelected.getProvince_name()));
             presenter.getListSoilByProvince(province_id);
+            addStrokeArea(layer);
         });
     }
 
