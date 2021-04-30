@@ -118,7 +118,7 @@ public class SoilDetailActivity extends AppCompatActivity implements View.OnClic
                 break;
             case R.id.btnSound:
                 btnSound.setColorFilter(SoilDetailActivity.this.getResources().getColor(R.color.start_color));
-                tts.speak(soilModel.getNameEn(), TextToSpeech.QUEUE_FLUSH, null);
+                tts.speak(soilModel.getName_en(), TextToSpeech.QUEUE_FLUSH, null);
                 Handler handler = new Handler();
                 handler.postDelayed(new Runnable() {
                     @Override
@@ -145,9 +145,9 @@ public class SoilDetailActivity extends AppCompatActivity implements View.OnClic
     @Override
     public void onGetSoilDetails(SoilModel soilModel) {
         this.soilModel = soilModel;
-        tvToolbar.setText(soilModel.getNameVi());
-        tvSoilName.setText(soilModel.getNameVi());
-        tvNameEn.setText(soilModel.getNameEn());
+        tvToolbar.setText(soilModel.getName_vi());
+        tvSoilName.setText(soilModel.getName_vi());
+        tvNameEn.setText(soilModel.getName_en());
         tvUpdate.setText("Ngày cập nhật: " + DateUtils.convertTimes(soilModel.getTimestamp(), "dd/MM/yyyy"));
         tvDescription.setText(soilModel.getDescription());
 

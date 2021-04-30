@@ -177,7 +177,7 @@ public class MapActivity extends AppCompatActivity implements
                 break;
             case R.id.tvDetail:
                 Intent intent = new Intent(this, SoilDetailActivity.class);
-                intent.putExtra("soil_id", soilSelected.getSoilId());
+                intent.putExtra("soil_id", soilSelected.getSoil_id());
                 startActivity(intent);
                 break;
         }
@@ -216,7 +216,7 @@ public class MapActivity extends AppCompatActivity implements
     @Override
     public void onSoilMapClickListener(SoilModel soilModel) {
         soilSelected = soilModel;
-        tvName.setText(soilModel.getNameVi());
+        tvName.setText(soilModel.getName_vi());
         tvProvince.setText(provinceSelected.getProvince_name());
         tvDes.setText(soilModel.getDescription());
         if (!TextUtils.isEmpty(soilModel.getUrl())) {

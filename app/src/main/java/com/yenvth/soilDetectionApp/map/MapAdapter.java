@@ -56,8 +56,8 @@ public class MapAdapter extends RecyclerView.Adapter<MapAdapter.MyHolder> {
                 listener.onSoilMapClickListener(soilModel);
             }
         });
-        holder.lnImage.setBackgroundColor(mContext.getResources().getColor(Constant.getColorArea(soilModel.getSoilCode().toLowerCase())));
-        holder.tvName.setText(soilModel.getNameVi());
+        holder.lnImage.setBackgroundColor(mContext.getResources().getColor(Constant.getColorArea(soilModel.getSoil_code().toLowerCase())));
+        holder.tvName.setText(soilModel.getName_vi());
     }
 
     @Override

@@ -37,12 +37,6 @@ public class DetectionPresenterImpl<V extends DetectionView> extends BasePresent
                 .baseUrl(Constant.BASE_SWAGGER_URL)
                 .addConverterFactory(GsonConverterFactory.create())
                 .build();
-//        try {
-////            interpreter = new Interpreter(loadModelFile(), null);
-//        } catch (IOException e) {
-////            e.printStackTrace();
-//            CommonUtils.showError((Activity) mContext, "Lỗi không xác định");
-//        }
     }
 
     @Override
@@ -68,28 +62,4 @@ public class DetectionPresenterImpl<V extends DetectionView> extends BasePresent
     public void saveLabelDetection(DetectionModel model) {
         mDatabase.child("detections").push().setValue(model);
     }
-
-//    @Override
-//    public void detectSoil(String url) {
-//        showLoading(mContext);
-//        SoilAPI soilAPI = retrofit.create(SoilAPI.class);
-//        Call<SoilDetectModel> call = soilAPI.detectSoils(url);
-//        Log.d("Request url", call.request().url() + "");
-//
-//        call.enqueue(new Callback<SoilDetectModel>() {
-//            @Override
-//            public void onResponse(Call<SoilDetectModel> call, Response<SoilDetectModel> response) {
-//                hideLoading();
-//                if (response.body() != null) {
-//                    detectionView.onDetectSuccess((SoilDetectModel) response.body());
-//                }
-//            }
-//
-//            @Override
-//            public void onFailure(Call<SoilDetectModel> call, Throwable t) {
-//                hideLoading();
-//                CommonUtils.showError((Activity) mContext, "Lấy thông tin thất bại");
-//            }
-//        });
-//    }
 }

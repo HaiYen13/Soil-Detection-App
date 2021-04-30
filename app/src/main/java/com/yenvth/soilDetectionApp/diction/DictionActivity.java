@@ -295,9 +295,9 @@ public class DictionActivity extends AppCompatActivity implements DictionView,
 
     @Override
     public void onSoilClickListener(SoilModel soilModel) {
-        mPresenter.saveSearchHistory(new HistoryModel(soilModel.getSoilId(), soilModel.getNameVi(),System.currentTimeMillis()));
+        mPresenter.saveSearchHistory(new HistoryModel(soilModel.getSoil_id(), soilModel.getName_vi(),System.currentTimeMillis()));
         Intent intent = new Intent(this, SoilDetailActivity.class);
-        intent.putExtra("soil_id", soilModel.getSoilId());
+        intent.putExtra("soil_id", soilModel.getSoil_id());
         startActivity(intent);
     }
 }

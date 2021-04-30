@@ -3,25 +3,24 @@ package com.yenvth.soilDetectionApp.diction;
 import android.app.Activity;
 import android.content.Context;
 import android.content.SharedPreferences;
-import android.util.Log;
 
+import androidx.annotation.NonNull;
+
+import com.google.android.gms.tasks.OnFailureListener;
+import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
-import com.yenvth.soilDetectionApp.api.HistoryAPI;
-import com.yenvth.soilDetectionApp.api.SoilAPI;
+import com.google.firebase.database.ValueEventListener;
 import com.yenvth.soilDetectionApp.base.BasePresenter;
-import com.yenvth.soilDetectionApp.base.BaseResponse;
 import com.yenvth.soilDetectionApp.models.HistoryModel;
 import com.yenvth.soilDetectionApp.models.SoilModel;
 import com.yenvth.soilDetectionApp.utils.CommonUtils;
 import com.yenvth.soilDetectionApp.utils.Constant;
 
 import java.util.ArrayList;
-import java.util.List;
 
-import retrofit2.Call;
-import retrofit2.Callback;
-import retrofit2.Response;
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 
@@ -47,46 +46,58 @@ public class DictionPresenterImpl<V extends DictionView> extends BasePresenter i
 
     @Override
     public void saveSearchHistory(HistoryModel historyModel) {
-        HistoryAPI historyAPI = retrofit.create(HistoryAPI.class);
-        historyModel.setUid(uid);
-        Call<BaseResponse> call = historyAPI.saveHistory(historyModel);
-        Log.d("Request url", call.request().url() + "");
-        call.enqueue(new Callback<BaseResponse>() {
-            @Override
-            public void onResponse(Call<BaseResponse> call, Response<BaseResponse> response) {
-                hideLoading();
-                if (response.body() != null) {
-                    dictionView.onSaveHistorySuccess();
-                }
-            }
-
-            @Override
-            public void onFailure(Call<BaseResponse> call, Throwable t) {
-                hideLoading();
-                CommonUtils.showError((Activity) mContext, "Lấy thông tin thất bại");
-            }
-        });
+        mDatabase.child("histories").push().setValue(historyModel)
+                .addOnSuccessListener(new OnSuccessListener<Void>() {
+                    @Override
+                    public void onSuccess(Void aVoid) {
+                        dictionView.onSaveHistorySuccess();
+                    }
+                })
+                .addOnFailureListener(new OnFailureListener() {
+                    @Override
+                    public void onFailure(@NonNull Exception e) {
+                        CommonUtils.showError((Activity) mContext, "Lấy thông tin thất bại");
+                    }
+                });
     }
 
     @Override
     public void getListSoil(String queryString) {
-//        showLoading(mContext);
 
-        SoilAPI soilAPI = retrofit.create(SoilAPI.class);
-        Call<List<SoilModel>> call = soilAPI.getListSoils(queryString);
-        Log.d("Request url", call.request().url() + "");
-        call.enqueue(new Callback<List<SoilModel>>() {
+//        SoilAPI soilAPI = retrofit.create(SoilAPI.class);
+//        Call<List<SoilModel>> call = soilAPI.getListSoils(queryString);
+//        Log.d("Request url", call.request().url() + "");
+//        call.enqueue(new Callback<List<SoilModel>>() {
+//            @Override
+//            public void onResponse(Call<List<SoilModel>> call, Response<List<SoilModel>> response) {
+//                if (response.body() != null) {
+////                    hideLoading();
+//                    dictionView.onGetListSoilSuccess((ArrayList<SoilModel>) response.body());
+//                }
+//            }
+//
+//            @Override
+//            public void onFailure(Call<List<SoilModel>> call, Throwable t) {
+////                hideLoading();
+//                CommonUtils.showError((Activity) mContext, "Lấy thông tin thất bại");
+//            }
+//        });
+        mDatabase.child("soils").addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
-            public void onResponse(Call<List<SoilModel>> call, Response<List<SoilModel>> response) {
-                if (response.body() != null) {
-//                    hideLoading();
-                    dictionView.onGetListSoilSuccess((ArrayList<SoilModel>) response.body());
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                ArrayList<SoilModel> list = new ArrayList<>();
+                for (DataSnapshot snapshot1 : snapshot.getChildren()) {
+                    SoilModel soilModel = snapshot1.getValue(SoilModel.class);
+                    soilModel.setSoil_id(Integer.parseInt(snapshot1.getKey()));
+                    if (soilModel.getName_vi().contains(queryString) || soilModel.getName_en().contains(queryString)) {
+                        list.add(soilModel);
+                    }
                 }
+                dictionView.onGetListSoilSuccess(list);
             }
 
             @Override
-            public void onFailure(Call<List<SoilModel>> call, Throwable t) {
-//                hideLoading();
+            public void onCancelled(@NonNull DatabaseError error) {
                 CommonUtils.showError((Activity) mContext, "Lấy thông tin thất bại");
             }
         });

@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">Soil Detection App</string>
+    <string name="app_name">Sora</string>
     <string name="select_province">Chọn Tỉnh/TP</string>
     <string name="select_district">Chọn Quận/Huyện</string>
     <string name="select_ward">Chọn Xã/Phường</string>

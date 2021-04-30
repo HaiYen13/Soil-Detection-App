@@ -55,7 +55,7 @@ public class SoilAdapter extends RecyclerView.Adapter<SoilAdapter.MyHolder> {
                 listener.onSoilClickListener(soilModel);
             }
         });
-        holder.tvName.setText(soilModel.getNameVi());
+        holder.tvName.setText(soilModel.getName_vi());
         holder.tvDes.setText(soilModel.getDescription());
         holder.tv_pH.setText("pH: " + 10);
         holder.tv_humidity.setText("Độ ẩm: " + 20);

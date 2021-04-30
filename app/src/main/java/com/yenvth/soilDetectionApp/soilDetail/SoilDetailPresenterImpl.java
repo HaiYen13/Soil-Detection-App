@@ -5,8 +5,13 @@ import android.content.Context;
 import android.content.SharedPreferences;
 import android.util.Log;
 
+import androidx.annotation.NonNull;
+
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 import com.yenvth.soilDetectionApp.api.SoilAPI;
 import com.yenvth.soilDetectionApp.base.BasePresenter;
 import com.yenvth.soilDetectionApp.models.SoilModel;
@@ -43,20 +48,17 @@ public class SoilDetailPresenterImpl<V extends SoilDetailView> extends BasePrese
     @Override
     public void getSoilDetail(int soil_id) {
         showLoading(mContext);
-        SoilAPI soilAPI = retrofit.create(SoilAPI.class);
-        Call<SoilModel> call = soilAPI.getSoilDetail(soil_id);
-        Log.d("Request url", call.request().url() + "");
-        call.enqueue(new Callback<SoilModel>() {
+        mDatabase.child("soils").child(soil_id + "").addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
-            public void onResponse(Call<SoilModel> call, Response<SoilModel> response) {
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
                 hideLoading();
-                if (response.body() != null) {
-                    soilDetailView.onGetSoilDetails(response.body());
-                }
+                SoilModel soilModel = snapshot.getValue(SoilModel.class);
+                soilModel.setSoil_id(Integer.parseInt(snapshot.getKey()));
+                soilDetailView.onGetSoilDetails(soilModel);
             }
 
             @Override
-            public void onFailure(Call<SoilModel> call, Throwable t) {
+            public void onCancelled(@NonNull DatabaseError error) {
                 hideLoading();
                 CommonUtils.showError((Activity) mContext, "Lấy thông tin thất bại");
             }
