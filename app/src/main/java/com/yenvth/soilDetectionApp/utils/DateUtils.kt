@@ -1,15 +1,12 @@
-package com.yenvth.soilDetectionApp.utils;
+package com.yenvth.soilDetectionApp.utils
 
-import java.text.SimpleDateFormat;
-import java.util.Date;
+import java.text.SimpleDateFormat
+import java.util.*
 
-public class DateUtils {
-    public static String convertTimes(long timestamp, String format) {
-        Date date = new Date(timestamp);
-
-        SimpleDateFormat sdf = new SimpleDateFormat(format);
-        String formattedDate = sdf.format(date);
-
-        return formattedDate;
+object DateUtils {
+    fun convertTimes(timestamp: Long, format: String?): String {
+        val date = Date(timestamp)
+        val sdf = SimpleDateFormat(format)
+        return sdf.format(date)
     }
 }

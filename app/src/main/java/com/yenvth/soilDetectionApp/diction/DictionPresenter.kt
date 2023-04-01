@@ -1,8 +1,8 @@
-package com.yenvth.soilDetectionApp.diction;
+package com.yenvth.soilDetectionApp.diction
 
-import com.yenvth.soilDetectionApp.models.HistoryModel;
+import com.yenvth.soilDetectionApp.room.entity.HistoryRecord
 
-public interface DictionPresenter<V extends DictionView> {
-    void saveSearchHistory(HistoryModel historyModel);
-    void getListSoil(String queryString);
+interface DictionPresenter<V : DictionView?> {
+    fun saveSearchHistory(historyRecord: HistoryRecord)
+    fun getListSoil(queryString: String)
 }

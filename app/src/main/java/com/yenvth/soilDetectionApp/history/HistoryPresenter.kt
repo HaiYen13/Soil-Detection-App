@@ -1,9 +1,7 @@
-package com.yenvth.soilDetectionApp.history;
+package com.yenvth.soilDetectionApp.history
 
-public interface HistoryPresenter<V extends HistoryView> {
-    void getListHistories();
-
-    void deleteHistory(int history_id);
-
-    void deleteAllHistories();
+interface HistoryPresenter<V : HistoryView?> {
+    fun getHistories()
+    fun deleteHistory(historyId: Int)
+    fun deleteAllHistories()
 }

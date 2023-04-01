@@ -42,4 +42,10 @@
     <color name="tfe_color_accent">#425066</color>
 
     <color name="tfe_semi_transparent">#66000000</color>
+
+    <color name="color_success">#8BD8BD</color>
+    <color name="color_text_success">#243665</color>
+    <color name="color_failed">#CC313D</color>
+    <color name="color_text_failed">#FBE0E4</color>
+    <color name="color_failed_50">#50CC313D</color>
 </resources>

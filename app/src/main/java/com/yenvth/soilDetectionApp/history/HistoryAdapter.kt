@@ -1,94 +1,73 @@
-package com.yenvth.soilDetectionApp.history;
+package com.yenvth.soilDetectionApp.history
 
-import android.content.Context;
-import android.graphics.Color;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
-import android.widget.ImageView;
-import android.widget.LinearLayout;
-import android.widget.TextView;
+import android.annotation.SuppressLint
+import android.content.Context
+import android.graphics.Color
+import android.view.LayoutInflater
+import android.view.View
+import android.view.ViewGroup
+import android.widget.ImageView
+import android.widget.TextView
+import androidx.recyclerview.widget.RecyclerView
+import com.google.android.material.card.MaterialCardView
+import com.yenvth.soilDetectionApp.R
+import com.yenvth.soilDetectionApp.models.HistoryModel
+import com.yenvth.soilDetectionApp.utils.DateUtils
 
-import androidx.annotation.NonNull;
-import androidx.recyclerview.widget.RecyclerView;
+class HistoryAdapter(
+    private val mContext: Context,
+    private val listener: OnHistoryItemClickListener
+) : RecyclerView.Adapter<HistoryAdapter.MyHolder>() {
+    private var dataList = emptyList<HistoryModel>()
 
-import com.google.android.material.card.MaterialCardView;
-import com.yenvth.soilDetectionApp.R;
-import com.yenvth.soilDetectionApp.models.HistoryModel;
-import com.yenvth.soilDetectionApp.utils.DateUtils;
-
-import java.util.ArrayList;
-
-public class HistoryAdapter extends RecyclerView.Adapter<HistoryAdapter.MyHolder> {
-    private Context mContext;
-    private ArrayList<HistoryModel> dataList;
-    private OnHistoryItemClickListener listener;
-
-    public HistoryAdapter(Context mContext, ArrayList<HistoryModel> dataList, OnHistoryItemClickListener listener) {
-        this.mContext = mContext;
-        this.dataList = dataList;
-        this.listener = listener;
+    @SuppressLint("NotifyDataSetChanged")
+    fun setData(list: List<HistoryModel>) {
+        this.dataList = list
+        notifyDataSetChanged()
     }
 
-    public interface OnHistoryItemClickListener {
-        void onHistoryClick(HistoryModel historyModel);
-
-        void onItemDelete(int historiesId);
+    interface OnHistoryItemClickListener {
+        fun onHistoryClick(historyModel: HistoryModel)
+        fun onItemDelete(historiesId: Int)
     }
 
-    @Override
-    public int getItemViewType(int position) {
-        return position%2;
+    override fun getItemViewType(position: Int): Int {
+        return position % 2
     }
 
-    @NonNull
-    @Override
-    public MyHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View v = LayoutInflater.from(mContext).inflate(R.layout.item_history, parent, false);
-        return new MyHolder(v);
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MyHolder {
+        val v = LayoutInflater.from(mContext).inflate(R.layout.item_history, parent, false)
+        return MyHolder(v)
     }
 
-    @Override
-    public void onBindViewHolder(@NonNull MyHolder holder, int pos) {
+    override fun onBindViewHolder(holder: MyHolder, pos: Int) {
         if (getItemViewType(pos) == 1) {
-            holder.cardView.setCardBackgroundColor(Color.parseColor("#80cccccc"));
+            holder.cardView.setCardBackgroundColor(Color.parseColor("#80cccccc"))
         } else {
-            holder.cardView.setCardBackgroundColor(Color.parseColor("#ffffff"));
-
+            holder.cardView.setCardBackgroundColor(Color.parseColor("#ffffff"))
         }
-        HistoryModel historyModel = dataList.get(pos);
-        holder.itemView.setOnClickListener(view -> {
-            if (listener != null) {
-                listener.onHistoryClick(historyModel);
-            }
-        });
-
-        holder.btnDelete.setOnClickListener(view -> {
-            if (listener != null) {
-                listener.onItemDelete(historyModel.getHistoriesId());
-            }
-        });
-        holder.tvName.setText(historyModel.getSoilName());
-        holder.tvDate.setText(DateUtils.convertTimes(historyModel.getTimestamp(), "dd/MM/yyyy HH:mm"));
+        val historyModel = dataList[pos]
+        holder.itemView.setOnClickListener { listener.onHistoryClick(historyModel) }
+        holder.btnDelete.setOnClickListener { listener.onItemDelete(historyModel.historyId) }
+        holder.tvName.text = historyModel.soilName
+        holder.tvDate.text = DateUtils.convertTimes(historyModel.timestamp!!, "dd/MM/yyyy HH:mm")
     }
 
-    @Override
-    public int getItemCount() {
-        return dataList.size();
+    override fun getItemCount(): Int {
+        return dataList.size
     }
 
-    public class MyHolder extends RecyclerView.ViewHolder {
-        private TextView tvName;
-        private ImageView btnDelete;
-        private TextView tvDate;
-        private MaterialCardView cardView;
-        public MyHolder(@NonNull View itemView) {
-            super(itemView);
-            cardView = itemView.findViewById(R.id.cardView);
-            tvName = itemView.findViewById(R.id.tvName);
-            btnDelete = itemView.findViewById(R.id.btnDelete);
-            tvDate = itemView.findViewById(R.id.tvDate);
+    inner class MyHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
+        val tvName: TextView
+        val btnDelete: ImageView
+        val tvDate: TextView
+        val cardView: MaterialCardView
+
+        init {
+            cardView = itemView.findViewById(R.id.cardView)
+            tvName = itemView.findViewById(R.id.tvName)
+            btnDelete = itemView.findViewById(R.id.btnDelete)
+            tvDate = itemView.findViewById(R.id.tvDate)
         }
     }
 }
-

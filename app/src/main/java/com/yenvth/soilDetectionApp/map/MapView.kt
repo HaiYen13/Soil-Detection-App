@@ -1,9 +1,8 @@
-package com.yenvth.soilDetectionApp.map;
+package com.yenvth.soilDetectionApp.map
 
-import com.yenvth.soilDetectionApp.models.SoilModel;
+import com.yenvth.soilDetectionApp.models.SoilModel
+import java.util.ArrayList
 
-import java.util.ArrayList;
-
-public interface MapView {
-    void onGetListSoilSuccess(ArrayList<SoilModel> soilModels);
+interface MapView {
+    fun onGetListSoilSuccess(soilModels: ArrayList<SoilModel>?)
 }

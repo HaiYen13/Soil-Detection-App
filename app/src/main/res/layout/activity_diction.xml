@@ -11,13 +11,13 @@
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="50dp"
-        android:focusable="true"
-        android:focusableInTouchMode="true"
-        android:orientation="horizontal"
         android:layout_marginLeft="@dimen/_10sdp"
         android:layout_marginTop="@dimen/_5sdp"
         android:layout_marginRight="@dimen/_10sdp"
-        android:layout_marginBottom="@dimen/_5sdp">
+        android:layout_marginBottom="@dimen/_5sdp"
+        android:focusable="true"
+        android:focusableInTouchMode="true"
+        android:orientation="horizontal">
 
         <ImageView
             android:id="@+id/btnBack"
@@ -45,13 +45,13 @@
             android:textStyle="bold" />
 
         <ImageView
-            android:id="@+id/btnVoice"
+            android:id="@+id/btnDelete"
             android:layout_width="20dp"
             android:layout_height="20dp"
             android:layout_centerVertical="true"
             android:layout_marginRight="30dp"
             android:layout_toLeftOf="@id/btnSearch"
-            android:src="@drawable/micro"
+            android:src="@drawable/delete"
             app:tint="#000" />
 
         <ImageView
@@ -74,8 +74,8 @@
         android:layout_height="wrap_content">
 
         <LinearLayout
-            android:layout_height="wrap_content"
             android:layout_width="match_parent"
+            android:layout_height="wrap_content"
             android:orientation="vertical">
 
             <RelativeLayout
@@ -93,16 +93,16 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:fontFamily="@font/prompt_bold"
+                        android:text="Danh sách mẫu đất"
                         android:textColor="#000"
-                        android:textSize="@dimen/_12sdp"
-                        android:text="Danh sách mẫu đất" />
+                        android:textSize="@dimen/_12sdp" />
 
                     <androidx.recyclerview.widget.RecyclerView
-                        android:nestedScrollingEnabled="false"
                         android:id="@+id/recycler_view_soil"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="@dimen/_10sdp"
+                        android:nestedScrollingEnabled="false"
                         tools:listitem="@layout/item_search_soil" />
                 </LinearLayout>
 

@@ -6,14 +6,11 @@ import android.database.SQLException;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 
-import com.yenvth.soilDetectionApp.models.ProvinceModel;
-
 import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
-import java.util.ArrayList;
 
 public class DBHelper extends SQLiteOpenHelper {
     //    private static String DB_NAME = "SOIL_DICTIONARY";
@@ -103,76 +100,6 @@ public class DBHelper extends SQLiteOpenHelper {
             mDataBase.close();
         super.close();
     }
-
-
-    //-------------FUNCTION FOR PROVINCE TABLE------------------//
-    public ArrayList<ProvinceModel> getProvinces() {
-        mDataBase = getReadableDatabase();
-        cursor = mDataBase.rawQuery("SELECT * FROM province", null);
-
-        ArrayList<ProvinceModel> list = new ArrayList<>();
-        while (cursor.moveToNext()) {
-            int id = cursor.getInt(cursor.getColumnIndex("id"));
-            String name = cursor.getString(cursor.getColumnIndex("name"));
-            String type = cursor.getString(cursor.getColumnIndex("type"));
-
-            list.add(new ProvinceModel(id, name, type));
-        }
-        closeDB();
-        return list;
-
-    }
-    public ProvinceModel getProvinceById(int province_id) {
-        mDataBase = getReadableDatabase();
-        cursor = mDataBase.rawQuery("SELECT * FROM province " + " WHERE id = " + province_id, null);
-        ProvinceModel model = new ProvinceModel();
-        while (cursor.moveToNext()) {
-            int id = cursor.getInt(cursor.getColumnIndex("id"));
-            String name = cursor.getString(cursor.getColumnIndex("name"));
-            String type = cursor.getString(cursor.getColumnIndex("type"));
-            model = new ProvinceModel(id, name, type);
-        }
-        closeDB();
-        return model;
-    }
-    //-------------FUNCTION FOR DISTRICT TABLE------------------//
-
-//    public ArrayList<DistrictModel> getDistricts(int _province_id) {
-//        mDataBase = getReadableDatabase();
-//        cursor = mDataBase.rawQuery("SELECT * FROM district WHERE CAST(province_id AS DECIMAL) = " + _province_id, null);
-//
-//        ArrayList<DistrictModel> list = new ArrayList<>();
-//        while (cursor.moveToNext()) {
-//            int id = cursor.getInt(cursor.getColumnIndex("id"));
-//            String name = cursor.getString(cursor.getColumnIndex("name"));
-//            String type = cursor.getString(cursor.getColumnIndex("type"));
-//            int province_id = cursor.getInt(cursor.getColumnIndex("province_id"));
-//
-//            list.add(new DistrictModel(id, province_id, name, type));
-//        }
-//        closeDB();
-//        return list;
-//
-//    }
-//
-//    //-------------FUNCTION FOR WARD TABLE------------------//
-//    public ArrayList<WardModel> getWards(int _district_id) {
-//        mDataBase = getReadableDatabase();
-//        cursor = mDataBase.rawQuery("SELECT * FROM ward WHERE CAST(district_id AS DECIMAL) = " + _district_id, null);
-//
-//        ArrayList<WardModel> list = new ArrayList<>();
-//        while (cursor.moveToNext()) {
-//            int id = cursor.getInt(cursor.getColumnIndex("id"));
-//            String name = cursor.getString(cursor.getColumnIndex("name"));
-//            String type = cursor.getString(cursor.getColumnIndex("type"));
-//            int district_id = cursor.getInt(cursor.getColumnIndex("district_id"));
-//
-//            list.add(new WardModel(id, district_id, name, type));
-//        }
-//        closeDB();
-//        return list;
-//
-//    }
 
     //Todo: Đóng Database
     private void closeDB() {

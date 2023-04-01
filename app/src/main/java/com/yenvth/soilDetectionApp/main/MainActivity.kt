@@ -1,279 +1,88 @@
-package com.yenvth.soilDetectionApp.main;
+package com.yenvth.soilDetectionApp.main
 
-import android.content.Intent;
-import android.content.SharedPreferences;
-import android.os.Bundle;
-import android.text.TextUtils;
-import android.view.Gravity;
-import android.view.MenuItem;
-import android.view.View;
-import android.widget.EditText;
-import android.widget.ImageView;
-import android.widget.LinearLayout;
-import android.widget.RelativeLayout;
-import android.widget.TextView;
+import android.content.Intent
+import android.os.Bundle
+import android.view.Gravity
+import android.view.MenuItem
+import android.view.View
+import androidx.appcompat.app.AppCompatActivity
+import com.yenvth.soilDetectionApp.R
+import com.yenvth.soilDetectionApp.cnnModel.classification.ClassifierActivity
+import com.yenvth.soilDetectionApp.databinding.ActivityMainBinding
+import com.yenvth.soilDetectionApp.detection.DetectionActivity
+import com.yenvth.soilDetectionApp.diction.DictionActivity
+import com.yenvth.soilDetectionApp.history.HistoryActivity
+import com.yenvth.soilDetectionApp.labeling.LabelingActivity
+import com.yenvth.soilDetectionApp.map.MapActivity
 
-import androidx.annotation.Nullable;
-import androidx.drawerlayout.widget.DrawerLayout;
+class MainActivity : AppCompatActivity(), View.OnClickListener {
+    private lateinit var binding: ActivityMainBinding
 
-import com.google.android.material.bottomsheet.BottomSheetDialog;
-import com.google.android.material.card.MaterialCardView;
-import com.google.android.material.navigation.NavigationView;
-import com.yenvth.soilDetectionApp.R;
-import com.yenvth.soilDetectionApp.base.BaseActivity;
-import com.yenvth.soilDetectionApp.cnnModel.classification.ClassifierActivity;
-import com.yenvth.soilDetectionApp.detection.DetectionActivity;
-import com.yenvth.soilDetectionApp.diction.DictionActivity;
-import com.yenvth.soilDetectionApp.history.HistoryActivity;
-import com.yenvth.soilDetectionApp.labeling.LabelingActivity;
-import com.yenvth.soilDetectionApp.login.LoginActivity;
-import com.yenvth.soilDetectionApp.map.MapActivity;
-import com.yenvth.soilDetectionApp.models.UserModel;
-import com.yenvth.soilDetectionApp.utils.CommonUtils;
-import com.yenvth.soilDetectionApp.utils.Constant;
-
-import butterknife.BindView;
-import butterknife.ButterKnife;
-import cn.pedant.SweetAlert.SweetAlertDialog;
-import de.hdodenhof.circleimageview.CircleImageView;
-
-public class MainActivity extends BaseActivity implements View.OnClickListener, MainView {
-
-    @BindView(R.id.btnMenu)
-    protected ImageView btnMenu;
-    @BindView(R.id.btnDiction)
-    protected MaterialCardView btnDiction;
-    @BindView(R.id.btnDetect)
-    protected MaterialCardView btnDetect;
-    @BindView(R.id.btnMap)
-    protected MaterialCardView btnMap;
-    @BindView(R.id.btnHis)
-    protected MaterialCardView btnHis;
-    @BindView(R.id.btnLabeling)
-    protected MaterialCardView btnLabeling;
-    @BindView(R.id.btnSearch)
-    protected LinearLayout btnSearch;
-    @BindView(R.id.navigationView)
-    protected NavigationView navigationView;
-    @BindView(R.id.drawer)
-    protected DrawerLayout drawer;
-    @BindView(R.id.btnLogin)
-    protected TextView btnLogin;
-    @BindView(R.id.imgUser)
-    protected CircleImageView imgUser;
-    @BindView(R.id.tvName)
-    protected TextView tvName;
-    @BindView(R.id.rlDetect)
-    protected RelativeLayout rlDetect;
-    @BindView(R.id.lnHis)
-    protected LinearLayout lnHis;
-    @BindView(R.id.lnLabel)
-    protected LinearLayout lnLabel;
-
-    private SharedPreferences sp;
-    private SharedPreferences.Editor editor;
-    private MainPresenterImpl presenter;
-
-    @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
-        getSupportActionBar().hide();
-        ButterKnife.bind(MainActivity.this);
-        presenter = new MainPresenterImpl(this, this);
-        init();
-        action();
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        binding = ActivityMainBinding.inflate(layoutInflater)
+        setContentView(binding.root)
+        supportActionBar?.hide()
+        action()
     }
 
-
-
-    private void init() {
-        sp = getSharedPreferences(Constant.PREFERENCE_NAME, MODE_PRIVATE);
-        editor = sp.edit();
-    }
-
-    private void action() {
-        btnMenu.setOnClickListener(this);
-        btnSearch.setOnClickListener(this);
-        btnDiction.setOnClickListener(this);
-        btnDetect.setOnClickListener(this);
-        btnMap.setOnClickListener(this);
-        btnHis.setOnClickListener(this);
-        btnLabeling.setOnClickListener(this);
-        btnLogin.setOnClickListener(this);
-        rlDetect.setOnClickListener(this);
-        lnHis.setOnClickListener(this);
-        lnLabel.setOnClickListener(this);
-
-        navigationView.setNavigationItemSelectedListener(menuItem -> {
-            int id = menuItem.getItemId();
-            Intent intent;
-            drawer.closeDrawers();
-            switch (id) {
-                case R.id.diction:
-                    intent = new Intent(MainActivity.this, DictionActivity.class);
-                    startActivity(intent);
-                    break;
-                case R.id.map:
-                    intent = new Intent(MainActivity.this, MapActivity.class);
-                    startActivity(intent);
-                    break;
-                case R.id.history:
-                    if (sp.getString("uid", "").equals("")) {
-                        intent = new Intent(MainActivity.this, LoginActivity.class);
-                        startActivityForResult(intent, Constant.LOGIN_HISTORY_REQUEST);
-                        break;
-                    }
-                    intent = new Intent(MainActivity.this, HistoryActivity.class);
-                    startActivity(intent);
-                    break;
-                case R.id.detect:
-                    intent = new Intent(MainActivity.this, DetectionActivity.class);
-                    startActivity(intent);
-                    break;
-                case R.id.labeling:
-                    if (sp.getString("uid", "").equals("")) {
-                        intent = new Intent(MainActivity.this, LoginActivity.class);
-                        startActivityForResult(intent, Constant.LOGIN_LABEL_REQUEST);
-                        break;
-                    }
-                    intent = new Intent(MainActivity.this, LabelingActivity.class);
-                    startActivity(intent);
-                    break;
-                case R.id.setting:
-                    final BottomSheetDialog bottomSheetDialog = new BottomSheetDialog(this);
-                    bottomSheetDialog.setContentView(R.layout.dialog_network_setting);
-                    EditText edIP = bottomSheetDialog.findViewById(R.id.edIP);
-                    TextView btnContinue = bottomSheetDialog.findViewById(R.id.btnContinue);
-                    String localIP = Constant.BASE_URL;
-                    localIP = localIP.substring(localIP.indexOf("http://") + 7, localIP.indexOf(":9191/"));
-                    edIP.setText(localIP);
-                    edIP.setSelection(localIP.length());
-                    btnContinue.setOnClickListener(v -> {
-                        String ip = edIP.getText().toString().trim();
-                        if (TextUtils.isEmpty(ip)) {
-                            CommonUtils.showError(MainActivity.this, "Vui lòng nhập tên nhãn");
-                            return;
-                        }
-                        Constant.BASE_URL = "http://" + ip + ":9191/";
-                        bottomSheetDialog.cancel();
-                    });
-                    bottomSheetDialog.show();
-                    break;
-                case R.id.signout:
-                    final SweetAlertDialog dialog = new SweetAlertDialog(MainActivity.this, SweetAlertDialog.WARNING_TYPE);
-                    dialog.setContentText("Bạn chắc chắn đăng xuất chứ?")
-                            .setConfirmText("Đồng ý")
-                            .setCancelText("Hủy")
-                            .showCancelButton(true)
-                            .setConfirmClickListener(sweetAlertDialog -> {
-                                editor.putString("uid", "");
-                                editor.putString("name", "");
-                                editor.apply();
-                                dialog.cancel();
-                                Intent intent1 = new Intent(MainActivity.this, LoginActivity.class);
-                                intent1.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
-                                startActivity(intent1);
-                            })
-                            .setCancelClickListener(sweetAlertDialog -> dialog.cancel())
-                            .show();
-                    break;
-
-            }
-            return false;
-        });
-    }
-
-    @Override
-    protected void onResume() {
-        super.onResume();
-        if (TextUtils.isEmpty(sp.getString("uid", ""))) {
-            btnLogin.setVisibility(View.VISIBLE);
-            imgUser.setVisibility(View.GONE);
-            MenuItem menuItem = navigationView.getMenu().findItem(R.id.signout);
-            menuItem.setVisible(false);
-
-        } else {
-            btnLogin.setVisibility(View.GONE);
-            imgUser.setVisibility(View.VISIBLE);
-            presenter.getInformationAfterLogin();
-            MenuItem menuItem = navigationView.getMenu().findItem(R.id.signout);
-            menuItem.setVisible(true);
-        }
-    }
-
-    @Override
-    public void onClick(View v) {
-        Intent intent;
-        switch (v.getId()) {
-            case R.id.btnMenu:
-                drawer.openDrawer(Gravity.LEFT);
-                break;
-            case R.id.btnDiction:
-            case R.id.btnSearch:
-                intent = new Intent(MainActivity.this, DictionActivity.class);
-                startActivity(intent);
-                break;
-            case R.id.btnDetect:
-                intent = new Intent(MainActivity.this, DetectionActivity.class);
-                startActivity(intent);
-                break;
-            case R.id.btnMap:
-                intent = new Intent(MainActivity.this, MapActivity.class);
-                startActivity(intent);
-                break;
-            case R.id.lnHis:
-            case R.id.btnHis:
-                if (sp.getString("uid", "").equals("")) {
-                    intent = new Intent(MainActivity.this, LoginActivity.class);
-                    startActivityForResult(intent, Constant.LOGIN_HISTORY_REQUEST);
-                    break;
+    private fun action() {
+        binding.btnMenu.setOnClickListener(this)
+        binding.btnSearch.setOnClickListener(this)
+        binding.btnDiction.setOnClickListener(this)
+        binding.btnDetect.setOnClickListener(this)
+        binding.btnMap.setOnClickListener(this)
+        binding.btnHis.setOnClickListener(this)
+        binding.btnLabeling.setOnClickListener(this)
+        binding.btnLogin.setOnClickListener(this)
+        binding.rlDetect.setOnClickListener(this)
+        binding.lnHis.setOnClickListener(this)
+        binding.lnLabel.setOnClickListener(this)
+        binding.navigationView.setNavigationItemSelectedListener { menuItem: MenuItem ->
+            val id: Int = menuItem.itemId
+            binding.drawer.closeDrawers()
+            when (id) {
+                R.id.diction -> {
+                    startActivity(Intent(this@MainActivity, DictionActivity::class.java))
                 }
-                intent = new Intent(MainActivity.this, HistoryActivity.class);
-                startActivity(intent);
-                break;
-            case R.id.lnLabel:
-            case R.id.btnLabeling:
-                if (sp.getString("uid", "").equals("")) {
-                    intent = new Intent(MainActivity.this, LoginActivity.class);
-                    startActivityForResult(intent, Constant.LOGIN_LABEL_REQUEST);
-                    break;
+                R.id.map -> {
+                    startActivity(Intent(this@MainActivity, MapActivity::class.java))
                 }
-                intent = new Intent(MainActivity.this, LabelingActivity.class);
-                startActivity(intent);
-                break;
-            case R.id.btnLogin:
-                intent = new Intent(MainActivity.this, LoginActivity.class);
-                startActivity(intent);
-                break;
-            case R.id.rlDetect:
-                intent = new Intent(MainActivity.this, ClassifierActivity.class);
-                startActivity(intent);
-                break;
-
+                R.id.history -> {
+                    startActivity(Intent(this@MainActivity, HistoryActivity::class.java))
+                }
+                R.id.detect -> {
+                    startActivity(Intent(this@MainActivity, DetectionActivity::class.java))
+                }
+                R.id.labeling -> {
+                    startActivity(Intent(this@MainActivity, LabelingActivity::class.java))
+                }
+            }
+            false
         }
     }
 
-    @Override
-    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
-        super.onActivityResult(requestCode, resultCode, data);
-        if (requestCode == Constant.LOGIN_HISTORY_REQUEST) {
-            if (resultCode == RESULT_OK) {
-                Intent intent = new Intent(MainActivity.this, HistoryActivity.class);
-                startActivity(intent);
-                overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out);
+    override fun onClick(v: View) {
+        when (v.id) {
+            R.id.btnMenu -> binding.drawer.openDrawer(Gravity.LEFT)
+            R.id.btnDiction, R.id.btnSearch -> {
+                startActivity(Intent(this@MainActivity, DictionActivity::class.java))
             }
-        } else if (requestCode == Constant.LOGIN_LABEL_REQUEST) {
-            if (resultCode == RESULT_OK) {
-                Intent intent = new Intent(MainActivity.this, LabelingActivity.class);
-                startActivity(intent);
-                overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out);
+            R.id.btnDetect -> {
+                startActivity(Intent(this@MainActivity, DetectionActivity::class.java))
+            }
+            R.id.btnMap -> {
+                startActivity(Intent(this@MainActivity, MapActivity::class.java))
+            }
+            R.id.lnHis, R.id.btnHis -> {
+                startActivity(Intent(this@MainActivity, HistoryActivity::class.java))
+            }
+            R.id.lnLabel, R.id.btnLabeling -> {
+                startActivity(Intent(this@MainActivity, LabelingActivity::class.java))
+            }
+            R.id.rlDetect -> {
+                startActivity(Intent(this@MainActivity, ClassifierActivity::class.java))
             }
         }
-    }
-
-    @Override
-    public void onGetInformationSuccess(UserModel userModel) {
-        tvName.setText(userModel.getName());
     }
 }

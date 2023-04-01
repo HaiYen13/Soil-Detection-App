@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Soil Detection App</string>
+    <string name="select_province">Chọn Tỉnh/TP</string>
+    <string name="select_district">Chọn Quận/Huyện</string>
+    <string name="select_ward">Chọn Xã/Phường</string>
+
+    <string name="tfe_ic_app_name" translation_description="Image Classification demo app [CHAR_LIMIT=40]">TFL Classify</string>
+    <string name="tfe_ic_camera_error" translation_description="Error regarding camera support[CHAR_LIMIT=40]">This device doesn\'t support Camera2 API.</string>
+    <string name="tfe_ic_gpu_quant_error" translation_description="Error regarding GPU support for Quant models[CHAR_LIMIT=60]">GPU does not yet supported quantized models.</string>
+    <string name="search_history">Lịch sử tìm kiếm</string>
+    <string name="are_you_sure_to_delete_history">Bạn chắc chắn xóa toàn bộ lịch sử chứ?</string>
+    <string name="ok">OK</string>
+    <string name="cancel">Hủy</string>
+    <string name="delete_successful">Xóa thành công</string>
+    <string name="delete_all_success">Xóa toàn bộ thành công</string>
+    <string name="my_labels">Nhãn dán của tôi</string>
+    <string name="choose_an_image">Chọn ảnh</string>
+    <string name="upload_successful">Tải thành công</string>
+    <string name="are_you_sure_to_delete_this_label">Bạn chắc chắn xóa nhãn dán này chứ?</string>
+    <string name="upload_failed">Tải lên thất bại</string>
+    <string name="soil_detection">Nhận dạng mẫu đất</string>
+    <string name="can_not_detect">Không thể nhận dạng</string>
+    <string name="please_choose_image">Vui lòng chọn hình ảnh.</string>
+    <string name="detect_asking_1">\"Đây có phải là \"</string>
+    <string name="detect_asking_2">\" không?\"</string>
+    <string name="thanks_for_contribution">Cảm ơn vì đóng góp của bạn</string>
+    <string name="update_date">\"Ngày cập nhật: \"</string>
+</resources>

@@ -1,10 +1,7 @@
-package com.yenvth.soilDetectionApp.detection;
+package com.yenvth.soilDetectionApp.detection
 
-import android.net.Uri;
+import android.net.Uri
 
-import com.yenvth.soilDetectionApp.models.DetectionModel;
-
-public interface DetectionPresenter<V extends DetectionView> {
-    void saveImageToFirebaseStorage(Uri uri);
-    void saveLabelDetection(DetectionModel model);
+interface DetectionPresenter<V : DetectionView?> {
+    fun saveImageToFirebaseStorage(uri: Uri, labelName: String, isCorrect: Boolean)
 }

@@ -1,15 +1,11 @@
-package com.yenvth.soilDetectionApp.labeling;
+package com.yenvth.soilDetectionApp.labeling
 
-import com.yenvth.soilDetectionApp.models.LabelingModel;
+import com.yenvth.soilDetectionApp.models.LabelModel
 
-import java.util.ArrayList;
-
-public interface LabelingView {
-    void onGetListLabelSuccess(ArrayList<LabelingModel> list);
-
-    void addImageFirebaseSuccess(String url);
-
-    void onAddLabelSuccess();
-
-    void onDeleteLabelSuccess();
+interface LabelingView {
+    fun onGetListLabelSuccess(list: List<LabelModel>)
+    fun onAddLabelSuccess()
+    fun onDeleteLabelSuccess()
+    fun showLoading()
+    fun hideLoading()
 }

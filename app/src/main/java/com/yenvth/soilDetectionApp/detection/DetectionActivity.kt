@@ -1,208 +1,203 @@
-package com.yenvth.soilDetectionApp.detection;
+package com.yenvth.soilDetectionApp.detection
 
-import android.Manifest;
-import android.content.ContentValues;
-import android.content.Intent;
-import android.content.pm.PackageManager;
-import android.graphics.Bitmap;
-import android.net.Uri;
-import android.os.Bundle;
-import android.os.Handler;
-import android.provider.MediaStore;
-import android.view.Surface;
-import android.view.View;
-import android.widget.ImageView;
-import android.widget.LinearLayout;
-import android.widget.TextView;
+import android.Manifest
+import android.annotation.SuppressLint
+import android.content.ContentValues
+import android.content.Intent
+import android.content.pm.PackageManager
+import android.graphics.Bitmap
+import android.net.Uri
+import android.os.Bundle
+import android.os.Handler
+import android.provider.MediaStore
+import android.view.Surface
+import android.view.View
+import androidx.appcompat.app.AppCompatActivity
+import androidx.core.app.ActivityCompat
+import com.theartofdev.edmodo.cropper.CropImage
+import com.theartofdev.edmodo.cropper.CropImageView
+import com.yenvth.soilDetectionApp.R
+import com.yenvth.soilDetectionApp.cnnModel.classification.ClassifierActivity
+import com.yenvth.soilDetectionApp.cnnModel.tflite.Classifier
+import com.yenvth.soilDetectionApp.databinding.ActivityDetectionBinding
+import com.yenvth.soilDetectionApp.utils.CommonUtils
+import java.io.IOException
+import java.util.*
 
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.app.ActivityCompat;
+class DetectionActivity : AppCompatActivity(), View.OnClickListener, DetectionView {
 
-import com.theartofdev.edmodo.cropper.CropImage;
-import com.theartofdev.edmodo.cropper.CropImageView;
-import com.yenvth.soilDetectionApp.R;
-import com.yenvth.soilDetectionApp.cnnModel.classification.ClassifierActivity;
-import com.yenvth.soilDetectionApp.cnnModel.tflite.Classifier;
-import com.yenvth.soilDetectionApp.models.DetectionModel;
-import com.yenvth.soilDetectionApp.utils.CommonUtils;
+    private lateinit var binding: ActivityDetectionBinding
+    private var bitmap: Bitmap? = null
+    private var uri: Uri? = null
+    private val screenOrientation: Int
+        get() = when (windowManager.defaultDisplay.rotation) {
+            Surface.ROTATION_270 -> 270
+            Surface.ROTATION_180 -> 180
+            Surface.ROTATION_90 -> 90
+            else -> 0
+        }
 
-import net.cachapa.expandablelayout.ExpandableLayout;
-
-import java.io.IOException;
-import java.util.List;
-import java.util.Random;
-
-import butterknife.BindView;
-import butterknife.ButterKnife;
-
-public class DetectionActivity extends AppCompatActivity implements View.OnClickListener, DetectionView {
-
-    @BindView(R.id.btnBack)
-    protected ImageView btnBack;
-    @BindView(R.id.tvToolbar)
-    protected TextView tvToolbar;
-    @BindView(R.id.btnCam)
-    protected LinearLayout btnCam;
-    @BindView(R.id.btnGallery)
-    protected LinearLayout btnGallery;
-    @BindView(R.id.image)
-    protected ImageView image;
-    @BindView(R.id.btnDetect)
-    protected TextView btnDetect;
-    @BindView(R.id.tvResult)
-    protected TextView tvResult;
-    @BindView(R.id.lnResult)
-    protected LinearLayout lnResult;
-    @BindView(R.id.expandLayout)
-    protected ExpandableLayout expandLayout;
-    @BindView(R.id.tvMessage)
-    protected TextView tvMessage;
-    @BindView(R.id.btnNo)
-    protected TextView btnNo;
-    @BindView(R.id.btnYes)
-    protected TextView btnYes;
-
-    private Bitmap bitmap;
-    private Uri uri;
-    private DetectionPresenterImpl<DetectionView> presenter;
-    private Classifier classifier;
-    private Integer sensorOrientation;
-
-    @Override
-    protected void onCreate(@Nullable Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_detection);
-        getSupportActionBar().hide();
-        ButterKnife.bind(this);
-        presenter = new DetectionPresenterImpl<>(this, this);
-        init();
-        action();
+    private val presenter: DetectionPresenterImpl<DetectionView> by lazy {
+        DetectionPresenterImpl(this)
+    }
+    private val classifier: Classifier by lazy {
+        Classifier.create(
+            this,
+            Classifier.Model.QUANTIZED_EFFICIENTNET,
+            Classifier.Device.CPU,
+            1
+        )
     }
 
-    private void init() {
-        tvToolbar.setText("Nhận dạng mẫu đất");
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        binding = ActivityDetectionBinding.inflate(layoutInflater)
+        setContentView(binding.root)
+        supportActionBar?.hide()
+        init()
+        action()
     }
 
-    private void action() {
-        btnBack.setOnClickListener(this);
-        btnCam.setOnClickListener(this);
-        btnGallery.setOnClickListener(this);
-        btnDetect.setOnClickListener(this);
+    private fun init() {
+        binding.header.tvToolbar.text = getString(R.string.soil_detection)
     }
 
-    @Override
-    public void onClick(View view) {
-        switch (view.getId()) {
-            case R.id.btnBack:
-                onBackPressed();
-                break;
-            case R.id.btnCam:
-                checkCameraPermission();
-                break;
-            case R.id.btnGallery:
-                CropImage.startPickImageActivity(DetectionActivity.this);
-                break;
-            case R.id.btnDetect:
+    private fun action() {
+        binding.header.btnBack.setOnClickListener(this)
+        binding.btnCam.setOnClickListener(this)
+        binding.btnGallery.setOnClickListener(this)
+        binding.btnDetect.setOnClickListener(this)
+    }
+
+    override fun onClick(view: View) {
+        when (view.id) {
+            R.id.btnBack -> onBackPressed()
+            R.id.btnCam -> checkCameraPermission()
+            R.id.btnGallery -> CropImage.startPickImageActivity(this@DetectionActivity)
+            R.id.btnDetect -> {
                 if (uri == null) {
-                    CommonUtils.showError(this, "Vui lòng chọn hình ảnh.");
-                    break;
+                    CommonUtils.showSnackBar(this, getString(R.string.please_choose_image), false)
+                    return
                 }
-                presenter.saveImageToFirebaseStorage(uri);
-                break;
+                detectSoil()
+            }
         }
     }
 
-    @Override
-    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
-        super.onActivityResult(requestCode, resultCode, data);
+    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+        super.onActivityResult(requestCode, resultCode, data)
         if (resultCode == RESULT_OK) {
             if (requestCode == CropImage.PICK_IMAGE_CHOOSER_REQUEST_CODE) {
-                Uri uriImage = CropImage.getPickImageResultUri(this, data);
+                val uriImage = CropImage.getPickImageResultUri(this, data)
                 if (CropImage.isReadExternalStoragePermissionsRequired(this, uriImage)) {
-                    uri = uriImage;
+                    uri = uriImage
                 } else {
-                    startCrop(uriImage);
+                    startCrop(uriImage)
                 }
             }
             if (requestCode == 2) {
-                startCrop(uri);
+                startCrop(uri)
             }
-
             if (requestCode == CropImage.CROP_IMAGE_ACTIVITY_REQUEST_CODE) {
-                CropImage.ActivityResult result = CropImage.getActivityResult(data);
-                uri = result.getUri();
-                image.setImageURI(result.getUri());
-                image.setBackground(null);
+                val result = CropImage.getActivityResult(data)
+                uri = result.uri
+                binding.image.setImageURI(result.uri)
+                binding.image.background = null
                 try {
-                    bitmap = MediaStore.Images.Media.getBitmap(getContentResolver(), uri);
-                } catch (Exception e) {
+                    bitmap = MediaStore.Images.Media.getBitmap(contentResolver, uri)
+                } catch (e: Exception) {
                     //handle exception
                 }
-                btnDetect.setVisibility(View.VISIBLE);
-                lnResult.setVisibility(View.GONE);
+                binding.btnDetect.visibility = View.VISIBLE
+                binding.lnResult.visibility = View.GONE
             }
         }
     }
 
     //Todo: Get URI from Gallery
-    private void startCrop(Uri uri) {
-        CropImage.activity(uri).setGuidelines(CropImageView.Guidelines.ON).setMultiTouchEnabled(true).start(this);
+    private fun startCrop(uri: Uri?) {
+        CropImage.activity(uri).setGuidelines(CropImageView.Guidelines.ON)
+            .setMultiTouchEnabled(true).start(this)
     }
 
-    @Override
-    public void onSaveImageSuccess(String url) {
+    @SuppressLint("SetTextI18n")
+    private fun detectSoil() {
         try {
-            if (bitmap != null) {
-                if (classifier == null) {
-                    classifier = Classifier.create(this, Classifier.Model.QUANTIZED_EFFICIENTNET, Classifier.Device.CPU, 1);
-                }
-                sensorOrientation = 90 - getScreenOrientation();
-                List<Classifier.Recognition> results = classifier.recognizeImage(bitmap, sensorOrientation);
-                if (results != null && results.size() >= 3) {
-                    Classifier.Recognition recognition = results.get(0);
-                    if (recognition != null) {
-                        if (recognition.getTitle() != null) {
-                            lnResult.setVisibility(View.VISIBLE);
-                            tvResult.setText(recognition.getTitle().toUpperCase());
-                            final Handler handler = new Handler();
-                            handler.postDelayed(() -> {
-                                expandLayout.setExpanded(true);
-                                tvMessage.setText("Đây có phải là " + recognition.getTitle().toUpperCase() + " không?");
-                            }, new Random().nextInt(2000));
-                            btnDetect.setVisibility(View.GONE);
-                        }
+            val sensorOrientation = 90 - screenOrientation
+            val results = classifier.recognizeImage(bitmap, sensorOrientation)
+            if (results != null && results.size >= 3) {
+                val recognition = results[0]
+                if (recognition != null) {
+                    if (recognition.title != null) {
+                        binding.lnResult.visibility = View.VISIBLE
+                        binding.tvResult.text = recognition.title.toUpperCase(Locale.getDefault())
+                        Handler().postDelayed({
+                            binding.expandLayout.expand()
+                            binding.tvMessage.text =
+                                "${getString(R.string.detect_asking_1)}${
+                                    recognition.title.toUpperCase(
+                                        Locale.getDefault()
+                                    )
+                                }${
+                                    getString(
+                                        R.string.detect_asking_2
+                                    )
+                                }"
+                        }, Random().nextInt(2000).toLong())
+                        binding.btnDetect.visibility = View.GONE
                     }
-                } else {
-                    expandLayout.setExpanded(false);
-                    lnResult.setVisibility(View.VISIBLE);
-                    tvResult.setText("Không thể nhận dạng");
-                    btnDetect.setVisibility(View.VISIBLE);
                 }
+            } else {
+                binding.expandLayout.collapse()
+                binding.lnResult.visibility = View.VISIBLE
+                binding.tvResult.text = getString(R.string.can_not_detect)
+                binding.btnDetect.visibility = View.VISIBLE
             }
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-//        if (!TextUtils.isEmpty(url)) {
-////            presenter.detectSoil("https://images.theconversation.com/files/275002/original/file-20190516-69195-1yg53ff.jpg?ixlib=rb-1.1.0&q=45&auto=format&w=1200&h=1200.0&fit=crop");
-//        }
-        btnYes.setOnClickListener(view -> {
-            expandLayout.setExpanded(false);
-            presenter.saveLabelDetection(new DetectionModel(url, tvResult.getText().toString().trim(), System.currentTimeMillis()));
-            CommonUtils.showMessage(DetectionActivity.this, "Cảm ơn vì đóng góp của bạn");
-        });
 
-        btnNo.setOnClickListener(view -> {
-            expandLayout.setExpanded(false);
-            presenter.saveLabelDetection(new DetectionModel(url, "Chưa xác nhận", System.currentTimeMillis()));
-            CommonUtils.showMessage(DetectionActivity.this, "Cảm ơn vì đóng góp của bạn");
-        });
+            binding.btnYes.setOnClickListener {
+                binding.expandLayout.collapse()
+                uri?.let { selectUri ->
+                    presenter.saveImageToFirebaseStorage(
+                        selectUri,
+                        binding.tvResult.text.toString().trim(),
+                        true
+                    )
+                }
+                CommonUtils.showSnackBar(
+                    this@DetectionActivity,
+                    getString(R.string.thanks_for_contribution)
+                )
+            }
+            binding.btnNo.setOnClickListener {
+                binding.expandLayout.collapse()
+                uri?.let { selectUri ->
+                    presenter.saveImageToFirebaseStorage(
+                        selectUri,
+                        binding.tvResult.text.toString().trim(),
+                        false
+                    )
+                }
+                CommonUtils.showSnackBar(
+                    this@DetectionActivity,
+                    getString(R.string.thanks_for_contribution)
+                )
+            }
+        } catch (e: IOException) {
+            e.printStackTrace()
+        }
+
     }
 
-    private void checkCameraPermission() {
-        if (ActivityCompat.checkSelfPermission(this, Manifest.permission.CAMERA) == PackageManager.PERMISSION_GRANTED &&
-                ActivityCompat.checkSelfPermission(this, Manifest.permission.WRITE_EXTERNAL_STORAGE) == PackageManager.PERMISSION_GRANTED) {
+    private fun checkCameraPermission() {
+        if (ActivityCompat.checkSelfPermission(
+                this,
+                Manifest.permission.CAMERA
+            ) == PackageManager.PERMISSION_GRANTED &&
+            ActivityCompat.checkSelfPermission(
+                this,
+                Manifest.permission.WRITE_EXTERNAL_STORAGE
+            ) == PackageManager.PERMISSION_GRANTED
+        ) {
 //            ContentValues values = new ContentValues();
 //            values.put(MediaStore.Images.Media.TITLE, "NewPic");
 //            values.put(MediaStore.Images.Media.DESCRIPTION, "Image To Detect");
@@ -210,39 +205,33 @@ public class DetectionActivity extends AppCompatActivity implements View.OnClick
 //            Intent cameraIntent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
 //            cameraIntent.putExtra(MediaStore.EXTRA_OUTPUT, uri);
 //            startActivityForResult(cameraIntent, 2);
-            Intent intent = new Intent(DetectionActivity.this, ClassifierActivity.class);
-            startActivity(intent);
+            val intent = Intent(this@DetectionActivity, ClassifierActivity::class.java)
+            startActivity(intent)
         } else {
-            ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.CAMERA, Manifest.permission.WRITE_EXTERNAL_STORAGE}, 44);
+            ActivityCompat.requestPermissions(
+                this,
+                arrayOf(Manifest.permission.CAMERA, Manifest.permission.WRITE_EXTERNAL_STORAGE),
+                44
+            )
         }
     }
 
-    @Override
-    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
-        super.onRequestPermissionsResult(requestCode, permissions, grantResults);
+    override fun onRequestPermissionsResult(
+        requestCode: Int,
+        permissions: Array<String>,
+        grantResults: IntArray
+    ) {
+        super.onRequestPermissionsResult(requestCode, permissions, grantResults)
         if (requestCode == 44) {
-            if (grantResults.length > 0){
-                ContentValues values = new ContentValues();
-                values.put(MediaStore.Images.Media.TITLE, "NewPic");
-                values.put(MediaStore.Images.Media.DESCRIPTION, "Image To Detect");
-                uri = getContentResolver().insert(MediaStore.Images.Media.EXTERNAL_CONTENT_URI, values);
-                Intent cameraIntent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
-                cameraIntent.putExtra(MediaStore.EXTRA_OUTPUT, uri);
-                startActivityForResult(cameraIntent, 2);
+            if (grantResults.isNotEmpty()) {
+                val values = ContentValues()
+                values.put(MediaStore.Images.Media.TITLE, "NewPic")
+                values.put(MediaStore.Images.Media.DESCRIPTION, "Image To Detect")
+                uri = contentResolver.insert(MediaStore.Images.Media.EXTERNAL_CONTENT_URI, values)
+                val cameraIntent = Intent(MediaStore.ACTION_IMAGE_CAPTURE)
+                cameraIntent.putExtra(MediaStore.EXTRA_OUTPUT, uri)
+                startActivityForResult(cameraIntent, 2)
             }
-        }
-    }
-
-    protected int getScreenOrientation() {
-        switch (getWindowManager().getDefaultDisplay().getRotation()) {
-            case Surface.ROTATION_270:
-                return 270;
-            case Surface.ROTATION_180:
-                return 180;
-            case Surface.ROTATION_90:
-                return 90;
-            default:
-                return 0;
         }
     }
 }

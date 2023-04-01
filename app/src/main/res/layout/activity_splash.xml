@@ -1,30 +1,28 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:gravity="center"
     android:background="@drawable/bg_splash"
+    android:gravity="center"
     android:orientation="vertical">
 
-    <ImageView
+    <androidx.appcompat.widget.AppCompatImageView
         android:id="@+id/logo"
         android:layout_width="@dimen/_80sdp"
         android:layout_height="@dimen/_80sdp"
-        app:tint="#fff"
-        android:src="@drawable/logo"/>
+        app:srcCompat="@drawable/logo"
+        app:tint="#fff" />
 
     <TextView
-        android:layout_marginTop="10dp"
         android:id="@+id/app_name"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@id/logo"
         android:layout_centerHorizontal="true"
+        android:layout_marginTop="10dp"
         android:fontFamily="@font/prompt_bolditalic"
         android:text="SORA"
         android:textColor="#fff"
         android:textSize="30dp" />
-
-
 </LinearLayout>

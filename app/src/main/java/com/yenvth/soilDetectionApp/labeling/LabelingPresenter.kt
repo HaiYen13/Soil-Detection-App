@@ -1,13 +1,10 @@
-package com.yenvth.soilDetectionApp.labeling;
+package com.yenvth.soilDetectionApp.labeling
 
-import android.net.Uri;
+import android.net.Uri
 
-public interface LabelingPresenter<V extends LabelingView> {
-    void getListLabels();
 
-    void addImageLabelFirebase(Uri uri);
-
-    void addLabel(String labelName, String url);
-
-    void deleteLabel(int label_id);
+interface LabelingPresenter<V : LabelingView?> {
+    fun getLabels()
+    fun addLabel(labelName: String, uri: Uri)
+    fun deleteLabel(labelId: Int)
 }

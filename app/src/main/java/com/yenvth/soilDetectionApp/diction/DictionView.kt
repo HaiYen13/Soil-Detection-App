@@ -1,10 +1,8 @@
-package com.yenvth.soilDetectionApp.diction;
+package com.yenvth.soilDetectionApp.diction
 
-import com.yenvth.soilDetectionApp.models.SoilModel;
+import com.yenvth.soilDetectionApp.models.SoilModel
 
-import java.util.ArrayList;
-
-public interface DictionView {
-    void onGetListSoilSuccess(ArrayList<SoilModel> soilModels);
-    void onSaveHistorySuccess();
+interface DictionView {
+    fun onGetListSoilSuccess(soilModels: List<SoilModel>)
+    fun onSaveHistorySuccess()
 }

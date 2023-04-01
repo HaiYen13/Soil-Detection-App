@@ -1,5 +1,5 @@
-package com.yenvth.soilDetectionApp.map;
+package com.yenvth.soilDetectionApp.map
 
-public interface MapPresenter<V extends MapView> {
-    void getListSoilByProvince(int provinceId);
+interface MapPresenter<V : MapView?> {
+    fun getListSoilByProvince(provinceId: Int)
 }

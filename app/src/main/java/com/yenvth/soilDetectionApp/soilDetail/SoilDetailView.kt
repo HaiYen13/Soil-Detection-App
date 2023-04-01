@@ -1,7 +1,7 @@
-package com.yenvth.soilDetectionApp.soilDetail;
+package com.yenvth.soilDetectionApp.soilDetail
 
-import com.yenvth.soilDetectionApp.models.SoilModel;
+import com.yenvth.soilDetectionApp.models.SoilModel
 
-public interface SoilDetailView {
-    void onGetSoilDetails(SoilModel soilModel);
+interface SoilDetailView {
+    fun onGetSoilDetails(soilModel: SoilModel)
 }
