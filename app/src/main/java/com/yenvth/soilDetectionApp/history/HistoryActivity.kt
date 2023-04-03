@@ -3,6 +3,7 @@ package com.yenvth.soilDetectionApp.history
 import android.content.Intent
 import android.os.Bundle
 import android.view.View
+import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -17,13 +18,9 @@ import com.yenvth.soilDetectionApp.utils.CommonUtils
 
 class HistoryActivity : AppCompatActivity(),
     View.OnClickListener,
-    HistoryView,
     OnHistoryItemClickListener {
     private lateinit var binding: ActivityHistoryBinding
-
-    private val presenter: HistoryPresenterImpl<HistoryView> by lazy {
-        HistoryPresenterImpl(this, this)
-    }
+    private val viewModel by viewModels<HistoryViewModel>()
 
     private val mAdapter: HistoryAdapter by lazy {
         HistoryAdapter(this, this)
@@ -36,6 +33,7 @@ class HistoryActivity : AppCompatActivity(),
         supportActionBar?.hide()
         init()
         action()
+        setupObserve()
     }
 
     private fun init() {
@@ -45,12 +43,28 @@ class HistoryActivity : AppCompatActivity(),
         binding.recyclerViewHistory.layoutManager = layoutManager
         binding.recyclerViewHistory.adapter = mAdapter
 
-        presenter.getHistories()
+        viewModel.getHistories()
     }
 
     private fun action() {
         binding.header.btnBack.setOnClickListener(this)
         binding.btnDeleteAll.setOnClickListener(this)
+    }
+
+    private fun setupObserve() {
+        viewModel.histories.observe(this) { historyModels ->
+            mAdapter.setData(historyModels)
+        }
+
+        viewModel.deleteStatus.observe(this) {
+            CommonUtils.showSnackBar(this@HistoryActivity, getString(R.string.delete_successful))
+            viewModel.getHistories()
+        }
+
+        viewModel.deleteAllStatus.observe(this) {
+            CommonUtils.showSnackBar(this@HistoryActivity, getString(R.string.delete_all_success))
+            viewModel.getHistories()
+        }
     }
 
     override fun onClick(view: View) {
@@ -64,26 +78,12 @@ class HistoryActivity : AppCompatActivity(),
                     .showCancelButton(true)
                     .setConfirmClickListener {
                         dialog.cancel()
-                        presenter.deleteAllHistories()
+                        viewModel.deleteAllHistories()
                     }
                     .setCancelClickListener { dialog.cancel() }
                     .show()
             }
         }
-    }
-
-    override fun onGetListHistorySuccess(historyModels: List<HistoryModel>) {
-        mAdapter.setData(historyModels)
-    }
-
-    override fun onDeleteHistorySuccess() {
-        CommonUtils.showSnackBar(this@HistoryActivity, getString(R.string.delete_successful))
-        presenter.getHistories()
-    }
-
-    override fun onDeleteAllHistoriesSuccess() {
-        CommonUtils.showSnackBar(this@HistoryActivity, getString(R.string.delete_all_success))
-        presenter.getHistories()
     }
 
     override fun onHistoryClick(historyModel: HistoryModel) {
@@ -93,6 +93,6 @@ class HistoryActivity : AppCompatActivity(),
     }
 
     override fun onItemDelete(historiesId: Int) {
-        presenter.deleteHistory(historiesId)
+        viewModel.deleteHistory(historiesId)
     }
 }

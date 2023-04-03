@@ -6,9 +6,8 @@ import androidx.room.PrimaryKey
 
 @Entity(tableName = "ward")
 data class WardRecord(
-    @PrimaryKey
-    @ColumnInfo(name = "id") val wardId: Int = 0,
+    @PrimaryKey @ColumnInfo(name = "id") val wardId: Int = 0,
     @ColumnInfo(name = "name") val wardName: String?,
     @ColumnInfo(name = "type") val type: String?,
-    @ColumnInfo(name = "district_id") val districtId: Int
+    @ColumnInfo(name = "district_id") val districtId: Int?
 )

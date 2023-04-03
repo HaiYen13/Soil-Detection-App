@@ -20,5 +20,5 @@ internal fun WardRecord.toModel() = WardModel(
     wardId = this.wardId,
     wardName = this.wardName,
     type = this.type,
-    districtId = this.districtId
+    districtId = this.districtId ?: 0
 )

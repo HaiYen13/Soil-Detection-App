@@ -20,5 +20,5 @@ internal fun DistrictRecord.toModel() = DistrictModel(
     districtId = this.districtId,
     districtName = this.districtName,
     type = this.type,
-    provinceId = this.provinceId,
+    provinceId = this.provinceId ?: 0,
 )

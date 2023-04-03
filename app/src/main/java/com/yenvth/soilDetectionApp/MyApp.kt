@@ -21,14 +21,14 @@ class MyApp : Application() {
     override fun onCreate() {
         super.onCreate()
         AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO)
-//        DbHelper.copyDataBase(this)
+        DbHelper.copyDataBase(this)
         database = Room.databaseBuilder(
             this,
             AppDatabase::class.java, SOIL_DATABASE_NAME
         ).build()
-//        resourceDatabase = Room.databaseBuilder(
-//            this,
-//            ResourceDatabase::class.java, RESOURCE_DATABASE_NAME
-//        ).build()
+        resourceDatabase = Room.databaseBuilder(
+            this,
+            ResourceDatabase::class.java, RESOURCE_DATABASE_NAME
+        ).build()
     }
 }

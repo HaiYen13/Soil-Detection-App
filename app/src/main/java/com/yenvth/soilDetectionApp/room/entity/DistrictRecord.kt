@@ -10,5 +10,5 @@ data class DistrictRecord(
     @ColumnInfo(name = "id") val districtId: Int = 0,
     @ColumnInfo(name = "name") val districtName: String?,
     @ColumnInfo(name = "type") val type: String?,
-    @ColumnInfo(name = "province_id") val provinceId: Int
+    @ColumnInfo(name = "province_id") val provinceId: Int?
 )

@@ -1,0 +1,1473 @@
+{
+  "province_soil": {
+    "-MbCARhBSvyjCUH2sTfq": {
+      "province_id": 1,
+      "province_name": "Hà Nội",
+      "soil_id": 2,
+      "soil_name": "Gleyic Acrisols"
+    },
+    "-MbCARhaDaI1oTKB94Cm": {
+      "province_id": 1,
+      "province_name": "Hà Nội",
+      "soil_id": 3,
+      "soil_name": "Orthic Acrisols"
+    },
+    "-MbCARhbCCbWaQJPQzCf": {
+      "province_id": 1,
+      "province_name": "Hà Nội",
+      "soil_id": 9,
+      "soil_name": "Lithosols"
+    },
+    "-MbCARhcI7cgz0Y7IMlu": {
+      "province_id": 1,
+      "province_name": "Hà Nội",
+      "soil_id": 10,
+      "soil_name": "Eutric Fluvisols"
+    },
+    "-MbCARhd3GR0HJTxllID": {
+      "province_id": 1,
+      "province_name": "Hà Nội",
+      "soil_id": 12,
+      "soil_name": "Chromic Luvisols "
+    },
+    "-MbCARhd3GR0HJTxllIE": {
+      "province_id": 1,
+      "province_name": "Hà Nội",
+      "soil_id": 8,
+      "soil_name": "Eutric Gleysols"
+    },
+    "-MbCARhexHHrgSPQ_W9M": {
+      "province_id": 2,
+      "province_name": "Hà Giang ",
+      "soil_id": 3,
+      "soil_name": "Orthic Acrisols"
+    },
+    "-MbCARhexHHrgSPQ_W9N": {
+      "province_id": 2,
+      "province_name": "Hà Giang ",
+      "soil_id": 9,
+      "soil_name": "Lithosols"
+    },
+    "-MbCARhfk5mTx21BwTYC": {
+      "province_id": 2,
+      "province_name": "Hà Giang ",
+      "soil_id": 12,
+      "soil_name": "Chromic Luvisols"
+    },
+    "-MbCARhgYZcncR03TJoO": {
+      "province_id": 4,
+      "province_name": "Cao Bằng",
+      "soil_id": 1,
+      "soil_name": "Ferric Acrisols"
+    },
+    "-MbCARhgYZcncR03TJoP": {
+      "province_id": 4,
+      "province_name": "Cao Bằng",
+      "soil_id": 3,
+      "soil_name": "Orthic Acrisols"
+    },
+    "-MbCARhht4J3vxVXCX_3": {
+      "province_id": 4,
+      "province_name": "Cao Bằng",
+      "soil_id": 9,
+      "soil_name": "Lithosols"
+    },
+    "-MbCARhiZlyy4dJGuPG_": {
+      "province_id": 6,
+      "province_name": "Bắc Cạn",
+      "soil_id": 3,
+      "soil_name": "Orthic Acrisols"
+    },
+    "-MbCARhj42vlLeNrhxCD": {
+      "province_id": 8,
+      "province_name": "Tuyên Quang ",
+      "soil_id": 1,
+      "soil_name": "Ferric Acrisols"
+    },
+    "-MbCARhk5cKQVnh6h7Df": {
+      "province_id": 8,
+      "province_name": "Tuyên Quang ",
+      "soil_id": 3,
+      "soil_name": "Orthic Acrisols"
+    },
+    "-MbCARhlf-o6cd0V5M1X": {
+      "province_id": 10,
+      "province_name": "Lào Cai ",
+      "soil_id": 1,
+      "soil_name": "Ferric Acrisols"
+    },
+    "-MbCARhm0lxA0ZD_FhqL": {
+      "province_id": 10,
+      "province_name": "Lào Cai ",
+      "soil_id": 3,
+      "soil_name": "Orthic Acrisols"
+    },
+    "-MbCARhr0HaxxllE_g2s": {
+      "province_id": 10,
+      "province_name": "Lào Cai ",
+      "soil_id": 9,
+      "soil_name": "Lithosols"
+    },
+    "-MbCARhsSUyVv-_T5Ecv": {
+      "province_id": 11,
+      "province_name": "Điện Biên ",
+      "soil_id": 3,
+      "soil_name": "Orthic Acrisols"
+    },
+    "-MbCARhwFt8fdCGP_MEM": {
+      "province_id": 11,
+      "province_name": "Điện Biên ",
+      "soil_id": 12,
+      "soil_name": "Chromic Luvisols"
+    },
+    "-MbCARhwFt8fdCGP_MEN": {
+      "province_id": 12,
+      "province_name": "Lai châu",
+      "soil_id": 1,
+      "soil_name": "Ferric Acrisols"
+    },
+    "-MbCARhx9SUnxIEW4p_r": {
+      "province_id": 12,
+      "province_name": "Lai châu",
+      "soil_id": 3,
+      "soil_name": "Orthic Acrisols"
+    },
+    "-MbCARhy9CPByaSSL6Oi": {
+      "province_id": 12,
+      "province_name": "Lai châu",
+      "soil_id": 9,
+      "soil_name": "Lithosols "
+    },
+    "-MbCARhz3K9hXW8ASvfr": {
+      "province_id": 12,
+      "province_name": "Lai châu",
+      "soil_id": 12,
+      "soil_name": "Chromic Luvisols"
+    },
+    "-MbCARi-hHRDa7HCx0eC": {
+      "province_id": 14,
+      "province_name": "Sơn La",
+      "soil_id": 3,
+      "soil_name": "Orthic Acrisolss"
+    },
+    "-MbCARi0OE_0mBQWPY_p": {
+      "province_id": 14,
+      "province_name": "Sơn La",
+      "soil_id": 12,
+      "soil_name": "Chromic Luvisols"
+    },
+    "-MbCARi16Dvy_XczG_yf": {
+      "province_id": 15,
+      "province_name": "Yên Bái ",
+      "soil_id": 1,
+      "soil_name": "Ferric Acrisols"
+    },
+    "-MbCARi2IQVTXQXPh0YR": {
+      "province_id": 15,
+      "province_name": "Yên Bái ",
+      "soil_id": 3,
+      "soil_name": "Orthic Acrisols"
+    },
+    "-MbCARi3JE8Nw31iRyA5": {
+      "province_id": 17,
+      "province_name": "Hòa Bình",
+      "soil_id": 1,
+      "soil_name": "Ferric Acrisols"
+    },
+    "-MbCARi44ey3K6z8cwY8": {
+      "province_id": 17,
+      "province_name": "Hòa Bình",
+      "soil_id": 2,
+      "soil_name": "Gleyic Acrisols"
+    },
+    "-MbCARi44ey3K6z8cwY9": {
+      "province_id": 17,
+      "province_name": "Hòa Bình",
+      "soil_id": 3,
+      "soil_name": "Orthic Acrisols"
+    },
+    "-MbCARi5vvFO4EjjolxJ": {
+      "province_id": 17,
+      "province_name": "Hòa Bình",
+      "soil_id": 9,
+      "soil_name": "Lithosols"
+    },
+    "-MbCARi6qFR6txshmcJz": {
+      "province_id": 17,
+      "province_name": "Hòa Bình",
+      "soil_id": 12,
+      "soil_name": "Chromic Luvisols"
+    },
+    "-MbCARi6qFR6txshmcK-": {
+      "province_id": 18,
+      "province_name": "Cà Mau",
+      "soil_id": 8,
+      "soil_name": "Eutric Gleysols"
+    },
+    "-MbCARi7zXzPLqqU2-5p": {
+      "province_id": 18,
+      "province_name": "Cà Mau",
+      "soil_id": 10,
+      "soil_name": "Eutric Fluvisols"
+    },
+    "-MbCARi8MHGPgZm2JLg6": {
+      "province_id": 18,
+      "province_name": "Cà Mau",
+      "soil_id": 11,
+      "soil_name": "Thionic Fluvisols"
+    },
+    "-MbCARi9803L4lV0_n_V": {
+      "province_id": 18,
+      "province_name": "Cà Mau",
+      "soil_id": 13,
+      "soil_name": "Dystric Histosols"
+    },
+    "-MbCARi9803L4lV0_n_W": {
+      "province_id": 19,
+      "province_name": "Thái Nguyên",
+      "soil_id": 1,
+      "soil_name": "Ferric Acrisols"
+    },
+    "-MbCARiAjXv9r1kiwToX": {
+      "province_id": 19,
+      "province_name": "Thái Nguyên",
+      "soil_id": 2,
+      "soil_name": "Gleyic Acrisols"
+    },
+    "-MbCARiBXXcNy0LST72J": {
+      "province_id": 19,
+      "province_name": "Thái Nguyên",
+      "soil_id": 3,
+      "soil_name": "Orthic Acrisols "
+    },
+    "-MbCARiBXXcNy0LST72K": {
+      "province_id": 20,
+      "province_name": "Lạng Sơn",
+      "soil_id": 1,
+      "soil_name": "Ferric Acrisols"
+    },
+    "-MbCARiCVm6O8-yHI7rf": {
+      "province_id": 20,
+      "province_name": "Lạng Sơn",
+      "soil_id": 3,
+      "soil_name": " Orthic Acrisols"
+    },
+    "-MbCARiDx6fgCgyaKFDN": {
+      "province_id": 20,
+      "province_name": "Lạng Sơn",
+      "soil_id": 9,
+      "soil_name": "Lithosols"
+    },
+    "-MbCARiFsKpow7xdFBmt": {
+      "province_id": 20,
+      "province_name": "Lạng Sơn",
+      "soil_id": 12,
+      "soil_name": "Chromic Luvisols"
+    },
+    "-MbCARiGb8kxJYbJHJj7": {
+      "province_id": 22,
+      "province_name": "Quảng Ninh",
+      "soil_id": 1,
+      "soil_name": "Ferric Acrisols"
+    },
+    "-MbCARiH6HV8iP5sqXvu": {
+      "province_id": 22,
+      "province_name": "Quảng Ninh",
+      "soil_id": 3,
+      "soil_name": "Orthic Acrisols"
+    },
+    "-MbCARiIaEgurGbNLx_8": {
+      "province_id": 22,
+      "province_name": "Quảng Ninh",
+      "soil_id": 8,
+      "soil_name": "Eutric Gleysols"
+    },
+    "-MbCARiIaEgurGbNLx_9": {
+      "province_id": 22,
+      "province_name": "Quảng Ninh",
+      "soil_id": 9,
+      "soil_name": "Lithosols"
+    },
+    "-MbCARiJrfSuFurRDe68": {
+      "province_id": 24,
+      "province_name": "Bắc Giang",
+      "soil_id": 1,
+      "soil_name": "Ferric Acrisols"
+    },
+    "-MbCARiK8qnuHIbbeUJa": {
+      "province_id": 24,
+      "province_name": "Bắc Giang",
+      "soil_id": 2,
+      "soil_name": "Gleyic Acrisols"
+    },
+    "-MbCARiK8qnuHIbbeUJb": {
+      "province_id": 24,
+      "province_name": "Bắc Giang",
+      "soil_id": 3,
+      "soil_name": "Orthic Acrisols"
+    },
+    "-MbCARiLlwMLhlx8n9ay": {
+      "province_id": 24,
+      "province_name": "Bắc Giang",
+      "soil_id": 8,
+      "soil_name": "Eutric Gleysols"
+    },
+    "-MbCARiMsu42s3EEmk_G": {
+      "province_id": 25,
+      "province_name": "Phú Thọ ",
+      "soil_id": 1,
+      "soil_name": "Ferric Acrisols"
+    },
+    "-MbCARiMsu42s3EEmk_H": {
+      "province_id": 25,
+      "province_name": "Phú Thọ ",
+      "soil_id": 2,
+      "soil_name": "Gleyic Acrisols"
+    },
+    "-MbCARiNMgCkp6vPDBue": {
+      "province_id": 25,
+      "province_name": "Phú Thọ ",
+      "soil_id": 3,
+      "soil_name": "Orthic Acrisols"
+    },
+    "-MbCARiOt_xh9JsmVfSa": {
+      "province_id": 26,
+      "province_name": "Vĩnh Phúc",
+      "soil_id": 1,
+      "soil_name": "Ferric Acrisols"
+    },
+    "-MbCARiOt_xh9JsmVfSb": {
+      "province_id": 26,
+      "province_name": "Vĩnh Phúc",
+      "soil_id": 3,
+      "soil_name": "Orthic Acrisols"
+    },
+    "-MbCARiPwFCWPDB8ucz6": {
+      "province_id": 26,
+      "province_name": "Vĩnh Phúc",
+      "soil_id": 8,
+      "soil_name": " Eutric Gleysols"
+    },
+    "-MbCARiQLujwwPL1at8u": {
+      "province_id": 26,
+      "province_name": "Vĩnh Phúc",
+      "soil_id": 10,
+      "soil_name": "Eutric Fluvisols"
+    },
+    "-MbCARiRWdSvKoOs_CTP": {
+      "province_id": 27,
+      "province_name": "Bắc Ninh",
+      "soil_id": 8,
+      "soil_name": "Eutric Gleysols"
+    },
+    "-MbCARiSA05rF4zzRNoR": {
+      "province_id": 27,
+      "province_name": "Bắc Ninh",
+      "soil_id": 10,
+      "soil_name": "Eutric Fluvisols"
+    },
+    "-MbCARiT9ILpGtK_mUlX": {
+      "province_id": 30,
+      "province_name": "Hải Dương",
+      "soil_id": 8,
+      "soil_name": "Eutric Gleysols"
+    },
+    "-MbCARiT9ILpGtK_mUlY": {
+      "province_id": 30,
+      "province_name": "Hải Dương",
+      "soil_id": 11,
+      "soil_name": "Thionic Fluvisols"
+    },
+    "-MbCARiUj7yrbmAzApph": {
+      "province_id": 31,
+      "province_name": "Hải Phòng",
+      "soil_id": 8,
+      "soil_name": "Eutric Gleysols"
+    },
+    "-MbCARiV5mGzJ--uRkFZ": {
+      "province_id": 31,
+      "province_name": "Hải Phòng",
+      "soil_id": 11,
+      "soil_name": "Thionic Fluvisols"
+    },
+    "-MbCARiWyPbuvIQ6LsYf": {
+      "province_id": 31,
+      "province_name": "Hải Phòng",
+      "soil_id": 14,
+      "soil_name": "Eutric Regosols"
+    },
+    "-MbCARiXvRvK-_omHeVJ": {
+      "province_id": 33,
+      "province_name": "Hưng Yên",
+      "soil_id": 8,
+      "soil_name": "Eutric Gleysols"
+    },
+    "-MbCARiYaESHp9NlpE6T": {
+      "province_id": 33,
+      "province_name": "Hưng Yên",
+      "soil_id": 10,
+      "soil_name": "Eutric Fluvisols"
+    },
+    "-MbCARiZAuLAj2OTTnmR": {
+      "province_id": 34,
+      "province_name": "Thái Bình",
+      "soil_id": 8,
+      "soil_name": "Eutric Gleysols"
+    },
+    "-MbCARi_3HJyUhsQObPw": {
+      "province_id": 34,
+      "province_name": "Thái Bình",
+      "soil_id": 10,
+      "soil_name": "Eutric Fluvisols"
+    },
+    "-MbCARi_3HJyUhsQObPx": {
+      "province_id": 34,
+      "province_name": "Thái Bình",
+      "soil_id": 14,
+      "soil_name": "Eutric Regosols"
+    },
+    "-MbCARialk3YHA9T3bqF": {
+      "province_id": 35,
+      "province_name": "Hà Nam ",
+      "soil_id": 8,
+      "soil_name": "Eutric Gleysols"
+    },
+    "-MbCARib30cEMPN9uvk2": {
+      "province_id": 35,
+      "province_name": "Hà Nam ",
+      "soil_id": 9,
+      "soil_name": "Lithosols"
+    },
+    "-MbCARicsjN6iZUFRUsR": {
+      "province_id": 35,
+      "province_name": "Hà Nam ",
+      "soil_id": 10,
+      "soil_name": "Eutric Fluvisols"
+    },
+    "-MbCARicsjN6iZUFRUsS": {
+      "province_id": 35,
+      "province_name": "Hà Nam ",
+      "soil_id": 12,
+      "soil_name": "Chromic Luvisols "
+    },
+    "-MbCARidgP2Y6CwsM6Bk": {
+      "province_id": 36,
+      "province_name": "Nam Định",
+      "soil_id": 8,
+      "soil_name": "Eutric Gleysols"
+    },
+    "-MbCARieQDTXFzHifNRr": {
+      "province_id": 36,
+      "province_name": "Nam Định",
+      "soil_id": 10,
+      "soil_name": "Eutric Fluvisols"
+    },
+    "-MbCARifYQK_okc0qeLb": {
+      "province_id": 36,
+      "province_name": "Nam Định",
+      "soil_id": 14,
+      "soil_name": "Eutric Regosols"
+    },
+    "-MbCARifYQK_okc0qeLc": {
+      "province_id": 37,
+      "province_name": "Ninh Bình",
+      "soil_id": 1,
+      "soil_name": "Ferric Acrisols"
+    },
+    "-MbCARigCehuag2DvPRI": {
+      "province_id": 37,
+      "province_name": "Ninh Bình",
+      "soil_id": 8,
+      "soil_name": "Eutric Gleysols"
+    },
+    "-MbCARih9wezl9ooC5jA": {
+      "province_id": 37,
+      "province_name": "Ninh Bình",
+      "soil_id": 9,
+      "soil_name": "Lithosols"
+    },
+    "-MbCARii5lWrvhhHczhh": {
+      "province_id": 37,
+      "province_name": "Ninh Bình",
+      "soil_id": 12,
+      "soil_name": "Chromic Luvisols"
+    },
+    "-MbCARii5lWrvhhHczhi": {
+      "province_id": 37,
+      "province_name": "Ninh Bình",
+      "soil_id": 14,
+      "soil_name": "Eutric Regosols"
+    },
+    "-MbCARijR-X5pkKqiGOF": {
+      "province_id": 38,
+      "province_name": "Thanh Hóa",
+      "soil_id": 1,
+      "soil_name": "Ferric Acrisols"
+    },
+    "-MbCARik2d1uWu1dsr74": {
+      "province_id": 38,
+      "province_name": "Thanh Hóa",
+      "soil_id": 3,
+      "soil_name": "Orthic Acrisols"
+    },
+    "-MbCARil7cAQrfXotcsg": {
+      "province_id": 38,
+      "province_name": "Thanh Hóa",
+      "soil_id": 8,
+      "soil_name": "Eutric Gleysols"
+    },
+    "-MbCARim6UjE1dBt1mwY": {
+      "province_id": 38,
+      "province_name": "Thanh Hóa",
+      "soil_id": 9,
+      "soil_name": "Lithosols"
+    },
+    "-MbCARinC59Dm9VNzRAF": {
+      "province_id": 38,
+      "province_name": "Thanh Hóa",
+      "soil_id": 12,
+      "soil_name": "Chromic Luvisols "
+    },
+    "-MbCARio-8YQYjpwccMb": {
+      "province_id": 40,
+      "province_name": "Nghệ An",
+      "soil_id": 1,
+      "soil_name": "Ferric Acrisols"
+    },
+    "-MbCARiphYdZ-JnbxVjd": {
+      "province_id": 40,
+      "province_name": "Nghệ An",
+      "soil_id": 3,
+      "soil_name": "Orthic Acrisols"
+    },
+    "-MbCARiqjT0fGNp_v1UL": {
+      "province_id": 40,
+      "province_name": "Nghệ An",
+      "soil_id": 9,
+      "soil_name": "Lithosols"
+    },
+    "-MbCARirmnXq8kKoT0Is": {
+      "province_id": 40,
+      "province_name": "Nghệ An",
+      "soil_id": 12,
+      "soil_name": "Chromic Luvisols "
+    },
+    "-MbCARisRCZts-1uhVW7": {
+      "province_id": 42,
+      "province_name": "Hà Tĩnh",
+      "soil_id": 1,
+      "soil_name": "Eutric Regosols"
+    },
+    "-MbCARitQd2T6KTjOHTB": {
+      "province_id": 42,
+      "province_name": "Hà Tĩnh",
+      "soil_id": 2,
+      "soil_name": "Gleyic Acrisols"
+    },
+    "-MbCARitQd2T6KTjOHTC": {
+      "province_id": 42,
+      "province_name": "Hà Tĩnh",
+      "soil_id": 3,
+      "soil_name": "Orthic Acrisols"
+    },
+    "-MbCARiujR4OVsruDSgs": {
+      "province_id": 42,
+      "province_name": "Hà Tĩnh",
+      "soil_id": 7,
+      "soil_name": "Dystric Gleysols"
+    },
+    "-MbCARiujR4OVsruDSgt": {
+      "province_id": 44,
+      "province_name": "Quảng Bình",
+      "soil_id": 3,
+      "soil_name": "Orthic Acrisols"
+    },
+    "-MbCARivbztU822putsC": {
+      "province_id": 44,
+      "province_name": "Quảng Bình",
+      "soil_id": 7,
+      "soil_name": "Dystric Gleysols"
+    },
+    "-MbCARiwAMlLNecxTtHc": {
+      "province_id": 44,
+      "province_name": "Quảng Bình",
+      "soil_id": 9,
+      "soil_name": "Lithosols"
+    },
+    "-MbCARiwAMlLNecxTtHd": {
+      "province_id": 44,
+      "province_name": "Quảng Bình",
+      "soil_id": 12,
+      "soil_name": "Chromic Luvisols "
+    },
+    "-MbCARixq6t0pe30kaPT": {
+      "province_id": 44,
+      "province_name": "Quảng Bình",
+      "soil_id": 14,
+      "soil_name": " Eutric Regosols"
+    },
+    "-MbCARiyooxpmxgh1j-a": {
+      "province_id": 45,
+      "province_name": "Quảng Trị",
+      "soil_id": 1,
+      "soil_name": "Ferric Acrisols"
+    },
+    "-MbCARiyooxpmxgh1j-b": {
+      "province_id": 45,
+      "province_name": "Quảng Trị",
+      "soil_id": 3,
+      "soil_name": "Orthic Acrisols"
+    },
+    "-MbCARiz7RmpYQ8BPgWY": {
+      "province_id": 45,
+      "province_name": "Quảng Trị",
+      "soil_id": 7,
+      "soil_name": "Dystric Gleysols"
+    },
+    "-MbCARj0O1XEw8nJR2_w": {
+      "province_id": 45,
+      "province_name": "Quảng Trị",
+      "soil_id": 14,
+      "soil_name": "Eutric Regosols"
+    },
+    "-MbCARj1IVZzux85bZ3d": {
+      "province_id": 46,
+      "province_name": " Thừa Thiên Huế",
+      "soil_id": 1,
+      "soil_name": "Ferric Acrisols"
+    },
+    "-MbCARj2T-efCUklvGX1": {
+      "province_id": 46,
+      "province_name": " Thừa Thiên Huế",
+      "soil_id": 3,
+      "soil_name": "Orthic Acrisols"
+    },
+    "-MbCARj4MAoK_oIkmraK": {
+      "province_id": 46,
+      "province_name": " Thừa Thiên Huế",
+      "soil_id": 7,
+      "soil_name": "Dystric Gleysols "
+    },
+    "-MbCARj5o8tx9pOlumTm": {
+      "province_id": 46,
+      "province_name": " Thừa Thiên Huế",
+      "soil_id": 14,
+      "soil_name": "Eutric Regosols"
+    },
+    "-MbCARj61nkl4jJkohPm": {
+      "province_id": 48,
+      "province_name": "Đà Nẵng",
+      "soil_id": 1,
+      "soil_name": "Ferric Acrisols"
+    },
+    "-MbCARj61nkl4jJkohPn": {
+      "province_id": 48,
+      "province_name": "Đà Nẵng",
+      "soil_id": 3,
+      "soil_name": "Orthic Acrisols"
+    },
+    "-MbCARj7UABRViNPwNre": {
+      "province_id": 49,
+      "province_name": "Quảng Nam",
+      "soil_id": 1,
+      "soil_name": "Ferric Acrisols "
+    },
+    "-MbCARj85ZTNSbZNXngY": {
+      "province_id": 49,
+      "province_name": "Quảng Nam",
+      "soil_id": 3,
+      "soil_name": "Orthic Acrisols"
+    },
+    "-MbCARj85ZTNSbZNXngZ": {
+      "province_id": 49,
+      "province_name": "Quảng Nam",
+      "soil_id": 7,
+      "soil_name": "Dystric Gleysols"
+    },
+    "-MbCARj9NXFXB96t2pxv": {
+      "province_id": 49,
+      "province_name": "Quảng Nam",
+      "soil_id": 14,
+      "soil_name": "Eutric Regosols"
+    },
+    "-MbCARjAl6F6X7Ab3O_t": {
+      "province_id": 51,
+      "province_name": "Quảng Ngãi",
+      "soil_id": 1,
+      "soil_name": "Ferric Acrisols"
+    },
+    "-MbCARjB7TUDfed7ozlI": {
+      "province_id": 51,
+      "province_name": "Quảng Ngãi",
+      "soil_id": 3,
+      "soil_name": "Orthic Acrisols"
+    },
+    "-MbCARjCaTNLprXd1CxN": {
+      "province_id": 51,
+      "province_name": "Quảng Ngãi",
+      "soil_id": 6,
+      "soil_name": "Rhodic Ferrasols"
+    },
+    "-MbCARjCaTNLprXd1CxO": {
+      "province_id": 51,
+      "province_name": "Quảng Ngãi",
+      "soil_id": 7,
+      "soil_name": "Dystric Gleysols"
+    },
+    "-MbCARjDjNmLCKm6o0_e": {
+      "province_id": 51,
+      "province_name": "Quảng Ngãi",
+      "soil_id": 14,
+      "soil_name": "Eutric Regosols"
+    },
+    "-MbCARjERfyhywLWmqne": {
+      "province_id": 52,
+      "province_name": "Bình Định",
+      "soil_id": 1,
+      "soil_name": "Ferric Acrisols"
+    },
+    "-MbCARjF7r2jLPyZifLM": {
+      "province_id": 52,
+      "province_name": "Bình Định",
+      "soil_id": 3,
+      "soil_name": "Orthic Acrisols"
+    },
+    "-MbCARjGrq7XM-biAslz": {
+      "province_id": 52,
+      "province_name": "Bình Định",
+      "soil_id": 6,
+      "soil_name": "Rhodic Ferrasols"
+    },
+    "-MbCARjHWO7yLkL474Jt": {
+      "province_id": 52,
+      "province_name": "Bình Định",
+      "soil_id": 7,
+      "soil_name": "Dystric Gleysols"
+    },
+    "-MbCARjIcC83y2gYNN8O": {
+      "province_id": 54,
+      "province_name": "Phú Yên",
+      "soil_id": 1,
+      "soil_name": "Ferric Acrisols"
+    },
+    "-MbCARjJdmQT-qtZ91fM": {
+      "province_id": 54,
+      "province_name": "Phú Yên",
+      "soil_id": 3,
+      "soil_name": "Orthic Acrisols"
+    },
+    "-MbCARjK7TLS71kZOOBH": {
+      "province_id": 54,
+      "province_name": "Phú Yên",
+      "soil_id": 7,
+      "soil_name": "Dystric Gleysols"
+    },
+    "-MbCARjMoqsQLeJyFi3d": {
+      "province_id": 54,
+      "province_name": "Phú Yên",
+      "soil_id": 15,
+      "soil_name": "Pellic Vertisols"
+    },
+    "-MbCARjNtwwG6BBpP-ZT": {
+      "province_id": 56,
+      "province_name": "Khánh Hòa",
+      "soil_id": 1,
+      "soil_name": "Ferric Acrisols"
+    },
+    "-MbCARjOmDltI1Lw4Fvk": {
+      "province_id": 56,
+      "province_name": "Khánh Hòa",
+      "soil_id": 3,
+      "soil_name": "Orthic Acrisols"
+    },
+    "-MbCARjOmDltI1Lw4Fvl": {
+      "province_id": 56,
+      "province_name": "Khánh Hòa",
+      "soil_id": 8,
+      "soil_name": "Eutric Gleysols"
+    },
+    "-MbCARjPma-UIcpRsbor": {
+      "province_id": 56,
+      "province_name": "Khánh Hòa",
+      "soil_id": 14,
+      "soil_name": "Eutric Regosols"
+    },
+    "-MbCARjQpX1ILTzyX7gs": {
+      "province_id": 58,
+      "province_name": "Ninh Thuận",
+      "soil_id": 1,
+      "soil_name": "Ferric Acrisols"
+    },
+    "-MbCARjR8lvh1tx4x08K": {
+      "province_id": 58,
+      "province_name": "Ninh Thuận",
+      "soil_id": 3,
+      "soil_name": "Orthic Acrisols"
+    },
+    "-MbCARjR8lvh1tx4x08L": {
+      "province_id": 58,
+      "province_name": "Ninh Thuận",
+      "soil_id": 8,
+      "soil_name": "Eutric Gleysols"
+    },
+    "-MbCARjSgAqosHHTRDcs": {
+      "province_id": 60,
+      "province_name": "Bình Thuận",
+      "soil_id": 1,
+      "soil_name": "Ferric Acrisols"
+    },
+    "-MbCARjSgAqosHHTRDct": {
+      "province_id": 60,
+      "province_name": "Bình Thuận",
+      "soil_id": 3,
+      "soil_name": "Orthic Acrisols"
+    },
+    "-MbCARjT9mgctQ5Oeu68": {
+      "province_id": 60,
+      "province_name": "Bình Thuận",
+      "soil_id": 7,
+      "soil_name": "Dystric Gleysols"
+    },
+    "-MbCARjUL9Dk5tWuWNcm": {
+      "province_id": 60,
+      "province_name": "Bình Thuận",
+      "soil_id": 8,
+      "soil_name": "Eutric Gleysols"
+    },
+    "-MbCARjUL9Dk5tWuWNcn": {
+      "province_id": 60,
+      "province_name": "Bình Thuận",
+      "soil_id": 12,
+      "soil_name": "Chromic Luvisols"
+    },
+    "-MbCARjVfIBQIsbta-Xc": {
+      "province_id": 60,
+      "province_name": "Bình Thuận",
+      "soil_id": 14,
+      "soil_name": "Eutric Regosols"
+    },
+    "-MbCARjW4TdPinW2STRa": {
+      "province_id": 60,
+      "province_name": "Bình Thuận",
+      "soil_id": 15,
+      "soil_name": "Pellic Vertisols"
+    },
+    "-MbCARjW4TdPinW2STRb": {
+      "province_id": 62,
+      "province_name": "Kon Tum",
+      "soil_id": 1,
+      "soil_name": "Ferric Acrisols"
+    },
+    "-MbCARjXcJpi-q1ASQWu": {
+      "province_id": 62,
+      "province_name": "Kon Tum",
+      "soil_id": 3,
+      "soil_name": "Orthic Acrisols"
+    },
+    "-MbCARjYLuWD3qnkO-O-": {
+      "province_id": 64,
+      "province_name": "Gia Lai",
+      "soil_id": 1,
+      "soil_name": "Ferric Acrisols"
+    },
+    "-MbCARjZS200yHtHYDB9": {
+      "province_id": 64,
+      "province_name": "Gia Lai",
+      "soil_id": 3,
+      "soil_name": "Orthic Acrisols"
+    },
+    "-MbCARj_ZLFW_J5xYoax": {
+      "province_id": 64,
+      "province_name": "Gia Lai",
+      "soil_id": 4,
+      "soil_name": "Acric Ferrasols"
+    },
+    "-MbCARj_ZLFW_J5xYoay": {
+      "province_id": 64,
+      "province_name": "Gia Lai",
+      "soil_id": 6,
+      "soil_name": "Rhodic Ferrasols"
+    },
+    "-MbCARjaBnfX04VeizVU": {
+      "province_id": 64,
+      "province_name": "Gia Lai",
+      "soil_id": 15,
+      "soil_name": "Pellic Vertisols"
+    },
+    "-MbCARjaBnfX04VeizVV": {
+      "province_id": 66,
+      "province_name": "Đắk Lắk",
+      "soil_id": 1,
+      "soil_name": "Ferric Acrisols"
+    },
+    "-MbCARjeK96L2e_WI-HR": {
+      "province_id": 66,
+      "province_name": "Đắk Lắk",
+      "soil_id": 3,
+      "soil_name": "Orthic Acrisols"
+    },
+    "-MbCARjfudQF5d9atali": {
+      "province_id": 66,
+      "province_name": "Đắk Lắk",
+      "soil_id": 6,
+      "soil_name": "Rhodic Ferrasols"
+    },
+    "-MbCARjgVEdKOyhwaV5j": {
+      "province_id": 66,
+      "province_name": "Đắk Lắk",
+      "soil_id": 15,
+      "soil_name": "Pellic Vertisols"
+    },
+    "-MbCARjgVEdKOyhwaV5k": {
+      "province_id": 67,
+      "province_name": "Đắk Nông",
+      "soil_id": 1,
+      "soil_name": "Ferric Acrisols"
+    },
+    "-MbCARjhOmgfipHvDAnH": {
+      "province_id": 67,
+      "province_name": "Đắk Nông",
+      "soil_id": 3,
+      "soil_name": "Orthic Acrisols"
+    },
+    "-MbCARjimV7_z8MpeyVi": {
+      "province_id": 67,
+      "province_name": "Đắk Nông",
+      "soil_id": 6,
+      "soil_name": "Rhodic Ferrasols"
+    },
+    "-MbCARjjBzydbGAE7gb1": {
+      "province_id": 67,
+      "province_name": "Đắk Nông",
+      "soil_id": 15,
+      "soil_name": "Pellic Vertisols"
+    },
+    "-MbCARjkywZJSYhI0K45": {
+      "province_id": 68,
+      "province_name": "Lâm Đồng",
+      "soil_id": 1,
+      "soil_name": "Ferric Acrisols"
+    },
+    "-MbCARjkywZJSYhI0K46": {
+      "province_id": 68,
+      "province_name": "Lâm Đồng",
+      "soil_id": 3,
+      "soil_name": "Orthic Acrisols"
+    },
+    "-MbCARjnHmn3JJ9OB1FR": {
+      "province_id": 68,
+      "province_name": "Lâm Đồng",
+      "soil_id": 5,
+      "soil_name": "Orthic Ferrasols "
+    },
+    "-MbCARjo0WUDMX163zN9": {
+      "province_id": 68,
+      "province_name": "Lâm Đồng",
+      "soil_id": 6,
+      "soil_name": "Rhodic Ferrasols"
+    },
+    "-MbCARjpnted9_TX69VE": {
+      "province_id": 70,
+      "province_name": "Bình Phước",
+      "soil_id": 1,
+      "soil_name": "Ferric Acrisols"
+    },
+    "-MbCARjqApc9qqvFsqyM": {
+      "province_id": 70,
+      "province_name": "Bình Phước",
+      "soil_id": 2,
+      "soil_name": "Gleyic Acrisols"
+    },
+    "-MbCARjqApc9qqvFsqyN": {
+      "province_id": 70,
+      "province_name": "Bình Phước",
+      "soil_id": 3,
+      "soil_name": "Orthic Acrisols"
+    },
+    "-MbCARjrdoKMiNGfaD0v": {
+      "province_id": 70,
+      "province_name": "Bình Phước",
+      "soil_id": 6,
+      "soil_name": "Rhodic Ferrasols"
+    },
+    "-MbCARjrdoKMiNGfaD0w": {
+      "province_id": 70,
+      "province_name": "Bình Phước",
+      "soil_id": 15,
+      "soil_name": "Pellic Vertisols"
+    },
+    "-MbCARjsMFO2VJE7nb39": {
+      "province_id": 72,
+      "province_name": "Tây Ninh",
+      "soil_id": 1,
+      "soil_name": "Ferric Acrisols"
+    },
+    "-MbCARjsMFO2VJE7nb3A": {
+      "province_id": 72,
+      "province_name": "Tây Ninh",
+      "soil_id": 2,
+      "soil_name": "Gleyic Acrisols"
+    },
+    "-MbCARjtqKoT3X4l_rxk": {
+      "province_id": 72,
+      "province_name": "Tây Ninh",
+      "soil_id": 11,
+      "soil_name": "Thionic Fluvisols"
+    },
+    "-MbCARjuLkQDOfOQnkSn": {
+      "province_id": 74,
+      "province_name": "Bình Dương",
+      "soil_id": 1,
+      "soil_name": "Ferric Acrisols"
+    },
+    "-MbCARjvkNuocpKKOP37": {
+      "province_id": 74,
+      "province_name": "Bình Dương",
+      "soil_id": 2,
+      "soil_name": "Gleyic Acrisols"
+    },
+    "-MbCARjwGtytIPuSU8ND": {
+      "province_id": 74,
+      "province_name": "Bình Dương",
+      "soil_id": 11,
+      "soil_name": "Thionic Fluvisols"
+    },
+    "-MbCARjxUQ8RQAIJVVeS": {
+      "province_id": 75,
+      "province_name": "Đồng Nai",
+      "soil_id": 1,
+      "soil_name": "Ferric Acrisols"
+    },
+    "-MbCARjyw98VGdM-o2Nx": {
+      "province_id": 75,
+      "province_name": "Đồng Nai",
+      "soil_id": 2,
+      "soil_name": "Gleyic Acrisols"
+    },
+    "-MbCARjyw98VGdM-o2Ny": {
+      "province_id": 75,
+      "province_name": "Đồng Nai",
+      "soil_id": 3,
+      "soil_name": "Orthic Acrisols"
+    },
+    "-MbCARjzbYUJKKtAggKw": {
+      "province_id": 75,
+      "province_name": "Đồng Nai",
+      "soil_id": 6,
+      "soil_name": "Rhodic Ferrasols"
+    },
+    "-MbCARk-2O7UNUU1DmWt": {
+      "province_id": 75,
+      "province_name": "Đồng Nai",
+      "soil_id": 12,
+      "soil_name": "Thionic Fluvisols"
+    },
+    "-MbCARk-2O7UNUU1DmWu": {
+      "province_id": 75,
+      "province_name": "Đồng Nai",
+      "soil_id": 15,
+      "soil_name": "Pellic Vertisols"
+    },
+    "-MbCARk0L2jOwz-EtWzU": {
+      "province_id": 77,
+      "province_name": "Bà Rịa Vũng Tàu",
+      "soil_id": 1,
+      "soil_name": "Ferric Acrisols "
+    },
+    "-MbCARk0L2jOwz-EtWzV": {
+      "province_id": 77,
+      "province_name": "Bà Rịa Vũng Tàu",
+      "soil_id": 6,
+      "soil_name": "Rhodic Ferrasols"
+    },
+    "-MbCARk1u41Cj5g0y_ui": {
+      "province_id": 77,
+      "province_name": "Bà Rịa Vũng Tàu",
+      "soil_id": 10,
+      "soil_name": "Eutric Fluvisols "
+    },
+    "-MbCARk1u41Cj5g0y_uj": {
+      "province_id": 77,
+      "province_name": "Bà Rịa Vũng Tàu",
+      "soil_id": 15,
+      "soil_name": "Pellic Vertisols"
+    },
+    "-MbCARk28T8W7MwH0rss": {
+      "province_id": 79,
+      "province_name": "Thành phố Hồ Chí Minh",
+      "soil_id": 2,
+      "soil_name": "Gleyic Acrisols"
+    },
+    "-MbCARk346fep3srCXXY": {
+      "province_id": 79,
+      "province_name": "Thành phố Hồ Chí Minh",
+      "soil_id": 8,
+      "soil_name": "Eutric Gleysols"
+    },
+    "-MbCARk4kJDgzYdo9Pd3": {
+      "province_id": 79,
+      "province_name": "Thành phố Hồ Chí Minh",
+      "soil_id": 11,
+      "soil_name": "Thionic Fluvisols"
+    },
+    "-MbCARk5wTjVqW6pXymR": {
+      "province_id": 80,
+      "province_name": "Long An",
+      "soil_id": 1,
+      "soil_name": "Ferric Acrisols"
+    },
+    "-MbCARk7kciWuHI_P5jW": {
+      "province_id": 80,
+      "province_name": "Long An",
+      "soil_id": 2,
+      "soil_name": "Gleyic Acrisols"
+    },
+    "-MbCARk8rOGmjjsZo27g": {
+      "province_id": 80,
+      "province_name": "Long An",
+      "soil_id": 8,
+      "soil_name": "Eutric Gleysols"
+    },
+    "-MbCARk8rOGmjjsZo27h": {
+      "province_id": 80,
+      "province_name": "Long An",
+      "soil_id": 11,
+      "soil_name": "Thionic Fluvisols"
+    },
+    "-MbCARk9MUeo4bi-w-i6": {
+      "province_id": 83,
+      "province_name": "Bến Tre",
+      "soil_id": 8,
+      "soil_name": "Eutric Gleysols"
+    },
+    "-MbCARk9MUeo4bi-w-i7": {
+      "province_id": 83,
+      "province_name": "Bến Tre",
+      "soil_id": 10,
+      "soil_name": "Eutric Fluvisols"
+    },
+    "-MbCARkAImCzBQ0cB9XZ": {
+      "province_id": 84,
+      "province_name": "Trà Vinh",
+      "soil_id": 8,
+      "soil_name": "Eutric Gleysols"
+    },
+    "-MbCARkBXY0IFJapuIkh": {
+      "province_id": 86,
+      "province_name": "Vĩnh Long",
+      "soil_id": 8,
+      "soil_name": "Eutric Gleysols"
+    },
+    "-MbCARkC3-ZqTqyGWR8E": {
+      "province_id": 86,
+      "province_name": "Vĩnh Long",
+      "soil_id": 10,
+      "soil_name": "Eutric Fluvisols"
+    },
+    "-MbCARkDFEvRshffrCxq": {
+      "province_id": 86,
+      "province_name": "Vĩnh Long",
+      "soil_id": 11,
+      "soil_name": "Thionic Fluvisols"
+    },
+    "-MbCARkDFEvRshffrCxr": {
+      "province_id": 87,
+      "province_name": "Đồng Tháp",
+      "soil_id": 8,
+      "soil_name": "Eutric Gleysols"
+    },
+    "-MbCARkEUexyeVvoN2_l": {
+      "province_id": 87,
+      "province_name": "Đồng Tháp",
+      "soil_id": 10,
+      "soil_name": "Eutric Fluvisols"
+    },
+    "-MbCARkFwlIq6-4GV55s": {
+      "province_id": 87,
+      "province_name": "Đồng Tháp",
+      "soil_id": 11,
+      "soil_name": "Thionic Fluvisols"
+    },
+    "-MbCARkGjV-bAMQBA7Xq": {
+      "province_id": 89,
+      "province_name": "An Giang",
+      "soil_id": 2,
+      "soil_name": "Gleyic Acrisols"
+    },
+    "-MbCARkGjV-bAMQBA7Xr": {
+      "province_id": 89,
+      "province_name": "An Giang",
+      "soil_id": 8,
+      "soil_name": "Eutric Gleysols"
+    },
+    "-MbCARkHnrDdwoC0sArG": {
+      "province_id": 89,
+      "province_name": "An Giang",
+      "soil_id": 10,
+      "soil_name": "Eutric Fluvisols"
+    },
+    "-MbCARkIyaj_BYiFvrDQ": {
+      "province_id": 89,
+      "province_name": "An Giang",
+      "soil_id": 11,
+      "soil_name": "Thionic Fluvisols"
+    },
+    "-MbCARkJJLO0nkE9mNbg": {
+      "province_id": 91,
+      "province_name": "Kiên Giang",
+      "soil_id": 2,
+      "soil_name": "Gleyic Acrisols"
+    },
+    "-MbCARkK4Ihp2dEfU1zP": {
+      "province_id": 91,
+      "province_name": "Kiên Giang",
+      "soil_id": 8,
+      "soil_name": "Eutric Gleysols"
+    },
+    "-MbCARkLhQfbSsjm56xE": {
+      "province_id": 91,
+      "province_name": "Kiên Giang",
+      "soil_id": 11,
+      "soil_name": "Thionic Fluvisols"
+    },
+    "-MbCARkMYOhEmX9rKHLp": {
+      "province_id": 91,
+      "province_name": "Kiên Giang",
+      "soil_id": 13,
+      "soil_name": "Dystric Histosols "
+    },
+    "-MbCARkMYOhEmX9rKHLq": {
+      "province_id": 92,
+      "province_name": "TP Cần Thơ",
+      "soil_id": 8,
+      "soil_name": "Eutric Gleysols"
+    },
+    "-MbCARkNF9TB7yzM1jyq": {
+      "province_id": 92,
+      "province_name": "TP Cần Thơ",
+      "soil_id": 10,
+      "soil_name": "Eutric Fluvisols"
+    },
+    "-MbCARkOQrbOTTWmwhJJ": {
+      "province_id": 92,
+      "province_name": "TP Cần Thơ",
+      "soil_id": 11,
+      "soil_name": "Thionic Fluvisols"
+    },
+    "-MbCARkOQrbOTTWmwhJK": {
+      "province_id": 93,
+      "province_name": "Hậu Giang",
+      "soil_id": 8,
+      "soil_name": "Eutric Gleysols"
+    },
+    "-MbCARkP5SYvGrIvBsO0": {
+      "province_id": 93,
+      "province_name": "Hậu Giang",
+      "soil_id": 11,
+      "soil_name": "Thionic Fluvisols"
+    },
+    "-MbCARkQA649DfR9Tagt": {
+      "province_id": 94,
+      "province_name": "Sóc Trăng",
+      "soil_id": 8,
+      "soil_name": "Eutric Gleysols"
+    },
+    "-MbCARkR6uYMeSEDzHN_": {
+      "province_id": 94,
+      "province_name": "Sóc Trăng",
+      "soil_id": 10,
+      "soil_name": "Eutric Fluvisols"
+    },
+    "-MbCARkR6uYMeSEDzHNa": {
+      "province_id": 94,
+      "province_name": "Sóc Trăng",
+      "soil_id": 11,
+      "soil_name": "Thionic Fluvisols"
+    },
+    "-MbCARkSg4xwlhvWzHGj": {
+      "province_id": 95,
+      "province_name": "Bạc Liêu",
+      "soil_id": 8,
+      "soil_name": " Eutric Gleysols"
+    },
+    "-MbCARkSg4xwlhvWzHGk": {
+      "province_id": 95,
+      "province_name": "Bạc Liêu",
+      "soil_id": 10,
+      "soil_name": "Eutric Fluvisols"
+    },
+    "-MbCARkTZzfLru9-h_Xp": {
+      "province_id": 95,
+      "province_name": "Bạc Liêu",
+      "soil_id": 11,
+      "soil_name": "Thionic Fluvisols"
+    }
+  },
+  "soils": [
+    {
+      "description": "Acrisols hình thành trên các cảnh quan cũ có địa hình nhấp nhô và khí hậu nhiệt đới ẩm. Thảm thực vật tự nhiên của chúng là rừng cây, ở một số khu vực đã nhường chỗ cho xavan cây cối được duy trì bằng cách đốt theo mùa. Tuổi tác, khoáng vật và sự rửa trôi rộng rãi của các loại đất này đã dẫn đến hàm lượng chất dinh dưỡng thực vật thấp, dư thừa nhôm và khả năng ăn mòn cao, tất cả đều làm cho nông nghiệp trở nên khó khăn. Tuy nhiên, du canh truyền thống trồng cây chịu chua đã thích nghi tốt với các điều kiện ở Acrisols. Chúng chỉ chiếm dưới 8% bề mặt lục địa trên Trái đất, bao gồm các khu vực khắp trung và bắc Mỹ Latinh, Đông Nam Á và Tây Phi.",
+      "is_delete": 0,
+      "lat": "10",
+      "lon": "10",
+      "name_en": "Ferric Acrisols",
+      "name_vi": "Đất giàu sét Ferric Acrisols",
+      "soil_code": "AF",
+      "timestamp": 1617469468000,
+      "url": "https://firebasestorage.googleapis.com/v0/b/soil-detection-588dd.appspot.com/o/acrisol.jpg?alt=media&token=2e4fccca-5330-4a34-8160-ebc2b66ad526"
+    },
+    {
+      "description": "Acrisols hình thành trên các cảnh quan cũ có địa hình nhấp nhô và khí hậu nhiệt đới ẩm. Thảm thực vật tự nhiên của chúng là rừng cây, ở một số khu vực đã nhường chỗ cho xavan cây cối được duy trì bằng cách đốt theo mùa. Tuổi tác, khoáng vật và sự rửa trôi rộng rãi của các loại đất này đã dẫn đến hàm lượng chất dinh dưỡng thực vật thấp, dư thừa nhôm và khả năng ăn mòn cao, tất cả đều làm cho nông nghiệp trở nên khó khăn. Tuy nhiên, du canh truyền thống trồng cây chịu chua đã thích nghi tốt với các điều kiện ở Acrisols. Chúng chỉ chiếm dưới 8% bề mặt lục địa trên Trái đất, bao gồm các khu vực khắp trung và bắc Mỹ Latinh, Đông Nam Á và Tây Phi.",
+      "is_delete": "0",
+      "lat": 10,
+      "lon": "10",
+      "name_en": "Gleyic Acrisols",
+      "name_vi": "Đất giàu sét Gleyic Acrisols",
+      "soil_code": "AG",
+      "timestamp": 1617469468000,
+      "url": "https://firebasestorage.googleapis.com/v0/b/soil-detection-588dd.appspot.com/o/acrisol2.jpg?alt=media&token=4c1f14a6-7c39-4f9c-899a-adb6f635679c"
+    },
+    {
+      "description": "Acrisols hình thành trên các cảnh quan cũ có địa hình nhấp nhô và khí hậu nhiệt đới ẩm. Thảm thực vật tự nhiên của chúng là rừng cây, ở một số khu vực đã nhường chỗ cho xavan cây cối được duy trì bằng cách đốt theo mùa. Tuổi tác, khoáng vật và sự rửa trôi rộng rãi của các loại đất này đã dẫn đến hàm lượng chất dinh dưỡng thực vật thấp, dư thừa nhôm và khả năng ăn mòn cao, tất cả đều làm cho nông nghiệp trở nên khó khăn. Tuy nhiên, du canh truyền thống trồng cây chịu chua đã thích nghi tốt với các điều kiện ở Acrisols. Chúng chỉ chiếm dưới 8% bề mặt lục địa trên Trái đất, bao gồm các khu vực khắp trung và bắc Mỹ Latinh, Đông Nam Á và Tây Phi.",
+      "is_delete": "0",
+      "lat": "10",
+      "lon": "10",
+      "name_en": "Orthic Acrisols",
+      "name_vi": "Đất Orthi Acrisols",
+      "soil_code": "AO",
+      "timestamp": 1617469468000,
+      "url": "https://firebasestorage.googleapis.com/v0/b/soil-detection-588dd.appspot.com/o/acrisol3.jfif?alt=media&token=16c617d0-5b30-462e-96d6-1839b7b9182a"
+    },
+    {
+      "description": "Ferrasols là loại đất bị phong hóa màu đỏ và vàng có màu sắc là kết quả của sự tích tụ các ôxít kim loại, đặc biệt là sắt và nhôm (từ đó có tên nhóm đất). Chúng được hình thành trên các vật liệu cũ về mặt địa chất ở vùng khí hậu nhiệt đới ẩm, với thảm thực vật rừng nhiệt đới phát triển trong trạng thái tự nhiên. Do các oxit kim loại còn sót lại và sự rửa trôi các chất dinh dưỡng khoáng, chúng có độ phì nhiêu thấp và cần bổ sung thêm vôi và phân bón nếu chúng được sử dụng cho nông nghiệp. Các loại cây trồng như cọ dầu, cao su hoặc cà phê là thích hợp, nhưng đồng cỏ thường là mục đích sử dụng nông nghiệp chính của họ sau khi rừng nguyên sinh bị phá. Chỉ chiếm dưới 6% bề mặt lục địa trên Trái đất, Ferralols được tìm thấy chủ yếu ở Brazil, lưu vực sông Congo, Guinea và Madagascar.",
+      "is_delete": "0",
+      "lat": "10",
+      "lon": "10",
+      "name_en": "Acric Ferrasols",
+      "name_vi": "Đất sét Acric Ferrasols",
+      "soil_code": "FA",
+      "timestamp": 1617469468000,
+      "url": "https://firebasestorage.googleapis.com/v0/b/soil-detection-588dd.appspot.com/o/ferasol.jpg?alt=media&token=04d7e33a-902c-4570-af03-e11e1561e3e1"
+    },
+    {
+      "description": "Ferrasols là loại đất bị phong hóa màu đỏ và vàng có màu sắc là kết quả của sự tích tụ các ôxít kim loại, đặc biệt là sắt và nhôm (từ đó có tên nhóm đất). Chúng được hình thành trên các vật liệu cũ về mặt địa chất ở vùng khí hậu nhiệt đới ẩm, với thảm thực vật rừng nhiệt đới phát triển trong trạng thái tự nhiên. Do các oxit kim loại còn sót lại và sự rửa trôi các chất dinh dưỡng khoáng, chúng có độ phì nhiêu thấp và cần bổ sung thêm vôi và phân bón nếu chúng được sử dụng cho nông nghiệp. Các loại cây trồng như cọ dầu, cao su hoặc cà phê là thích hợp, nhưng đồng cỏ thường là mục đích sử dụng nông nghiệp chính của họ sau khi rừng nguyên sinh bị phá. Chỉ chiếm dưới 6% bề mặt lục địa trên Trái đất, Ferralols được tìm thấy chủ yếu ở Brazil, lưu vực sông Congo, Guinea và Madagascar.",
+      "is_delete": "0",
+      "lat": "10",
+      "lon": "10",
+      "name_en": "Orthic Ferrasols",
+      "name_vi": "Đất sét Orthic Ferrasols",
+      "soil_code": "FO",
+      "timestamp": 1617520801000,
+      "url": "https://firebasestorage.googleapis.com/v0/b/soil-detection-588dd.appspot.com/o/ferrasol2.jpg?alt=media&token=eaa4cf48-ad83-4aca-a773-cda4877527f9"
+    },
+    {
+      "description": "Ferrasols là loại đất bị phong hóa màu đỏ và vàng có màu sắc là kết quả của sự tích tụ các ôxít kim loại, đặc biệt là sắt và nhôm (từ đó có tên nhóm đất). Chúng được hình thành trên các vật liệu cũ về mặt địa chất ở vùng khí hậu nhiệt đới ẩm, với thảm thực vật rừng nhiệt đới phát triển trong trạng thái tự nhiên. Do các oxit kim loại còn sót lại và sự rửa trôi các chất dinh dưỡng khoáng, chúng có độ phì nhiêu thấp và cần bổ sung thêm vôi và phân bón nếu chúng được sử dụng cho nông nghiệp. Các loại cây trồng như cọ dầu, cao su hoặc cà phê là thích hợp, nhưng đồng cỏ thường là mục đích sử dụng nông nghiệp chính của họ sau khi rừng nguyên sinh bị phá. Chỉ chiếm dưới 6% bề mặt lục địa trên Trái đất, Ferralols được tìm thấy chủ yếu ở Brazil, lưu vực sông Congo, Guinea và Madagascar.",
+      "is_delete": "0",
+      "lat": "10",
+      "lon": "10",
+      "name_en": "Rhodic Ferrasols",
+      "name_vi": "Đất sét Rhodic",
+      "soil_code": "FR",
+      "timestamp": 1617520801000,
+      "url": "https://firebasestorage.googleapis.com/v0/b/soil-detection-588dd.appspot.com/o/ferrasol3.jpg?alt=media&token=1c18162f-e1c7-4ec0-b867-1d752cb79adb"
+    },
+    {
+      "description": "Gleysols được hình thành trong điều kiện ngập úng do nước ngầm dâng lên. Ở các vùng nhiệt đới và cận nhiệt đới, chúng được trồng để làm lúa hoặc sau khi thoát nước, dùng cho các loại cây trồng và cây cối trên đồng ruộng. Gleysols được tìm thấy ở các vùng ",
+      "is_delete": "0",
+      "lat": "10",
+      "lon": "10",
+      "name_en": "Dystric Gleysols",
+      "name_vi": "Đất Dystric Gleysols",
+      "soil_code": "GD",
+      "timestamp": 1617520801000,
+      "url": "https://firebasestorage.googleapis.com/v0/b/soil-detection-588dd.appspot.com/o/gleysol.jpg?alt=media&token=e3d5fe86-4fb2-4da5-87d6-5ec38fb2a5e5"
+    },
+    {
+      "description": "Gleysols được hình thành trong điều kiện ngập úng do nước ngầm dâng lên. Ở các vùng nhiệt đới và cận nhiệt đới, chúng được trồng để làm lúa hoặc sau khi thoát nước, dùng cho các loại cây trồng và cây cối trên đồng ruộng. Gleysols được tìm thấy ở các vùng ",
+      "is_delete": "0",
+      "lat": "10",
+      "lon": "10",
+      "name_en": "Eutric Gleysols",
+      "name_vi": "Đất Eutric Gleysols",
+      "soil_code": "GE",
+      "timestamp": 1617520801000,
+      "url": "https://firebasestorage.googleapis.com/v0/b/soil-detection-588dd.appspot.com/o/gleysol2.jfif?alt=media&token=b3148439-9aa5-44d4-9039-1a34d8a02581"
+    },
+    {
+      "description": "Hầu hết các vật thể được tìm thấy ở các vùng núi rất dốc, nơi vật liệu ăn mòn bị xói mòn nhanh chóng loại bỏ đến mức lớp phủ vĩnh viễn của đất sâu không thể tự hình thành. Những điều kiện như vậy xảy ra ở hầu hết các khu vực trên thế giới, nơi có độ dốc lớn phổ biến. Ở Úc và một số khu vực của châu Phi, đá mẹ hoàn toàn không chứa khoáng chất phong hóa ngoại trừ sự bổ sung thời gian ngắn từ lượng mưa, do đó không có sự phân hủy khoáng chất (chủ yếu là oxit sắt) trong đá.",
+      "is_delete": "0",
+      "lat": "10",
+      "lon": "10",
+      "name_en": "Lithosols",
+      "name_vi": "Đất thịt Lithosols",
+      "soil_code": "I",
+      "timestamp": 1617520801000,
+      "url": "https://firebasestorage.googleapis.com/v0/b/soil-detection-588dd.appspot.com/o/lithosol.jfif?alt=media&token=70c9e47e-fc39-401d-a5b2-02876f8c4eae"
+    },
+    {
+      "description": "Fluvisols thường được tìm thấy trên địa hình đồng mức bị ngập lụt định kỳ bởi nước mặt hoặc nước ngầm dâng cao, như ở các đồng bằng và đồng bằng ngập lũ sông và ở các vùng đất thấp ven biển. Chúng được trồng để làm cây trồng cạn hoặc lúa và được sử dụng để chăn thả vào mùa khô. Chúng chiếm khoảng 2,8% diện tích lục địa trên Trái đất, chủ yếu ở các lưu vực và đồng bằng sông lớn trên thế giới (ví dụ: lưu vực sông Amazon và đồng bằng sông Nile).",
+      "is_delete": "0",
+      "lat": "10",
+      "lon": "10",
+      "name_en": "Eutric Fluvisols",
+      "name_vi": "Đất Eutric Fluvisols",
+      "soil_code": "JE",
+      "timestamp": 1617520801000,
+      "url": "https://firebasestorage.googleapis.com/v0/b/soil-detection-588dd.appspot.com/o/fluvisol.jpg?alt=media&token=01f8735a-cbaa-4705-9d54-0e472918dc27"
+    },
+    {
+      "description": "Fluvisols thường được tìm thấy trên địa hình đồng mức bị ngập lụt định kỳ bởi nước mặt hoặc nước ngầm dâng cao, như ở các đồng bằng và đồng bằng ngập lũ sông và ở các vùng đất thấp ven biển. Chúng được trồng để làm cây trồng cạn hoặc lúa và được sử dụng để chăn thả vào mùa khô. Chúng chiếm khoảng 2,8% diện tích lục địa trên Trái đất, chủ yếu ở các lưu vực và đồng bằng sông lớn trên thế giới (ví dụ: lưu vực sông Amazon và đồng bằng sông Nile).",
+      "is_delete": "0",
+      "lat": "10",
+      "lon": "10",
+      "name_en": "Thionic Fluvisols",
+      "name_vi": "Đất Thionic Fluvisols",
+      "soil_code": "JT",
+      "timestamp": 1617520801000,
+      "url": "https://firebasestorage.googleapis.com/v0/b/soil-detection-588dd.appspot.com/o/fluvisol2.jpg?alt=media&token=b4d742ee-3b9f-447e-acb6-ccfa74c2fea3"
+    },
+    {
+      "description": "Tính chất khoáng hỗn hợp, hàm lượng dinh dưỡng cao và khả năng thoát nước tốt của những loại đất này làm cho chúng thích hợp cho nhiều loại nông nghiệp, từ ngũ cốc đến vườn cây ăn quả đến vườn nho. Luvisols hình thành trên các cảnh quan bằng phẳng hoặc dốc nhẹ theo các chế độ khí hậu từ ôn đới mát đến ấm áp Địa Trung Hải. Chỉ chiếm hơn 5% tổng diện tích lục địa trên Trái đất, chúng thường được tìm thấy ở tây-trung nước Nga, Hoa Kỳ, trung tâm Châu Âu, lưu vực Địa Trung Hải và nam Úc.",
+      "is_delete": "0",
+      "lat": "10",
+      "lon": "10",
+      "name_en": "Chromic Luvisols",
+      "name_vi": "Đất Chromic Luvisols",
+      "soil_code": "LC",
+      "timestamp": 1617520801000,
+      "url": "https://firebasestorage.googleapis.com/v0/b/soil-detection-588dd.appspot.com/o/luvisol.jpg?alt=media&token=c3879492-7a2b-4d24-8238-70ed0d43264c"
+    },
+    {
+      "description": "Histosols được hình thành trong điều kiện ngập nước điển hình của các vũng than bùn, đồng hoang và đầm lầy. Trong điều kiện đó, các mô tích lũy của thực vật và động vật chết và các sản phẩm phân hủy của chúng được bảo tồn, dẫn đến đất có hàm lượng hữu cơ cao. Sau khi thoát nước cho mục đích sử dụng nông nghiệp (đặc biệt là cây rau và nam việt quất), vật liệu hữu cơ dễ bị oxy hóa, dẫn đến nguy cơ cháy nổ cũng như sụt lún. Sphagnum và các loại vật liệu dạng sợi khác được chiết xuất từ Histosols để sử dụng trong nghề làm vườn và làm nhiên liệu. Các khu vực lớn hơn của những loại đất này đã được quản lý để kiểm soát lũ lụt, lọc nước và bảo tồn động vật hoang dã. Các lịch sử chiếm ít hơn 2 phần trăm diện tích lục địa không cực trên Trái đất, chủ yếu ở Canada, Nga và Scandinavia. Chúng được đặc trưng bởi ít nhất 12 đến 18 phần trăm cacbon hữu cơ theo khối lượng (tùy thuộc vào hàm lượng đất sét) nếu thỉnh thoảng bị úng nước hoặc ít nhất 20 phần trăm cacbon hữu cơ theo khối lượng nếu không bao giờ bị úng.",
+      "is_delete": "0",
+      "lat": "10",
+      "lon": "10",
+      "name_en": "Dystric Histosols",
+      "name_vi": "Đất than bùn",
+      "soil_code": "OD",
+      "timestamp": 1617520801000,
+      "url": "https://firebasestorage.googleapis.com/v0/b/soil-detection-588dd.appspot.com/o/histosol.jpg?alt=media&token=6e291008-8505-4f71-b70c-5161960d15e8"
+    },
+    {
+      "description": "Regosols được đặc trưng bởi vật liệu mẹ nông, có kết cấu trung bình đến mịn, rời rạc, có thể có nguồn gốc phù sa và thiếu sự hình thành (lớp) chân trời đáng kể do điều kiện khí hậu khô hoặc lạnh. Các phân vùng chủ yếu xuất hiện ở các vùng cực và sa mạc, chiếm khoảng 2% diện tích lục địa trên Trái đất, chủ yếu ở phía bắc Trung Quốc, Greenland, Nam Cực, bắc trung Phi, Trung Đông và tây bắc Úc. Chúng thường được tìm thấy dưới thảm thực vật tự nhiên ban đầu của chúng hoặc trong diện tích canh tác hạn chế trên đất khô.",
+      "is_delete": "0",
+      "lat": "10",
+      "lon": "10",
+      "name_en": "Eutric Regosols",
+      "name_vi": "Đất đầm lầy",
+      "soil_code": "RE",
+      "timestamp": 1617520801000,
+      "url": "https://firebasestorage.googleapis.com/v0/b/soil-detection-588dd.appspot.com/o/regosol.jpg?alt=media&token=e53de494-ee32-44d9-83ce-c426bed13039"
+    },
+    {
+      "description": "Vertisols là loại đất giàu sét, trải qua quá trình nứt dọc đáng kể trong mùa khô. Thường hình thành dưới thảm thực vật đồng cỏ trong cảnh quan lưu vực hoặc đồi núi, chúng thích hợp nhất để sử dụng làm đồng cỏ và trồng các loại cây, chẳng hạn như lúa, phát triển mạnh trong nước đọng. Khả năng thấm nước rất thấp khi ướt và cấu trúc không ổn định khiến chúng không phù hợp cho hầu hết các mục đích sử dụng thương mại khác. Mặc dù phân bố rộng rãi trên mọi lục địa không cực, chúng chỉ chiếm hơn 2 phần trăm diện tích đất trên Trái đất, chủ yếu ở các vùng nhiệt đới hoặc cận nhiệt đới của Úc, Ấn Độ và Châu Phi và ở một số khu vực phía tây Hoa Kỳ (California và Texas) và Châu Âu ( Áo và vùng Balkan).",
+      "is_delete": "0",
+      "lat": "10",
+      "lon": "10",
+      "name_en": "Pellic Vertisols",
+      "name_vi": "Đất pha sét Vertisols",
+      "soil_code": "VP",
+      "timestamp": 1617520801000,
+      "url": "https://firebasestorage.googleapis.com/v0/b/soil-detection-588dd.appspot.com/o/vertisol.jpg?alt=media&token=75b60fe8-4f72-46cb-8c85-4741e9e4dfc3"
+    }
+  ]
+}

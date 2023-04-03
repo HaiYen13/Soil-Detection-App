@@ -8,6 +8,7 @@ import android.widget.EditText
 import android.widget.ImageView
 import android.widget.LinearLayout
 import android.widget.TextView
+import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -22,8 +23,9 @@ import com.yenvth.soilDetectionApp.labeling.LabelingAdapter.OnLabelItemClickList
 import com.yenvth.soilDetectionApp.models.LabelModel
 import com.yenvth.soilDetectionApp.utils.CommonUtils
 
-class LabelingActivity : AppCompatActivity(), View.OnClickListener, LabelingView,
+class LabelingActivity : AppCompatActivity(), View.OnClickListener,
     OnLabelItemClickListener {
+    private val viewModel by viewModels<LabelingViewModel>()
     private lateinit var binding: ActivityLabelingBinding
 
     private var imageLayout: ConstraintLayout? = null
@@ -31,9 +33,6 @@ class LabelingActivity : AppCompatActivity(), View.OnClickListener, LabelingView
     private var imageView: RoundedImageView? = null
     private var uri: Uri? = null
     private var btnDel: ImageView? = null
-    private val presenter: LabelingPresenterImpl<LabelingView> by lazy {
-        LabelingPresenterImpl(this, this)
-    }
     private val mAdapter: LabelingAdapter by lazy {
         LabelingAdapter(this, this)
     }
@@ -45,6 +44,7 @@ class LabelingActivity : AppCompatActivity(), View.OnClickListener, LabelingView
         supportActionBar?.hide()
         init()
         action()
+        setupObserve()
     }
 
     private fun init() {
@@ -54,12 +54,28 @@ class LabelingActivity : AppCompatActivity(), View.OnClickListener, LabelingView
         binding.recyclerViewLabel.layoutManager = layoutManager
         binding.recyclerViewLabel.adapter = mAdapter
 
-        presenter.getLabels()
+        viewModel.getLabels()
     }
 
     private fun action() {
         binding.header.btnBack.setOnClickListener(this)
         binding.btnAdd.setOnClickListener(this)
+    }
+
+    private fun setupObserve() {
+        viewModel.labels.observe(this) { list ->
+            mAdapter.setData(list)
+        }
+
+        viewModel.addStatus.observe(this) {
+            CommonUtils.showSnackBar(this@LabelingActivity, getString(R.string.upload_successful))
+            viewModel.getLabels()
+        }
+
+        viewModel.deleteStatus.observe(this) {
+            CommonUtils.showSnackBar(this@LabelingActivity, getString(R.string.delete_successful))
+            viewModel.getLabels()
+        }
     }
 
     override fun onClick(view: View) {
@@ -111,7 +127,7 @@ class LabelingActivity : AppCompatActivity(), View.OnClickListener, LabelingView
 
                         return@setOnClickListener
                     }
-                    presenter.addLabel(label, uri!!)
+                    viewModel.addLabel(this, label, uri!!)
                     dialog.cancel()
                 }
                 dialog.show()
@@ -119,29 +135,8 @@ class LabelingActivity : AppCompatActivity(), View.OnClickListener, LabelingView
         }
     }
 
-    override fun onGetListLabelSuccess(list: List<LabelModel>) {
-        mAdapter.setData(list)
-    }
-
-    override fun onAddLabelSuccess() {
-        CommonUtils.showSnackBar(this@LabelingActivity, getString(R.string.upload_successful))
-        presenter.getLabels()
-    }
-
-    override fun onDeleteLabelSuccess() {
-        CommonUtils.showSnackBar(this@LabelingActivity, getString(R.string.delete_successful))
-        presenter.getLabels()
-    }
-
-    override fun showLoading() {
-
-    }
-
-    override fun hideLoading() {
-
-    }
-
     override fun onLabelClickListener(labelingModel: LabelModel) {}
+
     override fun onDeleteLabel(labelId: Int) {
         val dialog = SweetAlertDialog(this@LabelingActivity, SweetAlertDialog.WARNING_TYPE)
         dialog.setContentText(getString(R.string.are_you_sure_to_delete_this_label))
@@ -150,7 +145,7 @@ class LabelingActivity : AppCompatActivity(), View.OnClickListener, LabelingView
             .showCancelButton(true)
             .setConfirmClickListener {
                 dialog.cancel()
-                presenter.deleteLabel(labelId)
+                viewModel.deleteLabel(labelId)
             }
             .setCancelClickListener { dialog.cancel() }
             .show()

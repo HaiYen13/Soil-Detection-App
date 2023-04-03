@@ -31,6 +31,7 @@
             android:background="@drawable/corner_edittext"
             android:fontFamily="@font/prompt_light"
             android:hint="Nhập nhãn dán"
+            android:imeOptions="actionDone"
             android:maxLines="1"
             android:padding="@dimen/_10sdp"
             android:textColorHint="#000"
@@ -69,14 +70,14 @@
             </LinearLayout>
 
             <androidx.constraintlayout.widget.ConstraintLayout
-                android:visibility="gone"
                 android:id="@+id/imageLayout"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_centerVertical="true"
                 android:layout_marginRight="10dp"
                 android:background="@drawable/border_normal"
-                android:padding="2dp">
+                android:padding="2dp"
+                android:visibility="gone">
 
                 <com.makeramen.roundedimageview.RoundedImageView
                     android:id="@+id/image"
@@ -97,7 +98,7 @@
                     android:src="@drawable/delete"
                     app:layout_constraintRight_toRightOf="@id/image"
                     app:layout_constraintTop_toTopOf="@id/image"
-                    app:tint="#fff"/>
+                    app:tint="#fff" />
             </androidx.constraintlayout.widget.ConstraintLayout>
         </RelativeLayout>
     </RelativeLayout>
