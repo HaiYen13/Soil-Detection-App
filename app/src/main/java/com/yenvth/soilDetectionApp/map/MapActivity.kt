@@ -1,13 +1,16 @@
 package com.yenvth.soilDetectionApp.map
 
+import android.annotation.SuppressLint
 import android.content.Intent
 import android.graphics.Color
 import android.os.Bundle
+import android.util.Log
 import android.view.View
 import android.widget.AdapterView
 import android.widget.AdapterView.OnItemSelectedListener
 import android.widget.ArrayAdapter
 import android.widget.Spinner
+import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.DefaultItemAnimator
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -26,6 +29,7 @@ import com.google.maps.android.data.geojson.GeoJsonPolygonStyle
 import com.yenvth.soilDetectionApp.MyApp
 import com.yenvth.soilDetectionApp.R
 import com.yenvth.soilDetectionApp.databinding.ActivityMapBinding
+import com.yenvth.soilDetectionApp.diction.DictionActivity
 import com.yenvth.soilDetectionApp.map.MapAdapter.OnSoilMapItemClickListener
 import com.yenvth.soilDetectionApp.models.ProvinceModel
 import com.yenvth.soilDetectionApp.models.SoilModel
@@ -40,18 +44,16 @@ import org.json.JSONException
 import org.json.JSONObject
 import java.util.*
 
-class MapActivity : AppCompatActivity(), MapView, OnMapReadyCallback, View.OnClickListener,
+class MapActivity : AppCompatActivity(), OnMapReadyCallback, View.OnClickListener,
     OnMapClickListener, OnMarkerClickListener, OnSoilMapItemClickListener {
     private lateinit var binding: ActivityMapBinding
+    private val viewModel by viewModels<MapViewModel>()
 
     private val fusedLocationProviderClient: FusedLocationProviderClient? = null
     private var googleMap: GoogleMap? = null
     private var mUiSettings: UiSettings? = null
-    private val presenter: MapPresenterImpl<MapView> by lazy {
-        MapPresenterImpl(this, this)
-    }
     private val mAdapter: MapAdapter by lazy {
-        MapAdapter(this, soilModels, this)
+        MapAdapter(this, this)
     }
     private var soilModels: ArrayList<SoilModel>? = null
     private var soilSelected: SoilModel? = null
@@ -65,8 +67,10 @@ class MapActivity : AppCompatActivity(), MapView, OnMapReadyCallback, View.OnCli
         supportActionBar?.hide()
         init()
         action()
+        setupObserve()
     }
 
+    @SuppressLint("NotifyDataSetChanged")
     private fun init() {
 //        provinceModels = dbHelper?.provinces
         val mapFragment = supportFragmentManager.findFragmentById(R.id.map) as SupportMapFragment?
@@ -95,6 +99,14 @@ class MapActivity : AppCompatActivity(), MapView, OnMapReadyCallback, View.OnCli
             }
 
             override fun onNothingSelected(adapterView: AdapterView<*>?) {}
+        }
+    }
+
+    private fun setupObserve() {
+        viewModel.provinceSoil.observe(this) { soilModels ->
+            mAdapter.setData(soilModels)
+            binding.expandLayout.expand()
+            binding.expandDetail.collapse()
         }
     }
 
@@ -156,12 +168,6 @@ class MapActivity : AppCompatActivity(), MapView, OnMapReadyCallback, View.OnCli
         return false
     }
 
-    override fun onGetListSoilSuccess(soilModels: ArrayList<SoilModel>?) {
-        this.soilModels = soilModels
-        binding.expandLayout.expand()
-        binding.expandDetail.collapse()
-    }
-
     override fun onSoilMapClickListener(soilModel: SoilModel) {
         soilSelected = soilModel
         binding.tvName.text = soilModel.nameVi
@@ -216,7 +222,7 @@ class MapActivity : AppCompatActivity(), MapView, OnMapReadyCallback, View.OnCli
                     provinceSelected?.provinceName ?: ""
                 )
             )
-            presenter.getListSoilByProvince(provinceId)
+            viewModel.getListSoilByProvince(provinceId)
         })
     }
 

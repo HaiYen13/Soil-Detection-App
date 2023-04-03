@@ -6,6 +6,7 @@ object Constant {
     const val PREFERENCE_NAME = "soil_pref"
     const val SOIL_DATABASE_NAME = "soil_db"
     const val RESOURCE_DATABASE_NAME = "resource_db"
+    const val RESOURCE_LOCAL_FILE = "local.json"
     const val DIALOG_TIMEOUT = 15000L
     const val BASE_SWAGGER_URL = "https://virtserver.swaggerhub.com/yenvth99/SoilDictionary/1.0.0/"
     fun getColorArea(area: String?): Int {

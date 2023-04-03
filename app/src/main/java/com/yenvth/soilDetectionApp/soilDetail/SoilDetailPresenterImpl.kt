@@ -9,7 +9,9 @@ class SoilDetailPresenterImpl<V : SoilDetailView?>(
     private val soilDetailView: SoilDetailView
 ) : SoilDetailPresenter<V> {
     val db = MyApp.getDatabase()
+    private val resourceDb = MyApp.getResourceDatabase()
+
     override fun getSoilDetail(soilId: Int) {
-        soilDetailView.onGetSoilDetails(db.soilDao().getSoil(soilId).toModel())
+        soilDetailView.onGetSoilDetails(resourceDb.soilDao().getSoil(soilId).toModel())
     }
 }

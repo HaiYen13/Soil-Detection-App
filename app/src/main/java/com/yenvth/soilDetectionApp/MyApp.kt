@@ -5,9 +5,14 @@ import androidx.appcompat.app.AppCompatDelegate
 import androidx.room.Room
 import com.yenvth.soilDetectionApp.room.AppDatabase
 import com.yenvth.soilDetectionApp.room.ResourceDatabase
+import com.yenvth.soilDetectionApp.utils.Constant
 import com.yenvth.soilDetectionApp.utils.Constant.RESOURCE_DATABASE_NAME
+import com.yenvth.soilDetectionApp.utils.Constant.RESOURCE_LOCAL_FILE
 import com.yenvth.soilDetectionApp.utils.Constant.SOIL_DATABASE_NAME
 import com.yenvth.soilDetectionApp.utils.DbHelper
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.GlobalScope
+import kotlinx.coroutines.launch
 
 class MyApp : Application() {
     companion object {
@@ -30,5 +35,16 @@ class MyApp : Application() {
             this,
             ResourceDatabase::class.java, RESOURCE_DATABASE_NAME
         ).build()
+        importDb()
+    }
+
+    private fun importDb() {
+        val sharePref = getSharedPreferences(Constant.PREFERENCE_NAME, MODE_PRIVATE)
+        if (!sharePref.getBoolean("is_imported", false)) {
+            GlobalScope.launch(Dispatchers.IO) {
+                DbHelper.importResources(this@MyApp, RESOURCE_LOCAL_FILE)
+                sharePref.edit().putBoolean("is_imported", true).apply()
+            }
+        }
     }
 }

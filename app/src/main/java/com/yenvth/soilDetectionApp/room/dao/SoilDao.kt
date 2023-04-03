@@ -1,6 +1,7 @@
 package com.yenvth.soilDetectionApp.room.dao
 
 import androidx.room.Dao
+import androidx.room.Insert
 import androidx.room.Query
 import com.yenvth.soilDetectionApp.models.SoilModel
 import com.yenvth.soilDetectionApp.room.entity.SoilRecord
@@ -14,6 +15,9 @@ interface SoilDao {
 
     @Query("SELECT * FROM soils WHERE soil_id = :soilId")
     fun getSoil(soilId: Int): SoilRecord
+
+    @Insert
+    fun insertSoil(record: SoilRecord)
 }
 
 internal fun SoilRecord.toModel() = SoilModel(

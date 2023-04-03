@@ -12,6 +12,7 @@ import kotlinx.coroutines.launch
 
 class DictionViewModel : ViewModel() {
     private val db = MyApp.getDatabase()
+    private val resourceDb = MyApp.getResourceDatabase()
 
     private val _saveStatus = MutableLiveData<Int>()
     val saveStatus: LiveData<Int> get() = _saveStatus
@@ -28,7 +29,7 @@ class DictionViewModel : ViewModel() {
 
     fun getListSoil(queryString: String) {
         viewModelScope.launch(Dispatchers.IO) {
-            _soils.postValue(db.soilDao().getSoils())
+            _soils.postValue(resourceDb.soilDao().getSoils())
         }
     }
 }

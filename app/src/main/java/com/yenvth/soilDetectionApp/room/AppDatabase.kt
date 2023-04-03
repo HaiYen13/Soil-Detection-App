@@ -9,8 +9,6 @@ import com.yenvth.soilDetectionApp.room.entity.*
     entities = [
         HistoryRecord::class,
         LabelRecord::class,
-        SoilRecord::class,
-        ProvinceSoilRecord::class,
         DetectionRecord::class],
     version = 1
 )
@@ -18,7 +16,5 @@ import com.yenvth.soilDetectionApp.room.entity.*
 abstract class AppDatabase : RoomDatabase() {
     abstract fun historyDao(): HistoryDao
     abstract fun labelDao(): LabelDao
-    abstract fun soilDao(): SoilDao
-    abstract fun provinceSoilDao(): ProvinceSoilDao
     abstract fun detectionDao(): DetectionDao
 }
