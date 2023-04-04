@@ -11,6 +11,7 @@ import kotlinx.coroutines.launch
 
 class HistoryViewModel : ViewModel() {
     private val db = MyApp.getDatabase()
+    private val resourceDb = MyApp.getResourceDatabase()
 
     private val _deleteStatus = MutableLiveData<Int>()
     val deleteStatus: LiveData<Int> get() = _deleteStatus
@@ -23,7 +24,10 @@ class HistoryViewModel : ViewModel() {
 
     fun getHistories() {
         viewModelScope.launch(Dispatchers.IO) {
-            _histories.postValue(db.historyDao().getHistories())
+            val soils = resourceDb.soilDao().getSoils().associateBy { it.soilId }
+            val histories =
+                db.historyDao().getHistories().map { it.copy(soilName = soils[it.soilId]?.nameVi) }
+            _histories.postValue(histories)
         }
     }
 

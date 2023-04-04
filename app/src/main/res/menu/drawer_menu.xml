@@ -35,10 +35,6 @@
                 android:id="@+id/setting"
                 android:icon="@drawable/setting"
                 android:title="Cài đặt" />
-            <item
-                android:id="@+id/signout"
-                android:icon="@drawable/logout"
-                android:title="Đăng xuất" />
         </menu>
     </item>
 

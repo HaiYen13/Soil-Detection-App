@@ -4,7 +4,6 @@ import android.annotation.SuppressLint
 import android.content.Intent
 import android.graphics.Color
 import android.os.Bundle
-import android.util.Log
 import android.view.View
 import android.widget.AdapterView
 import android.widget.AdapterView.OnItemSelectedListener
@@ -26,14 +25,11 @@ import com.google.maps.android.data.Feature
 import com.google.maps.android.data.geojson.GeoJsonLayer
 import com.google.maps.android.data.geojson.GeoJsonLayer.GeoJsonOnFeatureClickListener
 import com.google.maps.android.data.geojson.GeoJsonPolygonStyle
-import com.yenvth.soilDetectionApp.MyApp
 import com.yenvth.soilDetectionApp.R
 import com.yenvth.soilDetectionApp.databinding.ActivityMapBinding
-import com.yenvth.soilDetectionApp.diction.DictionActivity
 import com.yenvth.soilDetectionApp.map.MapAdapter.OnSoilMapItemClickListener
 import com.yenvth.soilDetectionApp.models.ProvinceModel
 import com.yenvth.soilDetectionApp.models.SoilModel
-import com.yenvth.soilDetectionApp.room.dao.toModel
 import com.yenvth.soilDetectionApp.soilDetail.SoilDetailActivity
 import com.yenvth.soilDetectionApp.utils.CommonUtils
 import com.yenvth.soilDetectionApp.utils.Constant
@@ -57,7 +53,7 @@ class MapActivity : AppCompatActivity(), OnMapReadyCallback, View.OnClickListene
     }
     private var soilModels: ArrayList<SoilModel>? = null
     private var soilSelected: SoilModel? = null
-    private var provinceModels: ArrayList<ProvinceModel> = arrayListOf()
+    private var provinceModels: List<ProvinceModel> = arrayListOf()
     private var provinceSelected: ProvinceModel? = null
     private var provinceAdapter: ArrayAdapter<*>? = null
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -72,7 +68,8 @@ class MapActivity : AppCompatActivity(), OnMapReadyCallback, View.OnClickListene
 
     @SuppressLint("NotifyDataSetChanged")
     private fun init() {
-//        provinceModels = dbHelper?.provinces
+        viewModel.getProvinces()
+
         val mapFragment = supportFragmentManager.findFragmentById(R.id.map) as SupportMapFragment?
         mapFragment?.getMapAsync(this)
 
@@ -107,6 +104,10 @@ class MapActivity : AppCompatActivity(), OnMapReadyCallback, View.OnClickListene
             mAdapter.setData(soilModels)
             binding.expandLayout.expand()
             binding.expandDetail.collapse()
+        }
+
+        viewModel.provinces.observe(this) { provinces ->
+            this.provinceModels = provinces
         }
     }
 
@@ -174,6 +175,7 @@ class MapActivity : AppCompatActivity(), OnMapReadyCallback, View.OnClickListene
         binding.tvProvince.text = provinceSelected?.provinceName
         binding.tvDes.text = soilModel.description
         ImageUtils.setImage(this, soilModel.url, binding.imgSoil, binding.progressBar)
+        binding.expandDetail.collapse()
         binding.expandDetail.expand()
     }
 
@@ -212,17 +214,16 @@ class MapActivity : AppCompatActivity(), OnMapReadyCallback, View.OnClickListene
         addStrokeArea(layer)
         layer.addLayerToMap()
         layer.setOnFeatureClickListener(GeoJsonOnFeatureClickListener { feature: Feature ->
-            CommonUtils.showSnackBar(this@MapActivity, "Tỉnh " + feature.getProperty("name"), false)
-            val provinceId = feature.getProperty("id_1").toInt()
-            provinceSelected =
-                MyApp.getResourceDatabase().provinceDao().getProvince(provinceId).toModel()
+            CommonUtils.showSnackBar(this@MapActivity, "Tỉnh " + feature.getProperty("name"))
+            val provinceId = feature.getProperty("id_1").toIntOrNull()
+            provinceSelected = provinceModels.find { it.provinceId == provinceId }
             binding.spProvince.setSelection(
                 getIndex(
                     binding.spProvince,
                     provinceSelected?.provinceName ?: ""
                 )
             )
-            viewModel.getListSoilByProvince(provinceId)
+            provinceId?.let { viewModel.getListSoilByProvince(it) }
         })
     }
 

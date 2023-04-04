@@ -38,11 +38,11 @@
                         android:padding="@dimen/_5sdp">
 
                         <LinearLayout
-                            android:orientation="vertical"
                             android:id="@+id/lnImage"
                             android:layout_width="@dimen/_40sdp"
                             android:layout_height="@dimen/_30sdp"
                             android:layout_centerInParent="true"
+                            android:orientation="vertical"
                             android:padding="1dp" />
                     </RelativeLayout>
 
@@ -51,8 +51,7 @@
                         android:layout_height="match_parent"
                         android:layout_marginLeft="@dimen/_5sdp"
                         android:gravity="center_vertical"
-                        android:orientation="vertical"
-                        android:paddingTop="5dp">
+                        android:orientation="vertical">
 
                         <TextView
                             android:id="@+id/tvName"

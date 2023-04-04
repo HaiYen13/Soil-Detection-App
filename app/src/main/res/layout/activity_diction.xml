@@ -52,6 +52,7 @@
             android:layout_marginRight="30dp"
             android:layout_toLeftOf="@id/btnSearch"
             android:src="@drawable/delete"
+            android:visibility="gone"
             app:tint="#000" />
 
         <ImageView

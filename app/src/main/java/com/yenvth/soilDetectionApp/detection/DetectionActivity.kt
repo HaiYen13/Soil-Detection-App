@@ -12,6 +12,7 @@ import android.os.Handler
 import android.provider.MediaStore
 import android.view.Surface
 import android.view.View
+import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.app.ActivityCompat
 import com.theartofdev.edmodo.cropper.CropImage
@@ -24,9 +25,10 @@ import com.yenvth.soilDetectionApp.utils.CommonUtils
 import java.io.IOException
 import java.util.*
 
-class DetectionActivity : AppCompatActivity(), View.OnClickListener, DetectionView {
-
+class DetectionActivity : AppCompatActivity(), View.OnClickListener {
     private lateinit var binding: ActivityDetectionBinding
+    private val viewModel by viewModels<DetectionViewModel>()
+
     private var bitmap: Bitmap? = null
     private var uri: Uri? = null
     private val screenOrientation: Int
@@ -37,9 +39,6 @@ class DetectionActivity : AppCompatActivity(), View.OnClickListener, DetectionVi
             else -> 0
         }
 
-    private val presenter: DetectionPresenterImpl<DetectionView> by lazy {
-        DetectionPresenterImpl(this)
-    }
     private val classifier: Classifier by lazy {
         Classifier.create(
             this,
@@ -157,7 +156,8 @@ class DetectionActivity : AppCompatActivity(), View.OnClickListener, DetectionVi
             binding.btnYes.setOnClickListener {
                 binding.expandLayout.collapse()
                 uri?.let { selectUri ->
-                    presenter.saveImageToFirebaseStorage(
+                    viewModel.saveImageToFirebaseStorage(
+                        this,
                         selectUri,
                         binding.tvResult.text.toString().trim(),
                         true
@@ -171,7 +171,8 @@ class DetectionActivity : AppCompatActivity(), View.OnClickListener, DetectionVi
             binding.btnNo.setOnClickListener {
                 binding.expandLayout.collapse()
                 uri?.let { selectUri ->
-                    presenter.saveImageToFirebaseStorage(
+                    viewModel.saveImageToFirebaseStorage(
+                        this,
                         selectUri,
                         binding.tvResult.text.toString().trim(),
                         false
