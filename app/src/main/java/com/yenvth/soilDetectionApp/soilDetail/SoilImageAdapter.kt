@@ -9,17 +9,16 @@ import android.widget.ProgressBar
 import androidx.recyclerview.widget.RecyclerView
 import com.makeramen.roundedimageview.RoundedImageView
 import com.yenvth.soilDetectionApp.R
-import com.yenvth.soilDetectionApp.models.LabelModel
 import com.yenvth.soilDetectionApp.utils.ImageUtils
 
 class SoilImageAdapter(
     private val mContext: Context,
     private val listener: OnSoilImageClickListener?
 ) : RecyclerView.Adapter<SoilImageAdapter.MyHolder>() {
-    private var dataList = emptyList<LabelModel>()
+    private var dataList = emptyList<String>()
 
     @SuppressLint("NotifyDataSetChanged")
-    fun setData(list: List<LabelModel>) {
+    fun setData(list: List<String>) {
         this.dataList = list
         notifyDataSetChanged()
     }
@@ -34,8 +33,8 @@ class SoilImageAdapter(
     }
 
     override fun onBindViewHolder(holder: MyHolder, pos: Int) {
-        ImageUtils.setImage(mContext, dataList[pos].url, holder.image, holder.progressBar)
-        holder.image.setOnClickListener { listener?.onSoilImageClick(dataList[pos].url) }
+        ImageUtils.setImage(mContext, dataList[pos], holder.image, holder.progressBar)
+        holder.image.setOnClickListener { listener?.onSoilImageClick(dataList[pos]) }
     }
 
     override fun getItemCount(): Int {

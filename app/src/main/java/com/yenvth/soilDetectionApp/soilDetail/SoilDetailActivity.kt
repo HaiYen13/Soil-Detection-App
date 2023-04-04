@@ -4,34 +4,29 @@ import android.annotation.SuppressLint
 import android.app.Dialog
 import android.content.Intent
 import android.os.Bundle
-import android.text.TextUtils
 import android.view.View
 import android.widget.ImageView
+import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import androidx.recyclerview.widget.RecyclerView.LayoutManager
 import com.yenvth.soilDetectionApp.R
 import com.yenvth.soilDetectionApp.databinding.ActivitySoilDetailBinding
 import com.yenvth.soilDetectionApp.detection.DetectionActivity
 import com.yenvth.soilDetectionApp.extension.toDate
 import com.yenvth.soilDetectionApp.map.MapActivity
-import com.yenvth.soilDetectionApp.models.SoilModel
 import com.yenvth.soilDetectionApp.soilDetail.SoilImageAdapter.OnSoilImageClickListener
 import com.yenvth.soilDetectionApp.utils.ImageUtils
 
-class SoilDetailActivity : AppCompatActivity(), View.OnClickListener, SoilDetailView,
+class SoilDetailActivity : AppCompatActivity(), View.OnClickListener,
     OnSoilImageClickListener {
     private lateinit var binding: ActivitySoilDetailBinding
+    private val viewModel by viewModels<SoilDetailViewModel>()
 
-    private val presenter: SoilDetailPresenterImpl<SoilDetailView> by lazy {
-        SoilDetailPresenterImpl(this, this)
-    }
     private val mAdapter: SoilImageAdapter by lazy {
         SoilImageAdapter(this, this)
     }
     private var soilId = 0
-    private var soilModel: SoilModel? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -40,16 +35,17 @@ class SoilDetailActivity : AppCompatActivity(), View.OnClickListener, SoilDetail
         supportActionBar?.hide()
         init()
         action()
+        setupObserve()
     }
 
     private fun init() {
 //        tvToolbar.setText("Chi tiết mẫu đất");
         soilId = intent.getIntExtra("soilId", 0)
         if (soilId != 0) {
-            presenter.getSoilDetail(soilId)
+            viewModel.getSoilDetail(soilId)
         }
 
-        val layoutManager: LayoutManager = LinearLayoutManager(this, RecyclerView.HORIZONTAL, false)
+        val layoutManager = LinearLayoutManager(this, RecyclerView.HORIZONTAL, false)
         binding.recyclerViewSoilImages.layoutManager = layoutManager
         binding.recyclerViewSoilImages.adapter = mAdapter
     }
@@ -59,6 +55,28 @@ class SoilDetailActivity : AppCompatActivity(), View.OnClickListener, SoilDetail
         binding.btnSound.setOnClickListener(this)
         binding.btnDetect.setOnClickListener(this)
         binding.btnMap.setOnClickListener(this)
+    }
+
+    @SuppressLint("SetTextI18n")
+    private fun setupObserve() {
+        viewModel.soil.observe(this) { soilModel ->
+            binding.header.tvToolbar.text = soilModel.nameVi
+            binding.tvSoilName.text = soilModel.nameVi
+            binding.tvNameEn.text = soilModel.nameEn
+            binding.tvUpdate.text =
+                "${getString(R.string.update_date)} ${soilModel.timestamp.toDate()}"
+            binding.tvDescription.text = soilModel.description
+            val listImageSoil = arrayListOf<String>()
+            if (!soilModel.url.isNullOrEmpty()) {
+                listImageSoil.add(soilModel.url!!)
+            }
+            if (listImageSoil.size == 0) {
+                binding.lnImages.visibility = View.GONE
+            } else {
+                mAdapter.setData(listImageSoil)
+                binding.lnImages.visibility = View.VISIBLE
+            }
+        }
     }
 
     override fun onClick(view: View) {
@@ -73,30 +91,6 @@ class SoilDetailActivity : AppCompatActivity(), View.OnClickListener, SoilDetail
                 intent = Intent(this@SoilDetailActivity, MapActivity::class.java)
                 startActivity(intent)
             }
-        }
-    }
-
-    public override fun onPause() {
-        super.onPause()
-    }
-
-    @SuppressLint("SetTextI18n")
-    override fun onGetSoilDetails(soilModel: SoilModel) {
-        this.soilModel = soilModel
-        binding.header.tvToolbar.text = soilModel.nameVi
-        binding.tvSoilName.text = soilModel.nameVi
-        binding.tvNameEn.text = soilModel.nameEn
-        binding.tvUpdate.text = "${getString(R.string.update_date)} ${soilModel.timestamp.toDate()}"
-        binding.tvDescription.text = soilModel.description
-        val listImageSoil = ArrayList<String?>()
-        if (!TextUtils.isEmpty(soilModel.url)) {
-            listImageSoil.add(soilModel.url)
-        }
-
-        if (listImageSoil.size == 0) {
-            binding.lnImages.visibility = View.GONE
-        } else {
-            binding.lnImages.visibility = View.VISIBLE
         }
     }
 
