@@ -112,7 +112,7 @@ class LabelingActivity : AppCompatActivity(), View.OnClickListener,
                     if (label.isBlank()) {
                         CommonUtils.showSnackBar(
                             dialog.currentFocus,
-                            "Vui lòng nhập tên nhãn",
+                            getString(R.string.please_fill_label_name),
                             false
                         )
 
@@ -121,7 +121,7 @@ class LabelingActivity : AppCompatActivity(), View.OnClickListener,
                     if (uri == null) {
                         CommonUtils.showSnackBar(
                             dialog.currentFocus,
-                            "Vui lòng chọn ảnh đất",
+                            getString(R.string.Please_choose_soil_image),
                             false
                         )
 

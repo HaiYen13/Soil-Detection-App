@@ -214,7 +214,10 @@ class MapActivity : AppCompatActivity(), OnMapReadyCallback, View.OnClickListene
         addStrokeArea(layer)
         layer.addLayerToMap()
         layer.setOnFeatureClickListener(GeoJsonOnFeatureClickListener { feature: Feature ->
-            CommonUtils.showSnackBar(this@MapActivity, "Tỉnh " + feature.getProperty("name"))
+            CommonUtils.showSnackBar(
+                this@MapActivity,
+                feature.getProperty("name") + " " + getString(R.string.province)
+            )
             val provinceId = feature.getProperty("id_1").toIntOrNull()
             provinceSelected = provinceModels.find { it.provinceId == provinceId }
             binding.spProvince.setSelection(

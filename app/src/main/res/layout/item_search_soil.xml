@@ -97,7 +97,7 @@
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:fontFamily="@font/prompt_medium"
-                                android:text="Chỉ số:" />
+                                android:text="@string/index" />
 
                             <LinearLayout
                                 android:layout_width="match_parent"
@@ -122,7 +122,7 @@
                                     android:layout_weight="1"
                                     android:fontFamily="@font/prompt_light"
                                     android:gravity="center_vertical"
-                                    android:text="Độ ẩm: 96%"
+                                    android:text="@string/humidity"
                                     android:textSize="@dimen/_9sdp" />
 
                                 <TextView
@@ -132,7 +132,7 @@
                                     android:layout_weight="1"
                                     android:fontFamily="@font/prompt_light"
                                     android:gravity="center_vertical"
-                                    android:text="N20: 20"
+                                    android:text="@string/n20"
                                     android:textSize="@dimen/_9sdp" />
                             </LinearLayout>
                         </LinearLayout>

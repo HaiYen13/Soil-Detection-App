@@ -36,7 +36,7 @@
             android:layout_toRightOf="@id/btnBack"
             android:background="@drawable/corner_search_edittext_unselect"
             android:fontFamily="@font/prompt_light"
-            android:hint="Tìm kiếm gì đó..."
+            android:hint="@string/search_something"
             android:inputType="text"
             android:lines="1"
             android:paddingHorizontal="10dp"
@@ -94,7 +94,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:fontFamily="@font/prompt_bold"
-                        android:text="Danh sách mẫu đất"
+                        android:text="@string/soil_lists"
                         android:textColor="#000"
                         android:textSize="@dimen/_12sdp" />
 

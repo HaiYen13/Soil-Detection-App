@@ -21,7 +21,7 @@
             android:layout_height="wrap_content"
             android:layout_centerVertical="true"
             android:fontFamily="@font/prompt_medium"
-            android:text="Danh sách lịch sử"
+            android:text="@string/histories_list"
             android:textColor="#000"
             android:textSize="@dimen/_13sdp" />
 
@@ -29,7 +29,7 @@
             android:id="@+id/btnDeleteAll"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_alignParentRight="true"
+            android:layout_alignParentEnd="true"
             android:background="@drawable/bg_delete_all"
             android:gravity="center"
             android:padding="@dimen/_8sdp">
@@ -37,7 +37,6 @@
             <ImageView
                 android:layout_width="@dimen/_20sdp"
                 android:layout_height="@dimen/_20sdp"
-                android:layout_centerVertical="true"
                 android:src="@drawable/delete2"
                 app:tint="#fff" />
 
@@ -46,7 +45,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="@dimen/_3sdp"
                 android:fontFamily="@font/prompt_bold"
-                android:text="Xóa toàn bộ"
+                android:text="@string/delete_all"
                 android:textColor="#fff" />
         </LinearLayout>
 

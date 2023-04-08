@@ -61,6 +61,33 @@
     <string name="label_threads">Number of Threads</string>
     <string name="label_delegate">Delegate</string>
     <string name="label_models">ML Model</string>
+    <string name="main_feature">Main</string>
+    <string name="dictionary">Từ điển</string>
+    <string name="map">Bản đồ</string>
+    <string name="soil_detect">Nhận dạng đất</string>
+    <string name="other">Other</string>
+    <string name="histories">Lịch sử</string>
+    <string name="labels">Dán nhãn</string>
+    <string name="soil_dictionary">TỪ ĐIỂN ĐẤT</string>
+    <string name="type_something">Type something ...</string>
+    <string name="histories_list">Danh sách lịch sử</string>
+    <string name="delete_all">Xóa toàn bộ</string>
+    <string name="labels_list">Danh sách nhãn dán</string>
+    <string name="add_new">Thêm mới</string>
+    <string name="search_something">Tìm kiếm gì đó...</string>
+    <string name="soil_lists">Danh sách mẫu đất</string>
+    <string name="sample">Hình ảnh mẫu</string>
+    <string name="process">NHẬN DẠNG</string>
+    <string name="index">Chỉ số:</string>
+    <string name="humidity">Độ ẩm: 96%</string>
+    <string name="n20">N20: 20</string>
+    <string name="province">Tỉnh</string>
+    <string name="view_detail">Xem chi tiết</string>
+    <string name="please_fill_label_name">Vui lòng nhập tên nhãn</string>
+    <string name="Please_choose_soil_image">Vui lòng chọn ảnh đất</string>
+    <string name="complete">HOÀN THÀNH</string>
+    <string name="enter_label_name">Nhập nhãn dán</string>
+    <string name="add_image">Thêm ảnh</string>
 
     <string-array name="delegate_spinner_titles">
         <item>CPU</item>

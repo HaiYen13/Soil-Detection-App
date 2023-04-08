@@ -2,39 +2,34 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
 
     <group android:id="@+id/important">
-        <item android:title="Main">
+        <item android:title="@string/main_feature">
             <menu>
                 <item
                     android:id="@+id/diction"
                     android:icon="@drawable/logo"
-                    android:title="Từ điển" />
+                    android:title="@string/dictionary" />
                 <item
                     android:id="@+id/map"
                     android:icon="@drawable/document"
-                    android:title="Bản đồ" />
+                    android:title="@string/map" />
                 <item
                     android:id="@+id/detect"
                     android:icon="@drawable/ocr"
-                    android:title="Nhận dạng đất" />
+                    android:title="@string/soil_detect" />
 
             </menu>
         </item>
     </group>
-    <item android:title="Other">
+    <item android:title="@string/other">
         <menu>
             <item
                 android:id="@+id/history"
                 android:icon="@drawable/history"
-                android:title="Lịch sử" />
+                android:title="@string/histories" />
             <item
                 android:id="@+id/labeling"
                 android:icon="@drawable/bookmark"
-                android:title="Dán nhãn" />
-
-            <item
-                android:id="@+id/setting"
-                android:icon="@drawable/setting"
-                android:title="Cài đặt" />
+                android:title="@string/labels" />
         </menu>
     </item>
 

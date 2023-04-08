@@ -31,7 +31,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="10dp"
                 android:fontFamily="@font/prompt_bolditalic"
-                android:text="TỪ ĐIỂN ĐẤT"
+                android:text="@string/soil_dictionary"
                 android:textColor="#fff"
                 android:textSize="20dp" />
 
@@ -58,7 +58,6 @@
 
                 <TextView
                     android:id="@+id/btnLogin"
-                    android:visibility="gone"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:background="@drawable/bg_white"
@@ -66,7 +65,8 @@
                     android:padding="@dimen/_8sdp"
                     android:text="Đăng nhập"
                     android:textColor="@color/start_color"
-                    android:textSize="@dimen/_8sdp" />
+                    android:textSize="@dimen/_8sdp"
+                    android:visibility="gone" />
 
                 <LinearLayout
                     android:layout_width="wrap_content"
@@ -86,8 +86,8 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:fontFamily="@font/prompt_bold"
-                        android:textSize="@dimen/_10sdp"
-                        android:textColor="#fff" />
+                        android:textColor="#fff"
+                        android:textSize="@dimen/_10sdp" />
                 </LinearLayout>
 
             </RelativeLayout>
@@ -143,7 +143,7 @@
                                 android:layout_height="wrap_content"
                                 android:layout_marginTop="@dimen/_5sdp"
                                 android:fontFamily="@font/prompt_bold"
-                                android:text="Từ điển đất" />
+                                android:text="@string/dictionary" />
                         </LinearLayout>
                     </com.google.android.material.card.MaterialCardView>
 
@@ -172,15 +172,15 @@
                             <ImageView
                                 android:layout_width="@dimen/_30sdp"
                                 android:layout_height="@dimen/_30sdp"
-                                app:tint="@color/start_color"
-                                android:src="@drawable/ocr" />
+                                android:src="@drawable/ocr"
+                                app:tint="@color/start_color" />
 
                             <TextView
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:layout_marginTop="@dimen/_5sdp"
                                 android:fontFamily="@font/prompt_bold"
-                                android:text="Nhận dạng" />
+                                android:text="@string/soil_detect" />
                         </LinearLayout>
                     </com.google.android.material.card.MaterialCardView>
 
@@ -210,17 +210,17 @@
                             android:orientation="vertical">
 
                             <ImageView
-                                android:layout_width="match_parent"
+                                android:layout_width="@dimen/_30sdp"
                                 android:layout_height="@dimen/_30sdp"
                                 android:src="@drawable/map"
-                                app:tint="@color/start_color"/>
+                                app:tint="@color/start_color" />
 
                             <TextView
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:layout_marginTop="@dimen/_5sdp"
                                 android:fontFamily="@font/prompt_bold"
-                                android:text="Bản đồ đất" />
+                                android:text="@string/map" />
                         </LinearLayout>
                     </com.google.android.material.card.MaterialCardView>
 
@@ -250,14 +250,14 @@
                                 android:layout_width="@dimen/_30sdp"
                                 android:layout_height="@dimen/_30sdp"
                                 android:src="@drawable/history"
-                                app:tint="@color/start_color"/>
+                                app:tint="@color/start_color" />
 
                             <TextView
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:layout_marginTop="@dimen/_5sdp"
                                 android:fontFamily="@font/prompt_bold"
-                                android:text="Lịch sử" />
+                                android:text="@string/histories" />
                         </LinearLayout>
                     </com.google.android.material.card.MaterialCardView>
 
@@ -290,14 +290,14 @@
                                 android:layout_width="@dimen/_30sdp"
                                 android:layout_height="@dimen/_30sdp"
                                 android:src="@drawable/bookmark"
-                                app:tint="@color/start_color"/>
+                                app:tint="@color/start_color" />
 
                             <TextView
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:layout_marginTop="@dimen/_5sdp"
                                 android:fontFamily="@font/prompt_bold"
-                                android:text="Nhãn dán" />
+                                android:text="@string/labels" />
                         </LinearLayout>
                     </com.google.android.material.card.MaterialCardView>
 
@@ -339,7 +339,7 @@
                 android:backgroundTint="#fff"
                 android:fontFamily="@font/prompt_light"
                 android:gravity="center_vertical"
-                android:hint="Type something ..."
+                android:hint="@string/type_something"
                 android:textColor="#000"
                 android:textSize="14dp" />
 
@@ -352,11 +352,11 @@
             android:layout_alignParentBottom="true">
 
             <LinearLayout
-                app:layout_constraintBottom_toBottomOf="parent"
                 android:layout_width="match_parent"
                 android:layout_height="50dp"
                 android:background="#fff"
-                android:weightSum="3">
+                android:weightSum="3"
+                app:layout_constraintBottom_toBottomOf="parent">
 
                 <LinearLayout
                     android:id="@+id/lnHis"
@@ -406,11 +406,11 @@
             <RelativeLayout
                 android:id="@+id/rlDetect"
                 android:layout_width="@dimen/_55sdp"
+                android:layout_height="@dimen/_55sdp"
+                android:layout_centerHorizontal="true"
                 android:background="@drawable/bg_circle_image_2"
                 android:gravity="center"
-                android:layout_height="@dimen/_55sdp"
                 app:layout_constraintBottom_toBottomOf="parent"
-                android:layout_centerHorizontal="true"
                 app:layout_constraintLeft_toLeftOf="parent"
                 app:layout_constraintRight_toRightOf="parent">
 

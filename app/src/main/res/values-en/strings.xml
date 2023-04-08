@@ -1,29 +1,90 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="app_name">Soil Detection App</string>
-    <string name="select_province">Chọn Tỉnh/TP</string>
-    <string name="select_district">Chọn Quận/Huyện</string>
-    <string name="select_ward">Chọn Xã/Phường</string>
+    <string name="select_province">Select Province</string>
+    <string name="select_district">Select District</string>
+    <string name="select_ward">Select Ward</string>
 
     <string name="tfe_ic_app_name" translation_description="Image Classification demo app [CHAR_LIMIT=40]">TFL Classify</string>
     <string name="tfe_ic_camera_error" translation_description="Error regarding camera support[CHAR_LIMIT=40]">This device doesn\'t support Camera2 API.</string>
     <string name="tfe_ic_gpu_quant_error" translation_description="Error regarding GPU support for Quant models[CHAR_LIMIT=60]">GPU does not yet supported quantized models.</string>
-    <string name="search_history">Lịch sử tìm kiếm</string>
-    <string name="are_you_sure_to_delete_history">Bạn chắc chắn xóa toàn bộ lịch sử chứ?</string>
+    <string name="search_history">Search history</string>
+    <string name="are_you_sure_to_delete_history">Are you sure to delete all histories?</string>
     <string name="ok">OK</string>
-    <string name="cancel">Hủy</string>
-    <string name="delete_successful">Xóa thành công</string>
-    <string name="delete_all_success">Xóa toàn bộ thành công</string>
-    <string name="my_labels">Nhãn dán của tôi</string>
-    <string name="choose_an_image">Chọn ảnh</string>
-    <string name="upload_successful">Tải thành công</string>
-    <string name="are_you_sure_to_delete_this_label">Bạn chắc chắn xóa nhãn dán này chứ?</string>
-    <string name="upload_failed">Tải lên thất bại</string>
-    <string name="soil_detection">Nhận dạng mẫu đất</string>
-    <string name="can_not_detect">Không thể nhận dạng</string>
-    <string name="please_choose_image">Vui lòng chọn hình ảnh.</string>
-    <string name="detect_asking_1">\"Đây có phải là \"</string>
+    <string name="cancel">Cancel</string>
+    <string name="delete_successful">Delete successfully</string>
+    <string name="delete_all_success">Delete all successfully</string>
+    <string name="my_labels">My labels</string>
+    <string name="choose_an_image">Choose image</string>
+    <string name="upload_successful">Uploaded success</string>
+    <string name="are_you_sure_to_delete_this_label">Are you sure to delete this label?</string>
+    <string name="upload_failed">Uploaded failed</string>
+    <string name="soil_detection">Soil recognition</string>
+    <string name="can_not_detect">Can\'t detect</string>
+    <string name="please_choose_image">Please choose an image.</string>
+    <string name="detect_asking_1">"Đây có phải là "</string>
     <string name="detect_asking_2">\" không?\"</string>
-    <string name="thanks_for_contribution">Cảm ơn vì đóng góp của bạn</string>
-    <string name="update_date">\"Ngày cập nhật: \"</string>
+    <string name="thanks_for_contribution">Thanks for your contribution</string>
+    <string name="update_date">"Updated date: "</string>
+
+    <string name="alt_bottom_sheet_chevron">Bottom sheet expandable indicator</string>
+
+    <string name="alt_bottom_sheet_max_results_button_minus">Decreasing maximum classified results
+        button</string>
+    <string name="alt_bottom_sheet_max_results_button_plus">Increasing maximum classified results
+        button</string>
+    <string name="alt_bottom_sheet_threshold_button_minus">Decreasing threshold of classified image
+        results button</string>
+    <string name="alt_bottom_sheet_threshold_button_plus">Increasing threshold of classified image
+        results button</string>
+    <string name="alt_bottom_sheet_thread_button_minus">Decrease the number of threads used</string>
+    <string name="alt_bottom_sheet_thread_button_plus">Increase the number of threads used</string>
+
+    <string name="label_interence_time">Inference Time</string>
+    <string name="label_fps">Frames per Second</string>
+    <string name="label_confidence_threshold">Threshold</string>
+    <string name="label_max_results">Max Results</string>
+    <string name="label_threads">Number of Threads</string>
+    <string name="label_delegate">Delegate</string>
+    <string name="label_models">ML Model</string>
+    <string name="main_feature">Main features</string>
+    <string name="dictionary">Dictionary</string>
+    <string name="map">Map</string>
+    <string name="soil_detect">Recognition</string>
+    <string name="other">Other</string>
+    <string name="histories">Histories</string>
+    <string name="labels">Labels</string>
+    <string name="soil_dictionary">SOIL DICTIONARY</string>
+    <string name="type_something">Type something . . .</string>
+    <string name="histories_list">Histories list</string>
+    <string name="delete_all">Delete all</string>
+    <string name="labels_list">Labels list</string>
+    <string name="add_new">Add new</string>
+    <string name="search_something">Search something . . .</string>
+    <string name="soil_lists">Soils list</string>
+    <string name="sample">Sample</string>
+    <string name="process">DETECT NOW</string>
+    <string name="index">Index:</string>
+    <string name="humidity">Humidity: 96%</string>
+    <string name="n20">N20: 20</string>
+    <string name="province">Province</string>
+    <string name="view_detail">View details</string>
+    <string name="please_fill_label_name">Please fill label name</string>
+    <string name="Please_choose_soil_image">Please choose soil image</string>
+    <string name="complete">COMPLETE</string>
+    <string name="enter_label_name">Fill label name</string>
+    <string name="add_image">Add image</string>
+
+    <string-array name="delegate_spinner_titles">
+        <item>CPU</item>
+        <item>GPU</item>
+        <item>NNAPI</item>
+    </string-array>
+
+    <string-array name="models_spinner_titles">
+        <item>MobileNet V1</item>
+        <item>EfficientNet Lite0</item>
+        <item>EfficientNet Lite1</item>
+        <item>EfficientNet Lite2</item>
+    </string-array>
 </resources>
