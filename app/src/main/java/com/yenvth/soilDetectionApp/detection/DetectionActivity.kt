@@ -18,14 +18,16 @@ import androidx.core.app.ActivityCompat
 import com.theartofdev.edmodo.cropper.CropImage
 import com.theartofdev.edmodo.cropper.CropImageView
 import com.yenvth.soilDetectionApp.R
-import com.yenvth.soilDetectionApp.cnnModel.classification.ClassifierActivity
-import com.yenvth.soilDetectionApp.cnnModel.tflite.Classifier
 import com.yenvth.soilDetectionApp.databinding.ActivityDetectionBinding
+import com.yenvth.soilDetectionApp.tensorflow_lite.ClassifierActivity
+import com.yenvth.soilDetectionApp.tensorflow_lite.ImageClassifierHelper
 import com.yenvth.soilDetectionApp.utils.CommonUtils
+import org.tensorflow.lite.task.vision.classifier.Classifications
 import java.io.IOException
 import java.util.*
 
-class DetectionActivity : AppCompatActivity(), View.OnClickListener {
+class DetectionActivity : AppCompatActivity(), View.OnClickListener,
+    ImageClassifierHelper.ClassifierListener {
     private lateinit var binding: ActivityDetectionBinding
     private val viewModel by viewModels<DetectionViewModel>()
 
@@ -39,12 +41,10 @@ class DetectionActivity : AppCompatActivity(), View.OnClickListener {
             else -> 0
         }
 
-    private val classifier: Classifier by lazy {
-        Classifier.create(
-            this,
-            Classifier.Model.QUANTIZED_EFFICIENTNET,
-            Classifier.Device.CPU,
-            1
+    private val imageClassifier by lazy {
+        ImageClassifierHelper(
+            context = this,
+            imageClassifierListener = this
         )
     }
 
@@ -66,6 +66,37 @@ class DetectionActivity : AppCompatActivity(), View.OnClickListener {
         binding.btnCam.setOnClickListener(this)
         binding.btnGallery.setOnClickListener(this)
         binding.btnDetect.setOnClickListener(this)
+        binding.btnYes.setOnClickListener {
+            binding.expandLayout.collapse()
+            uri?.let { selectUri ->
+                viewModel.saveImageToFirebaseStorage(
+                    this,
+                    selectUri,
+                    binding.tvResult.text.toString().trim(),
+                    true
+                )
+                CommonUtils.showSnackBar(
+                    this@DetectionActivity,
+                    getString(R.string.thanks_for_contribution)
+                )
+            }
+
+        }
+        binding.btnNo.setOnClickListener {
+            binding.expandLayout.collapse()
+            uri?.let { selectUri ->
+                viewModel.saveImageToFirebaseStorage(
+                    this,
+                    selectUri,
+                    binding.tvResult.text.toString().trim(),
+                    false
+                )
+                CommonUtils.showSnackBar(
+                    this@DetectionActivity,
+                    getString(R.string.thanks_for_contribution)
+                )
+            }
+        }
     }
 
     override fun onClick(view: View) {
@@ -123,66 +154,7 @@ class DetectionActivity : AppCompatActivity(), View.OnClickListener {
     private fun detectSoil() {
         try {
             val sensorOrientation = 90 - screenOrientation
-            val results = classifier.recognizeImage(bitmap, sensorOrientation)
-            if (results != null && results.size >= 3) {
-                val recognition = results[0]
-                if (recognition != null) {
-                    if (recognition.title != null) {
-                        binding.lnResult.visibility = View.VISIBLE
-                        binding.tvResult.text = recognition.title.toUpperCase(Locale.getDefault())
-                        Handler().postDelayed({
-                            binding.expandLayout.expand()
-                            binding.tvMessage.text =
-                                "${getString(R.string.detect_asking_1)}${
-                                    recognition.title.toUpperCase(
-                                        Locale.getDefault()
-                                    )
-                                }${
-                                    getString(
-                                        R.string.detect_asking_2
-                                    )
-                                }"
-                        }, Random().nextInt(2000).toLong())
-                        binding.btnDetect.visibility = View.GONE
-                    }
-                }
-            } else {
-                binding.expandLayout.collapse()
-                binding.lnResult.visibility = View.VISIBLE
-                binding.tvResult.text = getString(R.string.can_not_detect)
-                binding.btnDetect.visibility = View.VISIBLE
-            }
-
-            binding.btnYes.setOnClickListener {
-                binding.expandLayout.collapse()
-                uri?.let { selectUri ->
-                    viewModel.saveImageToFirebaseStorage(
-                        this,
-                        selectUri,
-                        binding.tvResult.text.toString().trim(),
-                        true
-                    )
-                }
-                CommonUtils.showSnackBar(
-                    this@DetectionActivity,
-                    getString(R.string.thanks_for_contribution)
-                )
-            }
-            binding.btnNo.setOnClickListener {
-                binding.expandLayout.collapse()
-                uri?.let { selectUri ->
-                    viewModel.saveImageToFirebaseStorage(
-                        this,
-                        selectUri,
-                        binding.tvResult.text.toString().trim(),
-                        false
-                    )
-                }
-                CommonUtils.showSnackBar(
-                    this@DetectionActivity,
-                    getString(R.string.thanks_for_contribution)
-                )
-            }
+            bitmap?.let { imageClassifier.classify(it, sensorOrientation) }
         } catch (e: IOException) {
             e.printStackTrace()
         }
@@ -233,6 +205,39 @@ class DetectionActivity : AppCompatActivity(), View.OnClickListener {
                 cameraIntent.putExtra(MediaStore.EXTRA_OUTPUT, uri)
                 startActivityForResult(cameraIntent, 2)
             }
+        }
+    }
+
+    override fun onError(error: String) {
+
+    }
+
+    override fun onResults(results: List<Classifications>?, inferenceTime: Long) {
+        if (results != null && results.size >= 3) {
+            val recognition = results[0]
+            if (recognition.categories != null) {
+                binding.lnResult.visibility = View.VISIBLE
+//                binding.tvResult.text = recognition.title.toUpperCase(Locale.getDefault())
+                Handler().postDelayed({
+                    binding.expandLayout.expand()
+//                    binding.tvMessage.text =
+//                        "${getString(R.string.detect_asking_1)}${
+//                            recognition.title.toUpperCase(
+//                                Locale.getDefault()
+//                            )
+//                        }${
+//                            getString(
+//                                R.string.detect_asking_2
+//                            )
+//                        }"
+                }, Random().nextInt(2000).toLong())
+                binding.btnDetect.visibility = View.GONE
+            }
+        } else {
+            binding.expandLayout.collapse()
+            binding.lnResult.visibility = View.VISIBLE
+            binding.tvResult.text = getString(R.string.can_not_detect)
+            binding.btnDetect.visibility = View.VISIBLE
         }
     }
 }

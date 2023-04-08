@@ -48,4 +48,14 @@
     <color name="color_failed">#CC313D</color>
     <color name="color_text_failed">#FBE0E4</color>
     <color name="color_failed_50">#50CC313D</color>
+
+    <!-- TF Branding Orange -->
+    <color name="bounding_box_color">#FF6F00</color>
+    <color name="toolbar_background">#EEEEEE</color>
+    <color name="ic_launcher_background">#FFFFFF</color>
+    <color name="bottom_sheet_background">#EEEEEE</color>
+    <color name="bottom_sheet_text_color">@android:color/black</color>
+    <color name="icActive">#FFFFFFFF</color>
+    <color name="icFocused">#DDFFFFFF</color>
+    <color name="icPressed">#AAFFFFFF</color>
 </resources>

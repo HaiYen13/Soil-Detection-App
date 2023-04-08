@@ -7,13 +7,13 @@ import android.view.MenuItem
 import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import com.yenvth.soilDetectionApp.R
-import com.yenvth.soilDetectionApp.cnnModel.classification.ClassifierActivity
 import com.yenvth.soilDetectionApp.databinding.ActivityMainBinding
 import com.yenvth.soilDetectionApp.detection.DetectionActivity
 import com.yenvth.soilDetectionApp.diction.DictionActivity
 import com.yenvth.soilDetectionApp.history.HistoryActivity
 import com.yenvth.soilDetectionApp.labeling.LabelingActivity
 import com.yenvth.soilDetectionApp.map.MapActivity
+import com.yenvth.soilDetectionApp.tensorflow_lite.ClassifierActivity
 
 class MainActivity : AppCompatActivity(), View.OnClickListener {
     private lateinit var binding: ActivityMainBinding
